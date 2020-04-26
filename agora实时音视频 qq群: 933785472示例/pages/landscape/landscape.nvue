@@ -1,0 +1,121 @@
+<template>
+	<view class="chatBox" >
+		<TX-AgoraView 
+			:channelId="roomId"
+			:uid="uid"
+			renderModel=1
+			channelProfile=1
+			:clientRole=1
+			ref="maxTxAgoraView" 
+			class="maxTxAgoraView" 
+			configWidth=480
+			configHeight=320
+			frameRate=24
+			bitrate=0
+			model=1
+			:enableVideo=1
+			:enableAudio=1
+			@statechange="onPush"
+		></TX-AgoraView>
+	</view>
+</template>
+
+<script>
+
+
+export default {
+  
+	data() {
+		return {
+			uid :0,
+			role:1,
+			roomId: 868,
+			hisId:0,
+			beauty:0,
+			beautyValue:0,
+			mode:"me",//大小窗口显示模式
+			enable:false,
+		}
+	},
+	onLoad(params) {
+		// 获取上一个页面传入的参数
+	 
+		//主要步骤如下：
+		//1. 开启本地视频的预览画面，并开启声音
+		this.uid  =  1 + Math.ceil(Math.random()*1000000);
+
+		//设备的唯一标识
+	},
+	onReady() {
+		this.join();
+	},
+	onNavigationBarButtonTap() {
+		
+		uni.navigateBack({
+		    delta: 1,
+		    animationType: 'pop-out',
+		    animationDuration: 200
+		});
+	},
+	onBackPress() {
+		this.$refs.maxTxAgoraView.leaveChannel();
+		plus.screen.lockOrientation('portrait-primary');
+	},
+	methods: {
+		
+		onPush(e){
+		
+			var result = e.detail;
+			console.log(result);
+			switch (result.type) {
+				case 'onFirstRemoteVideoDecoded':
+					console.log('onFirstRemoteVideoDecoded');
+					break;
+				case 'onUserJoined':
+				    if (this.role == 2) {
+						this.hisId = result.uid;
+						
+					}else {
+						
+					}
+					break;
+			}
+		},
+		
+		join(){
+			
+		   this.$refs.maxTxAgoraView.joinChannel();
+		   plus.screen.lockOrientation('landscape-primary');
+		   
+		}
+	},
+	beforeCreate : function(){
+		// #ifdef APP-PLUS-NVUE
+		const domModule = weex.requireModule('dom')
+		domModule.addRule('fontFace', {
+			'fontFamily': "iconfont",
+			'src': 'url("'+"file:/" + plus.io.convertLocalFileSystemURL("_www/static/iconfont.ttf")+'")'
+		});
+		// #endif
+	},
+}
+</script>
+
+<style lang="scss">
+
+
+.chatBox {
+	flex:1;
+	position: relative;
+}
+.maxTxAgoraView{
+	flex: 1;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 9;
+}
+
+</style>

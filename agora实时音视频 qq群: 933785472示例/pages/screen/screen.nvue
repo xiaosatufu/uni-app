@@ -1,0 +1,114 @@
+<template>
+	<TX-Screenview
+	ref="maxAgoraScreen" 
+	class="maxAgoraScreen" 
+	uid=2
+	token=""
+	channelId="1"
+	:style="{height:windowHeight}"></TX-Screenview>
+	
+	<view class="foot">
+		<view class="circleBoxAll">
+			<view class="circleBox" @click="startAll()">
+				<text class="circleIco phone">&#xe626;</text>
+				<text class="hint">开始录屏</text>
+			</view>
+
+		</view>
+	</view>
+</template>
+
+<script>
+	
+	export default {
+		data() {
+			return {
+				mute:false,
+				windowHeight:0,
+			}
+		},
+		onLoad(params) {
+			this.windowHeight = uni.getSystemInfoSync().windowHeight;
+		
+		},
+
+		onNavigationBarButtonTap() {
+			
+			uni.navigateBack({
+			    delta: 1,
+			    animationType: 'pop-out',
+			    animationDuration: 200
+			});
+		},
+		onBackPress() {
+			this.$refs.maxAgoraScreen.leaveChannel();
+			this.$refs.maxAgoraScreen.destroyRtc();
+		},
+		methods: {
+			startAll(){
+				
+				this.$refs.maxAgoraScreen.joinChannel({
+					"audio":1,
+					"video":1
+				});
+				
+			}
+		}
+	}
+</script>
+
+<style>
+	
+	.foot{
+		width: 710upx;
+		position: fixed;
+		bottom:0;
+		left: 0;
+		margin:20upx;
+		align-items: center;
+		justify-content: center;
+		flex-direction: row;
+		flex-direction: column;
+	}
+	
+	.circleBoxAll{
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.circleBox{
+		width: 200upx;
+		padding:30upx 0;
+		margin:10upx;
+		align-items: center;
+		flex-direction: column;
+	}
+	
+	.circleIco{
+		font-size:30upx;
+		width:100upx;
+		height:100upx;
+		line-height:100upx;
+		border-radius: 500px;
+		border-style: solid;
+		border-width: 1px; 
+		border-color:#FFFFFF;
+		text-align: center;
+		font-family:iconfont;
+		color: #FFFFFF;
+		font-size:50upx;
+	}
+	.phone{
+		background-color:#c5433a;
+		border-style: solid;
+		border-width: 1px; 
+		border-color:#c5433a;
+	}
+	.hint{
+		font-size:30upx;
+		color: #FF0000;
+		padding-top:20upx;
+	}
+
+</style>

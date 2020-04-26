@@ -1,0 +1,217 @@
+
+$screen-width: 750rpx;
+
+.chat-block {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 20rpx;
+}
+
+.message-block {
+  position: absolute;
+  top: 0;
+  bottom: 100rpx;
+  left: 20rpx;
+  right: 0;
+  
+  /* #ifndef APP-PLUS-NVUE */
+  display: flex;
+  box-sizing: border-box;
+  /* #endif */
+  flex-direction: column-reverse;
+
+  padding: 20rpx 0;
+}
+.message-main {
+  
+}
+.message-box {
+  // display: flex;
+  flex-direction: column;
+  // display: block;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  /* #ifndef APP-PLUS-NVUE */
+  clear: both;
+  /* #endif */
+}
+
+.message-box-avatar,
+.message-box-avatar-box {
+  width: 80rpx;
+  height: 80rpx;
+}
+.message-box-avatar-box {
+  position: absolute;
+  left: 10rpx;
+  top: 10rpx;
+}
+.message-box-avatar {
+
+}
+
+.message-box-content {
+  /* #ifndef APP-PLUS-NVUE */
+  // float: left;
+  // max-width: calc(100% - 200rpx);
+  /* #endif */
+  margin-left: 100rpx;
+  // padding: 4rpx 0;
+}
+
+.message-box-message {
+  // flex-direction: row;
+  // flex: 1;
+  padding: 28rpx 40rpx 30rpx 40rpx;
+  line-height: 1.5;
+  // border-radius: 0 30rpx 50rpx 30rpx;
+  border-top-left-radius: 0;
+  border-top-right-radius: 30rpx;
+  border-bottom-right-radius: 50rpx;
+  border-bottom-left-radius: 30rpx;
+  color: #444;
+  font-size: 28rpx;
+  background-color: rgba(0,0,0, 0.3);
+  // background-color: mix($color-dark, #fff, 80%);
+  // background-color: #e2d3e9;
+}
+
+.message-box-other {
+  /* #ifndef APP-PLUS-NVUE */
+  display: block;
+  clear: both;
+  /* #endif */
+}
+
+
+.message-box-content-message {
+  /* #ifndef APP-PLUS-NVUE */
+  word-break: break-all;
+  /* #endif */
+}
+
+
+
+
+.message-box {
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  width: $screen-width - 240rpx;
+}
+.message-box-avatar,
+.message-box-avatar-box {
+  width: 60rpx;
+  height: 60rpx;
+}
+.message-box-content {
+  margin-left: 80rpx;
+}
+.message-box-message {
+  padding-top: 15rpx;
+  padding-right: 15rpx;
+  padding-bottom: 15rpx;
+  padding-left: 15rpx;
+  
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
+  border-bottom-left-radius: 20rpx;
+}
+.message-box-name,
+.message-box-content-message {
+  display: inline-block;
+  font-size: 26rpx;
+  color: rgba(255,255,255,.8);
+}
+.message-box-message-info-text {
+  color: #0086B3;
+}
+
+/*
+  bottom-bar
+*/
+
+.bottom-bar {
+  /* #ifndef APP-PLUS-NVUE */
+  display: flex;
+  /* #endif */
+  flex-direction: row;       // nvue weex里面的默认值和web不一样，务必设置
+  position: fixed;
+  bottom: 0;
+  padding: 20rpx 30rpx;
+
+  width: $screen-width;
+  /* #ifndef APP-PLUS-NVUE */
+  box-sizing: border-box;
+  /* #endif */
+}
+.bottom-bar-input-content {
+  flex: 1;
+}
+.bottom-bar-input-content-input {
+  padding: 10rpx 20rpx 10rpx 30rpx;
+  line-height: 36rpx;
+  // border-radius: 999rpx;
+  border-top-left-radius: 999rpx;
+  border-top-right-radius: 999rpx;
+  border-bottom-right-radius: 999rpx;
+  border-bottom-left-radius: 999rpx;
+  background-color: rgba(0,0,0, 0.1);
+}
+.bottom-bar-icon-opt {
+  width: 72rpx;
+  height: 72rpx;
+  // padding: 8rpx;
+  margin-left: 10rpx;
+  // border-radius: 999rpx;
+  border-top-left-radius: 999rpx;
+  border-top-right-radius: 999rpx;
+  border-bottom-right-radius: 999rpx;
+  border-bottom-left-radius: 999rpx;
+  background-color: rgba(0,0,0, 0.1);
+
+  /* #ifndef APP-PLUS-NVUE */
+  box-sizing: border-box;
+  /* #endif */
+}
+
+
+
+
+.bottom-bar {
+
+}
+.bottom-bar-input-content {
+  flex: 1;
+}
+.bottom-bar-input-content-input {
+  height: 70rpx;
+  line-height: 1;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 20rpx;
+  font-size: 26rpx;
+  color: #fff;
+  
+  background-color: rgba(255,255,255,.3);
+  border-style: solid;
+  border-width: 2rpx;
+  border-color: rgba(0,0,0,.3);
+
+	border-top-left-radius: 999px;
+	border-top-right-radius: 999px;
+	border-bottom-left-radius: 999px;
+	border-bottom-right-radius: 999px;
+
+}
+.bottom-bar-icon-opt {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.bottom-bar-opt-img {
+  width: 60rpx;
+  height: 60rpx;
+}

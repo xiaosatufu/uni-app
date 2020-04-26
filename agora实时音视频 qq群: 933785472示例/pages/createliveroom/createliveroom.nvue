@@ -1,0 +1,235 @@
+<template>
+	<view class="chatBox" >
+		<TX-AgoraView 
+			:channelId="roomId"
+			:uid="uid"
+			renderModel=1
+			channelProfile=1
+			:clientRole="role"
+			ref="maxTxAgoraView" 
+			class="maxTxAgoraView" 
+			:style="{height:windowHeight}"
+			:contrastLevel="beautyValue"
+			:lighteningLevel="beautyValue"
+			:smoothneesLevel="beautyValue"
+			:rednessLevel="beautyValue"
+			enableVideo=true
+			enableAudio=true
+		></TX-AgoraView>
+    
+		<view class="tools">
+			<view class="circleBoxAll">
+				<view class="circleBox" @click="menuAction()">
+					<text class="circleIco phone">&#xe626;</text>
+					<text class="hint">开始直播</text>
+				</view>
+			</view>
+		</view>
+		<view class="showSlider" ref="showSlider">
+			<slider :value="beauty" :max="100" :min="0" @change="sliderChange" activeColor="#ff7f23" backgroundColor="#bfbfbf" block-color="#e94267" block-size="20"/>
+		</view>
+		
+		
+	</view>
+</template>
+
+<script>
+
+export default {
+  
+	data() {
+		return {
+			uid :0,
+			role:1,
+			roomId: 868,
+			hisId:0,
+			windowHeight:0,
+			beauty:0,
+			beautyValue:0,
+			mode:"me",//大小窗口显示模式
+			enable:false,
+		}
+	},
+	onLoad(params) {
+		// 获取上一个页面传入的参数
+	 
+		this.windowHeight = uni.getSystemInfoSync().windowHeight;
+		//主要步骤如下：
+		//1. 开启本地视频的预览画面，并开启声音
+		this.uid  =  1 + Math.ceil(Math.random()*1000000);
+	
+		
+		//设备的唯一标识
+	},
+	onReady() {
+		this.join();
+	},
+	onNavigationBarButtonTap() {
+		
+		uni.navigateBack({
+		    delta: 1,
+		    animationType: 'pop-out',
+		    animationDuration: 200
+		});
+	},
+	onBackPress() {
+		this.$refs.maxTxAgoraView.leaveChannel();
+	},
+	methods: {
+		
+		sliderChange(e){
+			console.log(e.detail.value);
+			this.beauty = e.detail.value;
+			this.beautyValue = this.beauty / 100
+		},
+		
+		menuAction() {
+			uni.navigateBack({
+			    delta: 1,
+			    animationType: 'none',
+			    animationDuration: 0
+			});
+			uni.navigateTo({
+				url:"../liveshow/liveshow?role=1&renderModel=1"
+			})
+			
+		},
+		
+		join(){
+			
+	
+			
+		}
+	},
+	beforeCreate : function(){
+		// #ifdef APP-PLUS-NVUE
+		const domModule = weex.requireModule('dom')
+		domModule.addRule('fontFace', {
+			'fontFamily': "iconfont",
+			'src': 'url("'+"file:/" + plus.io.convertLocalFileSystemURL("_www/static/iconfont.ttf")+'")'
+		});
+		// #endif
+	},
+}
+</script>
+
+<style lang="scss">
+.chatBox{
+	width: 750rpx;
+	flex: 1;
+	flex-direction: column;
+	background-color:#111111;
+}
+.viewIco{
+	margin-left: 20rpx;
+	font-family:iconfont;
+	font-size:60rpx;
+	color: #FFFFFF;
+}
+.maxTxAgoraView{
+	width:750rpx;
+	background-color:#111111;
+	position: fixed;
+	top: 0;
+	right: 0;
+}
+
+.foot{
+	width: 710rpx;
+	position: fixed;
+	bottom:0;
+	left: 0;
+	margin:20rpx;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+	flex-direction: column;
+}
+
+.circleBoxAll{
+	// flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+.inputBoxAll{
+	flex-direction: row;
+	align-items: center;
+}
+.inputBox{
+	flex-direction: row;
+	margin: 15rpx;
+	padding: 15rpx;
+	background-color: #FFFFFF;
+	border-radius: 6px;
+}
+.inputTitle{
+	height:80rpx;
+	line-height: 80rpx;
+}
+.input{
+	height: 80rpx;
+	width: 340rpx;
+	font-size:30rpx;
+	padding: 15rpx;
+}
+.join{
+	background-color: #DD524D;
+	width: 160rpx;
+	height: 120rpx;
+	line-height: 120rpx;
+	text-align: center;
+	color: #FFFFFF;
+	border-radius: 10px;
+}
+.circleBox{
+	width: 150rpx;
+	padding: 10rpx 0;
+	margin:10rpx;
+	align-items: center;
+	flex-direction: column;
+  text-align: center;
+}
+.circleIco{
+	font-size: 36rpx;
+	width:64rpx;
+	height:64rpx;
+	line-height: 64rpx;
+	border-radius: 500px;
+	border-style: solid;
+	border-width: 1px; 
+	border-color:#FFFFFF;
+	text-align: center;
+	font-family:iconfont;
+	color: #FFFFFF;
+}
+.phone{
+	background-color:#c5433a;
+	border-style: solid;
+	border-width: 1px; 
+	border-color:#c5433a;
+}
+.hint{
+	font-size: 22rpx;
+	color: #FFFFFF;
+	padding-top: 20rpx;
+}
+
+
+.tools {
+  position: fixed;
+  right: 0;
+  bottom: 100rpx;
+  z-index: 11;
+
+  width: 150rpx;
+}
+
+.showSlider{
+	position: fixed;
+	right: 180rpx;
+	bottom: 100rpx;
+	z-index:12;
+	width: 200rpx;
+}
+
+</style>
