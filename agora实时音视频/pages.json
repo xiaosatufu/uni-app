@@ -27,7 +27,11 @@
 			"path": "pages/screen/screen",
 			"style": {}
 		}
-	],
+	    ,{
+            "path" : "pages/liveroomlist/index",
+            "style" : {}
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",

@@ -56,6 +56,28 @@
 					// },
 					success: (res) => {
 						console.log(res.data);
+						if (res.data.code == 1) {
+							console.log('登录成功')
+							uni.setStorage({
+								key: 'token',
+								data: res.data.data.token,
+								success: function() {
+									console.log('success');
+								}
+							});
+							uni.navigateTo({
+								url: '/pages/liveroomlist/index?token=' + res.data.data.token
+							});
+						} else {
+
+							uni.showToast({
+								title: res.data.msg,
+								duration: 2000,
+								icon: "none"
+							});
+						}
+
+
 					}
 				});
 			},
