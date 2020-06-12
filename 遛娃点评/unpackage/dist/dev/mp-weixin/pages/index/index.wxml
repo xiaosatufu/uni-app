@@ -1,0 +1,1 @@
+<view class="content"><view class="m-header" style="{{('height:'+header.height+'px;'+'padding-top:'+header.top+'px;')}}"><view class="u-address"><text class="u-text">成都</text><view class="u-arrow"></view></view><view class="u-logo"><image class="u-img" src="../../static/images/lwdp_logo@3x.png" mode></image></view></view></view>
