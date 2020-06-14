@@ -1,0 +1,1 @@
+<view class="card-wrap"><recommend-top vue-id="1fe45a89-1" bind:__l="__l"></recommend-top><card-top vue-id="1fe45a89-2" type="focus" bind:__l="__l" vue-slots="{{['info']}}"><view slot="info">成都市</view></card-top><image-box vue-id="1fe45a89-3" bind:__l="__l"></image-box><footer-label vue-id="1fe45a89-4" bind:__l="__l"></footer-label></view>

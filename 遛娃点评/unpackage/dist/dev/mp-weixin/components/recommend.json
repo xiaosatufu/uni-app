@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "card": "/components/recommend-card",
+    "filter": "/components/recommend-filter"
+  }
+}

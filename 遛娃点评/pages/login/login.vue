@@ -48,7 +48,7 @@
 				console.log(type)
 				console.log(this.form)
 				uni.redirectTo({
-					url: '../index/index'
+					url: '../layout/index'
 				});
 			},
 

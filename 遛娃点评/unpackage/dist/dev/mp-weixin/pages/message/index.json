@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "u-navbar": "/uview-ui/components/u-navbar/u-navbar",
+    "message-list": "/components/message-list"
+  }
+}

@@ -1,0 +1,30 @@
+<template>
+	<view class="card-wrap">
+		<span>4A景区</span>
+		<span>熊猫幼儿园</span>
+		<span>熊猫明信片</span>
+		<span>看熊猫玩耍</span>
+	</view>
+</template>
+<script>
+
+</script>
+<style lang="scss">
+	.card-wrap {
+		// box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.02);
+		border-radius: 0px 0px 16px 16px;
+		height: 100rpx;
+		display: flex;
+		align-items: center;
+		span {
+			padding: 12rpx 7rpx;
+			box-sizing: border-box;
+			box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.02);
+			border-radius: 6px;
+			border: 1px solid rgba(198, 198, 198, 1);
+			font-size: 22rpx;
+			color: #555;
+			margin-right: 16rpx;
+		}
+	}
+</style>

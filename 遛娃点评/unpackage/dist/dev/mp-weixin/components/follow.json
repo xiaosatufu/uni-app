@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "card-top": "/components/card-top",
+    "image-box": "/components/image-box",
+    "address-box": "/components/address",
+    "card-footer": "/components/card-footer"
+  }
+}

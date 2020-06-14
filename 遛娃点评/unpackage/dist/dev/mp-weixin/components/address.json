@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "u-rate": "/uview-ui/components/u-rate/u-rate"
+  },
+  "component": true
+}

@@ -5,9 +5,9 @@
 
 		<view class="liveroom">
 
-			<view class="liveroom-cel liveroom-pusher">
+			<view class="liveroom-cel liveroom-pusher" v-if="userRtmpAddress">
 				<TX-AgoraView class="liveroom-trtc" ref="maxTxAgoraView" :channelId="roomId" :uid="uid" enableVideo=true
-				 enableAudio=false renderModel=1 @statechange="onPush" publishStreamUrl="rtmp://119.3.27.227/live/31_13"></TX-AgoraView>
+				 enableAudio=false renderModel=1 @statechange="onPush" :publishStreamUrl="userRtmpAddress"></TX-AgoraView>
 
 				<text class="liveroom-cel-name">我</text>
 			</view>
@@ -58,6 +58,7 @@
 							console.log(res.data);
 							this.userRtmpAddress = res.data.data.user_rtmp_address
 							console.log(this.userRtmpAddress)
+							self.join();
 							// if (res.data.code == 1) {
 							// 	this.liveRoomList = res.data.data
 							// } else {
@@ -82,9 +83,7 @@
 			this.windowHeight = 667;
 		},
 
-		onReady() {
-			this.join();
-		},
+		onReady() {},
 
 		onResize() {
 			// #ifdef APP-PLUS-NVUE

@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "recommend-top": "/components/card-top-recommend",
+    "card-top": "/components/card-top",
+    "image-box": "/components/image-box",
+    "footer-label": "/components/card-footer-label"
+  }
+}
