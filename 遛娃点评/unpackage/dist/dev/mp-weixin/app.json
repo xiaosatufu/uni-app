@@ -5,16 +5,14 @@
     "pages/layout/index",
     "pages/poi/poi-detail",
     "pages/poi/poi-comment-detail",
-    "pages/poi/poi-scenic-spot-introduce",
-    "pages/message/index"
+    "pages/message/index",
+    "pages/poi/poi-comment-detail-reply",
+    "pages/poi/poi-scenic-spot-introduction",
+    "pages/poi/poi-comment-detail-album",
+    "pages/poi/poi-comment-push",
+    "pages/poi/poi-play-way-push"
   ],
   "subPackages": [],
-  "window": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "uni-app",
-    "navigationBarBackgroundColor": "#fff",
-    "backgroundColor": "#F8F8F8"
-  },
   "usingComponents": {
     "index-page": "/pages/index/index",
     "message-page": "/pages/message/index"

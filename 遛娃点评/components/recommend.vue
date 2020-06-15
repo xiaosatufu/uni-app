@@ -1,7 +1,7 @@
 <template>
 	<view>
-		<filter></filter>
-		<card></card>
+		<filter :filterData="filterData"></filter>
+		<card @go-detail="handleGoDetail"></card>
 		<view style="width: 100%;height: 24rpx;"></view>
 		<card></card>
 		<view style="width: 100%;height: 24rpx;"></view>
@@ -26,8 +26,16 @@
 		},
 		data() {
 			return {
-
+				filterData: ["热门", "景点", "乐园", "美食", "亲子酒店"]
 			};
+		},
+		methods: {
+			handleGoDetail() {
+				console.log(212)
+				uni.navigateTo({
+					url: '/pages/poi/poi-detail'
+				});
+			}
 		}
 	}
 </script>

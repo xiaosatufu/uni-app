@@ -21,11 +21,100 @@
 			</view>
 			<view class="u-introduce">全世界最可爱的熊猫，一定是在这里！全川推荐最值得一去的地方哦～一定要来这里！不看熊猫非好汉…</view>
 		</view>
+		<view class="m-scenic-spot">
+			<view class="scenic-card">
+
+				<scenic-spot iconType="introduce" @tap="handleGoDetail">
+					<template v-slot:left>
+						景区介绍
+					</template>
+					<template v-slot:right>
+						正常开放
+					</template>
+				</scenic-spot>
+				<scenic-spot iconType="time">
+					<template v-slot:left>
+						开放时间
+					</template>
+					<template v-slot:right>
+						7:00-18:00 最晚17:00入园
+					</template>
+				</scenic-spot>
+				<scenic-spot iconType="location">
+					<template v-slot:left>
+						成都市成华区熊猫大道1357号
+					</template>
+				</scenic-spot>
+			</view>
+			<view class="scenic-card">
+				<scenic-spot iconType="ticket">
+					<template v-slot:left>
+						景区门票
+					</template>
+					<template v-slot:right>
+						全部5种票型
+					</template>
+				</scenic-spot>
+				<scenic-spot>
+					<template v-slot:left>
+						<view style="color: #B3B3B3;font-size: 24rpx;">
+							等<span style="color: #F13B03;padding:0 5rpx">128</span>位粑粑麻麻购买过</view>
+					</template>
+				</scenic-spot>
+				</viwe>
+			</view>
+
+			<view class="scenic-card">
+				<view class="play-way">
+					<view class="play-header">
+						<view class="title">热门玩法</view>
+						<view class="more">
+							<text>更多玩法</text>
+							<view class="arrow"></view>
+						</view>
+					</view>
+					<view class="play-content">
+
+						<scroll-view scroll-x="true">
+							<view class="play-way-scroll">
+								<play-way class="play-item"></play-way>
+								<play-way class="play-item"></play-way>
+								<play-way class="play-item"></play-way>
+								<play-way class="play-item"></play-way>
+								<play-way class="play-item"></play-way>
+							</view>
+						</scroll-view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="m-comment">
+			<view class="comment-header">
+				<view class="title">点评(40)</view>
+				<view class="right">
+					<switch-item></switch-item>
+				</view>
+			</view>
+			<view class="comment-content">
+				<comment-card></comment-card>
+				<u-divider color="#D9D9D9" height="160">已经到底啦</u-divider>
+			</view>
+		</view>
 	</view>
 </template>
 
 <script>
+	import scenicSpot from '../../components/scenic-spot.vue'
+	import playWay from '../../components/play-way.vue'
+	import switchItem from '../../components/switch.vue'
+	import commentCard from '../../components/comment-card.vue'
 	export default {
+		components: {
+			scenicSpot,
+			playWay,
+			switchItem,
+			commentCard
+		},
 		data() {
 			return {
 
@@ -33,7 +122,12 @@
 			}
 		},
 		methods: {
+			handleGoDetail() {
 
+				uni.navigateTo({
+					url: '/pages/poi/poi-scenic-spot-introduction'
+				});
+			}
 		}
 	}
 </script>
@@ -42,6 +136,7 @@
 	.m-header {
 		padding-bottom: 48rpx;
 		border-bottom: solid 20rpx #f8f8f8;
+
 		.m-title {
 			height: 140rpx;
 			display: flex;
@@ -143,6 +238,76 @@
 			cursor: pointer;
 			background: #FFFFFF;
 			color: #F13B03;
+		}
+	}
+
+	.m-scenic-spot {
+		.scenic-card {
+			border-bottom: solid 20rpx #f8f8f8;
+
+			.play-way {
+				padding: 0 0 40rpx 32rpx;
+				box-sizing: border-box;
+
+				.play-header {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					height: 100rpx;
+
+					.title {
+						font-size: 32rpx;
+						color: #3D3D3D;
+						font-weight: 500;
+					}
+
+					.more {
+						display: flex;
+						align-items: center;
+
+						font-size: 29rpx;
+						color: #999;
+
+						.arrow {
+							width: 40rpx;
+							height: 40rpx;
+							background: url(../../static/images/icon_list_arrow_grey@3x.png);
+							background-size: 40rpx;
+						}
+					}
+				}
+
+				.play-content {
+					.play-way-scroll {
+						display: flex;
+
+						.play-item {
+							margin-right: 16rpx;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.m-comment {
+
+
+		.comment-header {
+			height: 100rpx;
+			box-sizing: border-box;
+			padding: 0 32rpx;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
+			.title {
+				font-size: 32rpx;
+				color: #3D3D3D;
+				font-weight: 500;
+			}
+
+			.right {}
 		}
 	}
 </style>

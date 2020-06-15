@@ -25,18 +25,12 @@
       "list": []
     },
     "miniprogram": {
-      "current": 1,
+      "current": 0,
       "list": [
         {
-          "name": "",
-          "path": "",
-          "query": "",
-          "id": 0
-        },
-        {
-          "id": 1,
-          "name": "pages/poi/poi-detail",
-          "pathName": "pages/poi/poi-detail",
+          "id": 0,
+          "name": "pages/poi/poi-play-way-push",
+          "pathName": "pages/poi/poi-play-way-push",
           "query": ""
         }
       ]

@@ -1,1 +1,1 @@
-<view class="m-card-footer"><view class="m-message m-item"><view class="icon"></view><text>25</text></view><view class="m-star m-item"><view class="icon"></view><text>33</text></view></view>
+<view class="m-card-footer"><block wx:if="{{isShowLable}}"><view class="left content">遛娃周末好去处</view></block><block wx:else><view class="left"></view></block><view class="right"><view class="m-message m-item"><view class="icon"></view><text>25</text></view><view class="m-star m-item"><view class="icon"></view><text>33</text></view></view></view>

@@ -1,0 +1,1 @@
+<view class="m-wrap"><view class="{{['u-icon',iconType?iconType:'']}}"></view><view class="m-info"><view class="left"><slot name="left"></slot></view><view class="right"><view><slot name="right"></slot></view><view class="arrow"></view></view></view></view>

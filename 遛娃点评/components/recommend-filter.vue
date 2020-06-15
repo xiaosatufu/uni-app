@@ -1,15 +1,30 @@
 <template>
-	<view class="filter-wrap">
+	<view class="filter-wrap" :style="{'background':background?background:'','height':height?height:''}">
 		<view class="filter-item" v-for="(item,index) in filterData" :key="item" :class="index==active?'active':''" @tap="handleTapFilter(index)">{{item}}</view>
 	</view>
 </template>
 
 <script>
 	export default {
+		props: {
+			filterData: {
+				type: Array,
+				require: true,
+				default: []
+			},
+			background: {
+				type: String,
+				default: ''
+			},
+			height: {
+				type: String,
+				default: ''
+			}
+		},
 		data() {
 			return {
 				active: 0,
-				filterData: ["热门", "景点", "乐园", "美食", "亲子酒店"]
+				// filterData: ["热门", "景点", "乐园", "美食", "亲子酒店"]
 			};
 		},
 		methods: {

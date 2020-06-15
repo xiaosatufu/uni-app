@@ -1,3 +1,11 @@
 {
-  "usingComponents": {}
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "u-navbar": "/uview-ui/components/u-navbar/u-navbar",
+    "u-rate": "/uview-ui/components/u-rate/u-rate",
+    "u-divider": "/uview-ui/components/u-divider/u-divider",
+    "card-top": "/components/card-top",
+    "card-footer": "/components/card-footer",
+    "reply": "/components/reply"
+  }
 }

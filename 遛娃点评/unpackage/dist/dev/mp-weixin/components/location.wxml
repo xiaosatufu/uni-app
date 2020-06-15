@@ -1,0 +1,1 @@
+<view class="m-wrap"><view class="info"><view class="icon"></view><text>成都 · 成都大熊猫繁育研究基地</text></view><block wx:if="{{isShowArrow}}"><view class="arrow"></view></block></view>

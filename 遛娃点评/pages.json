@@ -2,11 +2,15 @@
 	"easycom": {
 		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
 	},
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	"pages": [
+		//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
 			"path": "pages/login/login",
 			"style": {
-				"navigationBarTitleText": ""
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom",
+				
+				"backgroundColorTop": "#fffff"
 			}
 		},
 		{
@@ -16,43 +20,62 @@
 				"navigationStyle": "custom",
 				"backgroundColorTop": "#FA6830"
 			}
-		}, {
+		},
+		{
 			"path": "pages/layout/index",
 			"style": {
 				"navigationStyle": "custom",
 				"backgroundColorTop": "#FA6830"
 			}
-		}, {
+		},
+		{
 			"path": "pages/poi/poi-detail",
 			"style": {
-
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/poi/poi-comment-detail",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/message/index",
+			"style": {}
+		},
+		{
+			"path": "pages/poi/poi-comment-detail-reply",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/poi/poi-scenic-spot-introduction",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/poi/poi-comment-detail-album",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/poi/poi-comment-push",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/poi/poi-play-way-push",
+			"style": {
 				"navigationStyle": "custom"
 			}
 		}
-
-		, {
-			"path": "pages/poi/poi-comment-detail",
-			"style": {}
-		}, {
-			"path": "pages/poi/poi-scenic-spot-introduce",
-			"style": {}
-		}, {
-			"path": "pages/message/index",
-			"style": {}
-		}
-	],
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#fff",
-		"backgroundColor": "#F8F8F8"
-	},
-	"condition": { //模式配置，仅开发期间生效
-		"current": 0, //当前激活的模式(list 的索引项)
-		"list": [{
-			"name": "", //模式名称
-			"path": "", //启动页面，必选
-			"query": "" //启动参数，在页面的onLoad函数里面得到
-		}]
-	}
+	]
 }
+//模式配置，仅开发期间生效
+//当前激活的模式(list 的索引项)
+//模式名称
+//启动页面，必选
+//启动参数，在页面的onLoad函数里面得到

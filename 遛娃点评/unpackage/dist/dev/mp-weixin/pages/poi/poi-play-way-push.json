@@ -1,0 +1,12 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "u-navbar": "/uview-ui/components/u-navbar/u-navbar",
+    "u-rate": "/uview-ui/components/u-rate/u-rate",
+    "u-line": "/uview-ui/components/u-line/u-line",
+    "u-input": "/uview-ui/components/u-input/u-input",
+    "u-upload": "/uview-ui/components/u-upload/u-upload",
+    "location": "/components/location",
+    "add-topic": "/components/add-topic"
+  }
+}

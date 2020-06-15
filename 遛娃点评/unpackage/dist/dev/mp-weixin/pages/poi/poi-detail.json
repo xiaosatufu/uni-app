@@ -1,6 +1,11 @@
 {
   "navigationStyle": "custom",
   "usingComponents": {
-    "u-rate": "/uview-ui/components/u-rate/u-rate"
+    "u-rate": "/uview-ui/components/u-rate/u-rate",
+    "u-divider": "/uview-ui/components/u-divider/u-divider",
+    "scenic-spot": "/components/scenic-spot",
+    "play-way": "/components/play-way",
+    "switch-item": "/components/switch",
+    "comment-card": "/components/comment-card"
   }
 }

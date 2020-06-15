@@ -293,7 +293,6 @@
 
 	.u-placeholder {
 		background: #FA6830;
-
 	}
 
 	.header-wrap {

@@ -1,5 +1,5 @@
 <template>
-	<view class="card-wrap">
+	<view class="card-wrap" @tap="handleGoDetail">
 		<view class="card-info">
 			<view class="image-box"></view>
 			<view class="m-info">
@@ -34,6 +34,11 @@
 			return {
 				count: 4
 			};
+		},
+		methods:{
+			handleGoDetail(){
+				this.$emit('go-detail')
+			}
 		}
 	}
 </script>

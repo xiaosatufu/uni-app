@@ -14,6 +14,7 @@
 			<!-- <slot name="right"></slot> -->
 			<view class="btn-more" v-if="type=='more'"></view>
 			<view class="btn-focus" v-if="type=='focus'">关注</view>
+			<view class="time" v-if="time">{{time}}</view>
 		</view>
 	</view>
 </template>
@@ -23,7 +24,11 @@
 		props: {
 			type: {
 				type:String,
-				default: 'more'
+				default: ''
+			},
+			time:{
+				type:String,
+				default:''
 			}
 		},
 		data() {
@@ -86,6 +91,10 @@
 				line-height: 56rpx;
 				font-size: 24rpx;
 				color: #fff;
+			}
+			.time {
+				font-size: 24rpx;
+				color: #b3b3b3;
 			}
 		}
 
