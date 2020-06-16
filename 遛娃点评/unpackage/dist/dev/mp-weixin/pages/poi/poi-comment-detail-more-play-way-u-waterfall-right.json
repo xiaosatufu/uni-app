@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "poi-comment-detail-more-play-way-u-waterfall-left": "/pages/poi/poi-comment-detail-more-play-way-u-waterfall-left",
+    "poi-comment-detail-more-play-way-u-waterfall-right": "/pages/poi/poi-comment-detail-more-play-way-u-waterfall-right"
+  }
+}

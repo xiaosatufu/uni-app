@@ -9,7 +9,7 @@
 			"style": {
 				"navigationBarTitleText": "",
 				"navigationStyle": "custom",
-				
+
 				"backgroundColorTop": "#fffff"
 			}
 		},
@@ -68,6 +68,11 @@
 			}
 		}, {
 			"path": "pages/poi/poi-play-way-push",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/poi/poi-comment-detail-more-play-way",
 			"style": {
 				"navigationStyle": "custom"
 			}

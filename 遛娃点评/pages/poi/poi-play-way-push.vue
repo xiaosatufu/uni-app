@@ -2,7 +2,7 @@
 	<view>
 
 		<u-navbar :is-back="false" title="玩法" :border-bottom="false">
-			<view class="slot-wrap">
+			<view class="slot-wrap" @tap="handleBack">
 				<view class="back-icon"></view>
 			</view>
 		</u-navbar>
@@ -67,6 +67,12 @@
 				action: 'http://www.example.com/upload',
 				fileList: []
 			};
+		},
+		methods:{
+			
+			handleBack() {
+				uni.navigateBack();
+			},
 		}
 	}
 </script>

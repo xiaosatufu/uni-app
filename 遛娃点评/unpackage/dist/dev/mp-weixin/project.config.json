@@ -29,8 +29,8 @@
       "list": [
         {
           "id": 0,
-          "name": "pages/poi/poi-play-way-push",
-          "pathName": "pages/poi/poi-play-way-push",
+          "name": "pages/poi/poi-detail",
+          "pathName": "pages/poi/poi-detail",
           "query": ""
         }
       ]

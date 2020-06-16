@@ -3,6 +3,7 @@
   "usingComponents": {
     "u-rate": "/uview-ui/components/u-rate/u-rate",
     "u-divider": "/uview-ui/components/u-divider/u-divider",
+    "u-popup": "/uview-ui/components/u-popup/u-popup",
     "scenic-spot": "/components/scenic-spot",
     "play-way": "/components/play-way",
     "switch-item": "/components/switch",

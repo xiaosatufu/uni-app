@@ -94,16 +94,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   uRate: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-rate/u-rate */ "uview-ui/components/u-rate/u-rate").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-rate/u-rate.vue */ 170))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-rate/u-rate */ "uview-ui/components/u-rate/u-rate").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-rate/u-rate.vue */ 180))
   },
   uDivider: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-divider/u-divider */ "uview-ui/components/u-divider/u-divider").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-divider/u-divider.vue */ 130))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-divider/u-divider */ "uview-ui/components/u-divider/u-divider").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-divider/u-divider.vue */ 140))
+  },
+  uPopup: function() {
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-popup/u-popup */ "uview-ui/components/u-popup/u-popup").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-popup/u-popup.vue */ 391))
   }
 }
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  if (!_vm._isMounted) {
+    _vm.e0 = function($event) {
+      _vm.show = false
+    }
+
+    _vm.e1 = function($event) {
+      _vm.show = true
+    }
+  }
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -137,7 +149,24 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var scenicSpot = function scenicSpot() {__webpack_require__.e(/*! require.ensure | components/scenic-spot */ "components/scenic-spot").then((function () {return resolve(__webpack_require__(/*! ../../components/scenic-spot.vue */ 177));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var playWay = function playWay() {__webpack_require__.e(/*! require.ensure | components/play-way */ "components/play-way").then((function () {return resolve(__webpack_require__(/*! ../../components/play-way.vue */ 184));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var switchItem = function switchItem() {__webpack_require__.e(/*! require.ensure | components/switch */ "components/switch").then((function () {return resolve(__webpack_require__(/*! ../../components/switch.vue */ 191));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var commentCard = function commentCard() {__webpack_require__.e(/*! require.ensure | components/comment-card */ "components/comment-card").then((function () {return resolve(__webpack_require__(/*! ../../components/comment-card.vue */ 198));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var scenicSpot = function scenicSpot() {__webpack_require__.e(/*! require.ensure | components/scenic-spot */ "components/scenic-spot").then((function () {return resolve(__webpack_require__(/*! ../../components/scenic-spot.vue */ 187));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var playWay = function playWay() {__webpack_require__.e(/*! require.ensure | components/play-way */ "components/play-way").then((function () {return resolve(__webpack_require__(/*! ../../components/play-way.vue */ 194));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var switchItem = function switchItem() {__webpack_require__.e(/*! require.ensure | components/switch */ "components/switch").then((function () {return resolve(__webpack_require__(/*! ../../components/switch.vue */ 201));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var commentCard = function commentCard() {__webpack_require__.e(/*! require.ensure | components/comment-card */ "components/comment-card").then((function () {return resolve(__webpack_require__(/*! ../../components/comment-card.vue */ 208));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -256,11 +285,23 @@ __webpack_require__.r(__webpack_exports__);
 
   data: function data() {
     return {
-
+      show: false,
       count: 4 };
 
   },
   methods: {
+    handleNavigateTo: function handleNavigateTo(url) {
+
+      uni.navigateTo({
+        url: url });
+
+    },
+    handleGoMorePlay: function handleGoMorePlay() {
+
+      uni.navigateTo({
+        url: '/pages/poi/poi-comment-detail-more-play-way' });
+
+    },
     handleGoDetail: function handleGoDetail() {
 
       uni.navigateTo({

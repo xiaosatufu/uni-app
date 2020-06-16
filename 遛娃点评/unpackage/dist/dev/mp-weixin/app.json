@@ -10,7 +10,8 @@
     "pages/poi/poi-scenic-spot-introduction",
     "pages/poi/poi-comment-detail-album",
     "pages/poi/poi-comment-push",
-    "pages/poi/poi-play-way-push"
+    "pages/poi/poi-play-way-push",
+    "pages/poi/poi-comment-detail-more-play-way"
   ],
   "subPackages": [],
   "usingComponents": {

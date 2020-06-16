@@ -65,7 +65,7 @@
 			</view>
 
 			<view class="scenic-card">
-				<view class="play-way">
+				<view class="play-way" @tap="handleGoMorePlay">
 					<view class="play-header">
 						<view class="title">热门玩法</view>
 						<view class="more">
@@ -100,6 +100,23 @@
 				<u-divider color="#D9D9D9" height="160">已经到底啦</u-divider>
 			</view>
 		</view>
+		<u-popup v-model="show" mode="bottom" border-radius="40" :safe-area-inset-bottom="true">
+			<view class="popup-content">
+				<view class="title">选择您要进行的操作</view>
+				<view class="m-operation">
+					<view class="operation-item" @tap="handleNavigateTo('/pages/poi/poi-play-way-push')">
+						<view class="icon play-way"></view>
+						<text>发玩法</text>
+					</view>
+					<view class="operation-item" @tap="handleNavigateTo('/pages/poi/poi-comment-push')">
+						<view class="icon comment"></view>
+						<text>写点评</text>
+					</view>
+				</view>
+				<view class="close-btn" @tap="show=false"></view>
+			</view>
+		</u-popup>
+		<view class="fixed-btn" @tap="show=true"></view>
 	</view>
 </template>
 
@@ -117,11 +134,23 @@
 		},
 		data() {
 			return {
-
+				show: false,
 				count: 4
 			}
 		},
 		methods: {
+			handleNavigateTo(url) {
+
+				uni.navigateTo({
+					url: url
+				});
+			},
+			handleGoMorePlay() {
+
+				uni.navigateTo({
+					url: '/pages/poi/poi-comment-detail-more-play-way'
+				});
+			},
 			handleGoDetail() {
 
 				uni.navigateTo({
@@ -291,8 +320,6 @@
 	}
 
 	.m-comment {
-
-
 		.comment-header {
 			height: 100rpx;
 			box-sizing: border-box;
@@ -309,5 +336,63 @@
 
 			.right {}
 		}
+	}
+
+	.popup-content {
+		.title {
+			font-size: 28rpx;
+			color: #999;
+			text-align: center;
+			padding: 60rpx 0 20rpx 0;
+		}
+
+		.m-operation {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			.operation-item {
+				flex: 1;
+				height: 375rpx;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				font-size: 28rpx;
+				color: #222;
+
+				.icon {
+					width: 156rpx;
+					height: 156rpx;
+					margin-bottom: 20rpx;
+
+					&.play-way {
+						background: url(../../static/images/icon_poi_camera@3x.png);
+						background-size: 156rpx;
+					}
+
+					&.comment {
+						background: url(../../static/images/icon_poi_message@3x.png);
+						background-size: 156rpx;
+					}
+				}
+			}
+		}
+
+		.close-btn {
+			height: 100rpx;
+			background: url(../../static/images/Rectangle@3x.png) center center no-repeat;
+			background-size: 28rpx;
+		}
+	}
+
+	.fixed-btn {
+		width: 90rpx;
+		height: 90rpx;
+		background: url(../../static/images/icon_poi_comment@3x.png);
+		background-size: 100%;
+		position: fixed;
+		right: 32rpx;
+		top: 70%;
 	}
 </style>

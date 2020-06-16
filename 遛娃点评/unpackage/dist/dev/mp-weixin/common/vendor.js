@@ -1859,18 +1859,40 @@ var install = function install(Vue) {
 
 /***/ }),
 
-/***/ 125:
+/***/ 13:
+/*!************************************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/uview-ui/libs/mixin/mpShare.js ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {
+  onLoad: function onLoad() {
+    // 设置默认的转发参数
+    this.$u.mpShare = {
+      title: '', // 默认为小程序名称
+      path: '', // 默认为当前页面路径
+      imageUrl: '' // 默认为当前页面的截图
+    };
+  },
+  onShareAppMessage: function onShareAppMessage() {
+    return this.$u.mpShare;
+  } };
+
+/***/ }),
+
+/***/ 135:
 /*!*********************************************************************************************!*\
   !*** ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator/index.js ***!
   \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 126);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 136);
 
 /***/ }),
 
-/***/ 126:
+/***/ 136:
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -1901,7 +1923,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 127);
+module.exports = __webpack_require__(/*! ./runtime */ 137);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -1918,7 +1940,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 127:
+/***/ 137:
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -2647,28 +2669,6 @@ if (hadRuntime) {
   })() || Function("return this")()
 );
 
-
-/***/ }),
-
-/***/ 13:
-/*!************************************************************************!*\
-  !*** E:/desktop/workspace/uni-app/遛娃点评/uview-ui/libs/mixin/mpShare.js ***!
-  \************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = {
-  onLoad: function onLoad() {
-    // 设置默认的转发参数
-    this.$u.mpShare = {
-      title: '', // 默认为小程序名称
-      path: '', // 默认为当前页面路径
-      imageUrl: '' // 默认为当前页面的截图
-    };
-  },
-  onShareAppMessage: function onShareAppMessage() {
-    return this.$u.mpShare;
-  } };
 
 /***/ }),
 
@@ -9570,7 +9570,53 @@ guid;exports.default = _default;
 
 /***/ }),
 
-/***/ 231:
+/***/ 24:
+/*!*************************************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/uview-ui/libs/function/color.js ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var color = {
+  primary: "#2979ff",
+  primaryDark: "#2b85e4",
+  primaryDisabled: "#a0cfff",
+  primaryLight: "#ecf5ff",
+  bgColor: "#f3f4f6",
+
+  info: "#909399",
+  infoDark: "#82848a",
+  infoDisabled: "#c8c9cc",
+  infoLight: "#f4f4f5",
+
+  warning: "#ff9900",
+  warningDark: "#f29100",
+  warningDisabled: "#fcbd71",
+  warningLight: "#fdf6ec",
+
+  error: "#fa3534",
+  errorDark: "#dd6161",
+  errorDisabled: "#fab6b6",
+  errorLight: "#fef0f0",
+
+  success: "#19be6b",
+  successDark: "#18b566",
+  successDisabled: "#71d5a1",
+  successLight: "#dbf1e1",
+
+  mainColor: "#303133",
+  contentColor: "#606266",
+  tipsColor: "#909399",
+  lightColor: "#c0c4cc",
+  borderColor: "#e4e7ed" };var _default =
+
+
+color;exports.default = _default;
+
+/***/ }),
+
+/***/ 241:
 /*!***********************************************************************!*\
   !*** E:/desktop/workspace/uni-app/遛娃点评/uview-ui/libs/util/emitter.js ***!
   \***********************************************************************/
@@ -9627,52 +9673,6 @@ function _broadcast(componentName, eventName, params) {
     broadcast: function broadcast(componentName, eventName, params) {
       _broadcast.call(this, componentName, eventName, params);
     } } };exports.default = _default;
-
-/***/ }),
-
-/***/ 24:
-/*!*************************************************************************!*\
-  !*** E:/desktop/workspace/uni-app/遛娃点评/uview-ui/libs/function/color.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var color = {
-  primary: "#2979ff",
-  primaryDark: "#2b85e4",
-  primaryDisabled: "#a0cfff",
-  primaryLight: "#ecf5ff",
-  bgColor: "#f3f4f6",
-
-  info: "#909399",
-  infoDark: "#82848a",
-  infoDisabled: "#c8c9cc",
-  infoLight: "#f4f4f5",
-
-  warning: "#ff9900",
-  warningDark: "#f29100",
-  warningDisabled: "#fcbd71",
-  warningLight: "#fdf6ec",
-
-  error: "#fa3534",
-  errorDark: "#dd6161",
-  errorDisabled: "#fab6b6",
-  errorLight: "#fef0f0",
-
-  success: "#19be6b",
-  successDark: "#18b566",
-  successDisabled: "#71d5a1",
-  successLight: "#dbf1e1",
-
-  mainColor: "#303133",
-  contentColor: "#606266",
-  tipsColor: "#909399",
-  lightColor: "#c0c4cc",
-  borderColor: "#e4e7ed" };var _default =
-
-
-color;exports.default = _default;
 
 /***/ }),
 
