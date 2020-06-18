@@ -36,17 +36,17 @@ module.exports = {
       warnings: false,
       errors: true
     },
-    proxy: {
-      // change xxx-api/login => mock/login
-      // detail: https://cli.vuejs.org/config/#devserver-proxy
-      [process.env.VUE_APP_BASE_API]: {
-        target: `http://test-liuwa.hupovip.net`, //修改后台接口地址
-        changeOrigin: true,
-        pathRewrite: {
-          ['^' + process.env.VUE_APP_BASE_API]: ''
-        }
-      }
-    },
+    // proxy: {
+    //   // change xxx-api/login => mock/login
+    //   // detail: https://cli.vuejs.org/config/#devserver-proxy
+    //   [process.env.VUE_APP_BASE_API]: {
+    //     target: `http://test-liuwa.hupovip.net`, //修改后台接口地址
+    //     changeOrigin: true,
+    //     pathRewrite: {
+    //       ['^' + process.env.VUE_APP_BASE_API]: ''
+    //     }
+    //   }
+    // },
     // before: require('./mock/mock-server.js')
   },
   configureWebpack: {

@@ -51,9 +51,113 @@ export const constantRoutes = [
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: '系统首页', icon: 'dashboard' }
     }]
   },
+
+  // {
+  //   path: '/poi',
+  //   component: Layout,
+  //   alwaysShow: false, //一直显示根路由
+  //   meta: { title: 'POI' },
+  //   children: [
+  //     {
+  //       path: 'management',
+  //       name: 'poiManagement',
+  //       component: () => import('@/views/poi/management.vue'),
+  //       meta: { title: 'POI管理' },
+  //       children: [{
+  //         path: 'create',
+  //         name:'poiCreate',
+  //         component: () => import('@/views/poi/create.vue'),
+  //         meta: {
+  //           title: '新增POI'
+  //         },
+  //         hidden: true
+  //       }]
+  //     },
+  //   ]
+  // },
+  {
+    path: '/poi',
+    component: Layout,
+    redirect: '/poi/management',
+    alwaysShow: false, //一直显示根路由
+    meta: {
+      title: 'POI管理'
+    },
+    children: [{
+      path: 'management',
+      component: () => import('@/views/poi/management.vue'),
+      meta: {
+        activeMenu: '/poi'
+        
+        //   title: 'POI管理'
+      },
+      hidden: true,
+      alwaysShow: true, //一直显示根路由
+      children: [{
+        path: 'create',
+        component: () => import('@/views/poi/create.vue'),
+        meta: {
+          title: '新增POI',
+          activeMenu: '/poi'
+        },
+        hidden: true,
+        alwaysShow: true, //一直显示根路由
+      }]
+    }]
+  },
+  {
+    path: '/album',
+    component: Layout,
+    redirect: '/album/management',
+    children: [{
+      path: 'management',
+      component: () => import('@/views/album/management.vue'),
+      meta: {
+        title: '相册管理'
+      }
+    }]
+  },
+
+  {
+    path: '/content',
+    component: Layout,
+    redirect: '/content/management',
+    children: [{
+      path: 'management',
+      component: () => import('@/views/content/management.vue'),
+      meta: {
+        title: '内容管理'
+      }
+    }]
+  },
+  {
+    path: '/user',
+    component: Layout,
+    redirect: '/user/management',
+    children: [{
+      path: 'management',
+      component: () => import('@/views/user/management.vue'),
+      meta: {
+        title: '用户管理'
+      }
+    }]
+  },
+  {
+    path: '/marketing',
+    component: Layout,
+    redirect: '/marketing/tool',
+    children: [{
+      path: 'tool',
+      component: () => import('@/views/marketing/tool.vue'),
+      meta: {
+        title: '营销工具'
+      }
+    }]
+  },
+
 
   {
     path: '/example',
