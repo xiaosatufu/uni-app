@@ -7,10 +7,10 @@
 		{
 			"path": "pages/login/login",
 			"style": {
+				"navigationBarTextStyle": "black",
 				"navigationBarTitleText": "",
-				"navigationStyle": "custom",
-
-				"backgroundColorTop": "#fffff"
+				"backgroundColor": "#FFFFFF",
+				"backgroundColorTop": "#FFFFFF"
 			}
 		},
 		{
@@ -42,7 +42,9 @@
 		},
 		{
 			"path": "pages/message/index",
-			"style": {}
+			"style": {
+				"navigationBarTextStyle": "black"
+			}
 		},
 		{
 			"path": "pages/poi/poi-comment-detail-reply",
@@ -76,8 +78,17 @@
 			"style": {
 				"navigationStyle": "custom"
 			}
+		}, {
+			"path": "pages/personal-center/personal-center",
+			"style": {
+				"disableScroll": true
+			}
 		}
-	]
+	],
+	"globalStyle": {
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#FFFFFF"
+	}
 }
 //模式配置，仅开发期间生效
 //当前激活的模式(list 的索引项)

@@ -2,6 +2,7 @@
 	<view>
 		<index-page v-if="active==0"></index-page>
 		<message-page v-if="active==3"></message-page>
+		<personal-center v-if="active==4"></personal-center>
 		<view class="cu-bar tabbar  bg-white foot">
 			<view class="action" v-for="(item,index) in navAction" :key="item.name" :class="{'add-action':item.name=='add','active':index==active}"
 			 @tap="handleNavChange(index)">
@@ -11,29 +12,6 @@
 
 			</view>
 
-			<!-- 	<view class="action">
-				<view class="icon-index icon"></view>
-				<text>首页</text>
-			</view>
-			<view class="action">
-				<view class="icon-child icon"></view>
-				<text>
-					遛娃
-				</text>
-			</view>
-			<view class="action add-action">
-				<button class=""></button>
-			</view>
-			<view class="action">
-				<view class="icon-message icon">
-				</view>
-				<text>消息</text>
-			</view>
-			<view class="action">
-				<view class="icon-my icon">
-				</view>
-				<text>我的</text>
-			</view> -->
 		</view>
 		<view class="cu-tabbar-height"></view>
 	</view>

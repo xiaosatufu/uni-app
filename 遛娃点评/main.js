@@ -8,6 +8,8 @@ import indexPage from './pages/index/index.vue'
 Vue.component('indexPage',indexPage)
 import messagePage from './pages/message/index.vue'
 Vue.component('messagePage',messagePage)
+import personalCenter from './pages/personal-center/personal-center.vue'
+Vue.component('personalCenter',personalCenter)
 
 Vue.config.productionTip = false
 

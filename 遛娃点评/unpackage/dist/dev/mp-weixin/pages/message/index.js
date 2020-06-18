@@ -78,7 +78,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   uNavbar: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-navbar/u-navbar */ "uview-ui/components/u-navbar/u-navbar").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-navbar/u-navbar.vue */ 166))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-navbar/u-navbar */ "uview-ui/components/u-navbar/u-navbar").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-navbar/u-navbar.vue */ 174))
   }
 }
 var render = function() {
@@ -118,7 +118,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var messageList = function messageList() {__webpack_require__.e(/*! require.ensure | components/message-list */ "components/message-list").then((function () {return resolve(__webpack_require__(/*! ../../components/message-list.vue */ 173));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var messageList = function messageList() {__webpack_require__.e(/*! require.ensure | components/message-list */ "components/message-list").then((function () {return resolve(__webpack_require__(/*! ../../components/message-list.vue */ 181));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -218,7 +218,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 79:
+/***/ 86:
 /*!************************************************************************************!*\
   !*** E:/desktop/workspace/uni-app/遛娃点评/main.js?{"page":"pages%2Fmessage%2Findex"} ***!
   \************************************************************************************/
@@ -234,5 +234,5 @@ createPage(_index.default);
 
 /***/ })
 
-},[[79,"common/runtime","common/vendor"]]]);
+},[[86,"common/runtime","common/vendor"]]]);
 //# sourceMappingURL=../../../.sourcemap/mp-weixin/pages/message/index.js.map

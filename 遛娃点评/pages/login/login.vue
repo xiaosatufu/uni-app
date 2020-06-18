@@ -43,6 +43,9 @@
 				}
 			};
 		},
+		mounted() {
+			plus.navigator.setStatusBarStyle('dark');
+		},
 		methods: {
 			handlelogin(type) {
 				console.log(type)

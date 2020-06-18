@@ -11,11 +11,17 @@
     "pages/poi/poi-comment-detail-album",
     "pages/poi/poi-comment-push",
     "pages/poi/poi-play-way-push",
-    "pages/poi/poi-comment-detail-more-play-way"
+    "pages/poi/poi-comment-detail-more-play-way",
+    "pages/personal-center/personal-center"
   ],
   "subPackages": [],
+  "window": {
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#FFFFFF"
+  },
   "usingComponents": {
     "index-page": "/pages/index/index",
-    "message-page": "/pages/message/index"
+    "message-page": "/pages/message/index",
+    "personal-center": "/pages/personal-center/personal-center"
   }
 }

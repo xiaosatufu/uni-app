@@ -78,10 +78,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   uTabsSwiper: function() {
-    return Promise.all(/*! import() | uview-ui/components/u-tabs-swiper/u-tabs-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uview-ui/components/u-tabs-swiper/u-tabs-swiper")]).then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-tabs-swiper/u-tabs-swiper.vue */ 130))
+    return Promise.all(/*! import() | uview-ui/components/u-tabs-swiper/u-tabs-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uview-ui/components/u-tabs-swiper/u-tabs-swiper")]).then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-tabs-swiper/u-tabs-swiper.vue */ 138))
   },
   uDivider: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-divider/u-divider */ "uview-ui/components/u-divider/u-divider").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-divider/u-divider.vue */ 140))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-divider/u-divider */ "uview-ui/components/u-divider/u-divider").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-divider/u-divider.vue */ 148))
   }
 }
 var render = function() {
@@ -121,7 +121,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var follow = function follow() {__webpack_require__.e(/*! require.ensure | components/follow */ "components/follow").then((function () {return resolve(__webpack_require__(/*! ../../components/follow.vue */ 147));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var recommendFollow = function recommendFollow() {__webpack_require__.e(/*! require.ensure | components/recommend-follow */ "components/recommend-follow").then((function () {return resolve(__webpack_require__(/*! ../../components/recommend-follow.vue */ 154));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var recommend = function recommend() {__webpack_require__.e(/*! require.ensure | components/recommend */ "components/recommend").then((function () {return resolve(__webpack_require__(/*! ../../components/recommend.vue */ 161));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var follow = function follow() {__webpack_require__.e(/*! require.ensure | components/follow */ "components/follow").then((function () {return resolve(__webpack_require__(/*! ../../components/follow.vue */ 155));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var recommendFollow = function recommendFollow() {__webpack_require__.e(/*! require.ensure | components/recommend-follow */ "components/recommend-follow").then((function () {return resolve(__webpack_require__(/*! ../../components/recommend-follow.vue */ 162));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var recommend = function recommend() {__webpack_require__.e(/*! require.ensure | components/recommend */ "components/recommend").then((function () {return resolve(__webpack_require__(/*! ../../components/recommend.vue */ 169));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -438,7 +438,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 54:
+/***/ 61:
 /*!**********************************************************************************!*\
   !*** E:/desktop/workspace/uni-app/遛娃点评/main.js?{"page":"pages%2Findex%2Findex"} ***!
   \**********************************************************************************/
@@ -454,5 +454,5 @@ createPage(_index.default);
 
 /***/ })
 
-},[[54,"common/runtime","common/vendor"]]]);
+},[[61,"common/runtime","common/vendor"]]]);
 //# sourceMappingURL=../../../.sourcemap/mp-weixin/pages/index/index.js.map
