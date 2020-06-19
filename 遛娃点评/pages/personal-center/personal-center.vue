@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<tabbar-navigation :current-page="4"></tabbar-navigation>
 		个人中心
 		<view class="m-header">
 			<image class="img" src="../../static/bg.png"></image>

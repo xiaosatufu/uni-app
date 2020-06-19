@@ -1,46 +1,49 @@
 <template>
-	<view class="message-wrap">
-		<!-- <div class="u-placeholder" :style="'height:'+header.top+'px;'"></div> -->
-		<u-navbar back-text="返回" title="消息" :border-bottom="false"></u-navbar>
-		<view class="m-nav">
-			<view class="nav-item">
-				<view class="m-icon">
-					<view class="icon icon-star"></view>
+	<view class="main-wrap">
+		<view class="message-wrap">
+			<tabbar-navigation :current-page="3"></tabbar-navigation>
+			<!-- <div class="u-placeholder" :style="'height:'+header.top+'px;'"></div> -->
+			<u-navbar back-text="返回" title="消息" :border-bottom="false"></u-navbar>
+			<view class="m-nav">
+				<view class="nav-item">
+					<view class="m-icon">
+						<view class="icon icon-star"></view>
+					</view>
+					<text class="u-text">点赞</text>
 				</view>
-				<text class="u-text">点赞</text>
-			</view>
-			<view class="nav-item">
-				<view class="m-icon">
-					<view class="icon icon-follow"></view>
+				<view class="nav-item">
+					<view class="m-icon">
+						<view class="icon icon-follow"></view>
+					</view>
+					<text class="u-text">新增关注</text>
 				</view>
-				<text class="u-text">新增关注</text>
-			</view>
-			<view class="nav-item">
-				<view class="m-icon">
-					<view class="icon icon-comment"></view>
+				<view class="nav-item">
+					<view class="m-icon">
+						<view class="icon icon-comment"></view>
+					</view>
+					<text class="u-text">评论</text>
 				</view>
-				<text class="u-text">评论</text>
 			</view>
-		</view>
 
 
-		<message-list></message-list>
-		<message-list></message-list>
-		<message-list></message-list>
-		<message-list></message-list>
-		<message-list></message-list>
-		<message-list></message-list>
-		<message-list></message-list>
-		<message-list></message-list>
-		<message-list></message-list>
-		<message-list></message-list>
-		<message-list></message-list>
-		<!-- 	<view class="header" :style="'height:' +  header.height + 'px;'">
+			<message-list></message-list>
+			<message-list></message-list>
+			<message-list></message-list>
+			<message-list></message-list>
+			<message-list></message-list>
+			<message-list></message-list>
+			<message-list></message-list>
+			<message-list></message-list>
+			<message-list></message-list>
+			<message-list></message-list>
+			<message-list></message-list>
+			<!-- 	<view class="header" :style="'height:' +  header.height + 'px;'">
 			<view class="back-btn">
 				返回
 			</view>
 			<view class="u-title">消息</view>
 		</view> -->
+		</view>
 	</view>
 </template>
 
@@ -73,10 +76,12 @@
 	.u-placeholder {
 		background: #fff;
 	}
-
+	.main-wrap {
+		padding-bottom: env(safe-area-inset-bottom);
+	}
 	.message-wrap {
 		background: #f8f8f8;
-
+		padding-bottom: 150rpx;
 		min-height: 92vh;
 
 		.m-nav {

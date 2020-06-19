@@ -1,5 +1,6 @@
 <template>
 	<view class="content">
+		<tabbar-navigation :current-page="0"></tabbar-navigation>
 		<div class="u-placeholder" :style="'height:'+header.top+'px;'"></div>
 		<view class="header-wrap">
 			<view class="m-header" :style="'height:' +  header.height + 'px;'">
@@ -57,7 +58,7 @@
 						<view class="list2" v-if="item==1">
 							<recommend></recommend>
 
-						<!-- 	<recommend></recommend>
+							<!-- 	<recommend></recommend>
 							<view style="width: 100%;height: 24rpx;"></view>
 							<recommend></recommend>
 							<view style="width: 100%;height: 24rpx;"></view>
@@ -112,12 +113,14 @@
 	import follow from "../../components/follow.vue"
 	import recommendFollow from '../../components/recommend-follow.vue'
 	import recommend from '../../components/recommend.vue'
+	// import tabbarNavitation from '../../components/tabbar-navigation.vue'
 	export default {
 
 		components: {
 			follow,
 			recommendFollow,
-			recommend
+			recommend,
+			// tabbarNavitation
 		},
 		data() {
 			return {
@@ -166,9 +169,13 @@
 				tabs: [0, 1, 2, 3, 4, 5]
 			}
 		},
-		onLoad() {
+		// onLoad() {
 
+		onLoad() {
+			// console.log('111')
+			// uni.hideTabBar()
 		},
+		// },
 		created() {
 			console.log(this.$u.config.v);
 			const header = uni.getMenuButtonBoundingClientRect()
@@ -231,47 +238,6 @@
 				// if (current == 1) {
 				this.calcSwiperHeight(querylist)
 
-				// query.select(querylist).boundingClientRect(data => {
-				// 	this.aheight = data.height
-				// 	console.log(this.aheight)
-				// }).exec();
-
-
-				// if (current == 2) {
-
-				// 	query.select('.list3').boundingClientRect(data => {
-				// 		this.aheight = data.height
-				// 		console.log(this.aheight)
-				// 	}).exec();
-				// }
-				// if (current == 3) {
-
-				// 	query.select('.list4').boundingClientRect(data => {
-				// 		this.aheight = data.height
-				// 		console.log(this.aheight)
-				// 	}).exec();
-				// }
-				// if (current == 4) {
-
-				// 	query.select('.list5').boundingClientRect(data => {
-				// 		this.aheight = data.height
-				// 		console.log(this.aheight)
-				// 	}).exec();
-				// }
-				// if (current == 5) {
-
-				// 	query.select('.list6').boundingClientRect(data => {
-				// 		this.aheight = data.height
-				// 		console.log(this.aheight)
-				// 	}).exec();
-				// }
-				// if (current == 0) {
-
-				// 	query.select('.list').boundingClientRect(data => {
-				// 		this.aheight = data.height
-				// 		console.log(this.aheight)
-				// 	}).exec();
-				// }
 
 
 

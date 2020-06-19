@@ -10,6 +10,9 @@ import messagePage from './pages/message/index.vue'
 Vue.component('messagePage',messagePage)
 import personalCenter from './pages/personal-center/personal-center.vue'
 Vue.component('personalCenter',personalCenter)
+import tabbarNavigation from './components/tabbar-navigation.vue'
+Vue.component('tabbarNavigation',tabbarNavigation)
+
 
 Vue.config.productionTip = false
 

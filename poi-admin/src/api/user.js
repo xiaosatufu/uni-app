@@ -8,6 +8,16 @@ export function login(data) {
   })
 }
 
+
+export function user(data) {
+  return request({
+    url: 'http://test-liuwa.hupovip.net/user',
+    method: 'get',
+    params: { ...data }
+    // data
+  })
+}
+
 // export function getInfo(token) {
 //   return request({
 //     url: '/vue-admin-template/user/info',

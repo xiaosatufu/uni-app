@@ -73,8 +73,8 @@
           <el-form-item label="上传图片">
             <!-- <el-input v-model="form.name"></el-input> -->
             <el-upload
-              :headers="uploadHeaders"
-              action="http://test-liuwa.hupovip.net/app/upload/"
+              action=""
+              :before-upload="beforeUpload"
               list-type="picture-card"
               :on-preview="handlePictureCardPreview"
               :on-remove="handleRemove"
@@ -87,7 +87,9 @@
       <el-row>
         <el-col :span="10">
           <el-form-item label="简介">
-            <el-input v-model="form.introduction"></el-input>
+            <!-- <el-input v-model="form.introduction"></el-input> -->
+
+            <tinymce v-model="form.introduction" :height="300" />
           </el-form-item>
         </el-col>
       </el-row>
@@ -100,15 +102,20 @@
 </template>
 
 <script>
+import Tinymce from "@/components/Tinymce";
 import { createPoi } from "@/api/poi";
+import { upload } from "@/api/common";
 export default {
+  components: {
+    Tinymce
+  },
   data() {
     return {
-      uploadHeaders: {
-        headers: {
-          "Content-Type": "multipart/form-data"
-        }
-      },
+      // uploadHeaders: {
+      //   headers: {
+      //     "Content-Type": "multipart/form-data"
+      //   }
+      // },
       dialogImageUrl: "",
       dialogVisible: false,
       form: {
@@ -141,6 +148,16 @@ export default {
     };
   },
   methods: {
+    beforeUpload(file) {
+      console.log(file);
+      let fd = new FormData();
+      fd.append("file", file);
+      // console.log(fd)
+      upload(fd).then(res => {
+        console.log(res);
+      });
+      return true;
+    },
     handleRemove(file, fileList) {
       console.log(file, fileList);
     },

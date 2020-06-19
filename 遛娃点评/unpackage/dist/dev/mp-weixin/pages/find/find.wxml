@@ -1,0 +1,1 @@
+<view><tabbar-navigation vue-id="5df3f5c0-1" current-page="{{1}}" bind:__l="__l"></tabbar-navigation></view>

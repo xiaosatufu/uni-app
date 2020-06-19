@@ -24,7 +24,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.u-upload.data-v-04db76a8 {
+.u-upload.data-v-0e3179e3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -34,7 +34,7 @@
   -webkit-align-items: center;
           align-items: center;
 }
-.u-list-item.data-v-04db76a8 {
+.u-list-item.data-v-0e3179e3 {
   width: 200rpx;
   height: 200rpx;
   overflow: hidden;
@@ -52,10 +52,10 @@
   -webkit-justify-content: center;
           justify-content: center;
 }
-.u-preview-wrap.data-v-04db76a8 {
+.u-preview-wrap.data-v-0e3179e3 {
   border: 1px solid #ebecee;
 }
-.u-add-wrap.data-v-04db76a8 {
+.u-add-wrap.data-v-0e3179e3 {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
@@ -63,18 +63,18 @@
   color: #606266;
   font-size: 28rpx;
 }
-.u-add-tips.data-v-04db76a8 {
+.u-add-tips.data-v-0e3179e3 {
   margin-top: 20rpx;
 }
-.u-add-wrap__hover.data-v-04db76a8 {
+.u-add-wrap__hover.data-v-0e3179e3 {
   background-color: #ebecee;
 }
-.u-preview-image.data-v-04db76a8 {
+.u-preview-image.data-v-0e3179e3 {
   display: block;
   width: 100%;
   height: 100%;
 }
-.u-delete-icon.data-v-04db76a8 {
+.u-delete-icon.data-v-0e3179e3 {
   position: absolute;
   top: 10rpx;
   right: 10rpx;
@@ -93,7 +93,7 @@
   -webkit-justify-content: center;
           justify-content: center;
 }
-.u-icon.data-v-04db76a8 {
+.u-icon.data-v-0e3179e3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -104,7 +104,7 @@
   -webkit-justify-content: center;
           justify-content: center;
 }
-.u-progress.data-v-04db76a8 {
+.u-progress.data-v-0e3179e3 {
   position: absolute;
   bottom: 10rpx;
   left: 8rpx;
@@ -112,7 +112,7 @@
   z-index: 9;
   width: auto;
 }
-.u-error-btn.data-v-04db76a8 {
+.u-error-btn.data-v-0e3179e3 {
   color: #FFFFFF;
   background-color: #fa3534;
   font-size: 20rpx;

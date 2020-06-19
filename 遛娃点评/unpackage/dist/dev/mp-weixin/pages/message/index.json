@@ -1,4 +1,5 @@
 {
+  "navigationStyle": "custom",
   "navigationBarTextStyle": "black",
   "usingComponents": {
     "u-navbar": "/uview-ui/components/u-navbar/u-navbar",

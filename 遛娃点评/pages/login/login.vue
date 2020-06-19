@@ -44,14 +44,14 @@
 			};
 		},
 		mounted() {
-			plus.navigator.setStatusBarStyle('dark');
+			// plus.navigator.setStatusBarStyle('dark');
 		},
 		methods: {
 			handlelogin(type) {
 				console.log(type)
 				console.log(this.form)
-				uni.redirectTo({
-					url: '../layout/index'
+				uni.reLaunch({
+					url: '../index/index'
 				});
 			},
 

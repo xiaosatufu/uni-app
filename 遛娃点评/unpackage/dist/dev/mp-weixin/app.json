@@ -12,16 +12,63 @@
     "pages/poi/poi-comment-push",
     "pages/poi/poi-play-way-push",
     "pages/poi/poi-comment-detail-more-play-way",
-    "pages/personal-center/personal-center"
+    "pages/personal-center/personal-center",
+    "pages/find/find",
+    "pages/release/release"
   ],
   "subPackages": [],
   "window": {
     "navigationBarBackgroundColor": "#FFFFFF",
     "backgroundColor": "#FFFFFF"
   },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "midButton": {
+      "text": "发布",
+      "pagePath": "pages/release/release",
+      "iconPath": "static/images/icon_tabber_release@3x",
+      "selectedIconPath": "static/images/icon_tabber_release@3x"
+    },
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/images/icon_tabbar_home_grey@3x.png",
+        "selectedIconPath": "static/images/icon_tabbar_home_selected@3x.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/find/find",
+        "iconPath": "static/images/icon_tabbar_explore_grey@3x.png",
+        "selectedIconPath": "static/images/icon_tabbar_explore_selected@3x.png",
+        "text": "遛娃"
+      },
+      {
+        "pagePath": "pages/release/release",
+        "iconPath": "static/images/icon_tabber_release@3x.png",
+        "selectedIconPath": "static/images/icon_tabber_release@3x.png",
+        "text": "发布"
+      },
+      {
+        "pagePath": "pages/message/index",
+        "iconPath": "static/images/icon_tabbar_message_grey@3x.png",
+        "selectedIconPath": "static/images/icon_tabbar_message_selected@3x.png",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/personal-center/personal-center",
+        "iconPath": "static/images/icon_tabbar_mine_grey@3x.png",
+        "selectedIconPath": "static/images/icon_tabbar_mine_selected@3x.png",
+        "text": "我的"
+      }
+    ]
+  },
   "usingComponents": {
     "index-page": "/pages/index/index",
     "message-page": "/pages/message/index",
-    "personal-center": "/pages/personal-center/personal-center"
+    "personal-center": "/pages/personal-center/personal-center",
+    "tabbar-navigation": "/components/tabbar-navigation"
   }
 }
