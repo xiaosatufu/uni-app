@@ -1,13 +1,20 @@
 <template>
 	<view class="card-wrap">
-		<span>4A景区</span>
-		<span>熊猫幼儿园</span>
-		<span>熊猫明信片</span>
-		<span>看熊猫玩耍</span>
+		<span v-for="item in tags">{{item}}</span>
 	</view>
 </template>
 <script>
-
+	export default {
+		props:{
+			tags:{
+				type:Array,
+				default:[]
+			}
+		},
+		mounted(){
+			// console.log(this.tags)
+		}
+	}
 </script>
 <style lang="scss">
 	.card-wrap {

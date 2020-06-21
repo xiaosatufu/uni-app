@@ -1,9 +1,27 @@
 <template>
-	<view>
-		<view class="m-swiper" style="margin-top: 200rpx;"></view>
+	<view class="m-detail-wrap">
+
+		<u-navbar :is-back="false" title=" " :background="background" :border-bottom="false">
+			<view class="slot-wrap" @tap="handleBack">
+				<view class="back-icon"></view>
+			</view>
+		</u-navbar>
+
+		<view class="m-swiper" @tap="handleNavigateTo('/pages/poi/poi-comment-detail-album')">
+			<image class="image" :src="data.pictures[0].pictures"></image>
+			<view class="m-small-image-wrap">
+				<view class="image-wrap">
+					<view v-for="item in imageData" class="image-item" :key="item.id">
+						<image class="small-image" :src="item.pictures"></image>
+					</view>
+				</view>
+				<view class="m-total">{{data.pictures.length}}张</view>
+				<view class="u-arrow"></view>
+			</view>
+		</view>
 		<view class="m-header">
 			<view class="m-title">
-				<view class="u-name">成都大熊猫繁育研究基地</view>
+				<view class="u-name">{{data.name}}</view>
 				<view class="m-btn">收藏</view>
 			</view>
 			<view class="m-rate">
@@ -19,7 +37,7 @@
 				</view>
 				<view class="u-comment">已有<span>180</span>人点评</view>
 			</view>
-			<view class="u-introduce">全世界最可爱的熊猫，一定是在这里！全川推荐最值得一去的地方哦～一定要来这里！不看熊猫非好汉…</view>
+			<view class="u-introduce">{{data.introduction}}</view>
 		</view>
 		<view class="m-scenic-spot">
 			<view class="scenic-card">
@@ -37,12 +55,12 @@
 						开放时间
 					</template>
 					<template v-slot:right>
-						7:00-18:00 最晚17:00入园
+						{{data.businessTime}}
 					</template>
 				</scenic-spot>
 				<scenic-spot iconType="location">
 					<template v-slot:left>
-						成都市成华区熊猫大道1357号
+						{{data.address}}
 					</template>
 				</scenic-spot>
 			</view>
@@ -125,7 +143,9 @@
 	import playWay from '../../components/play-way.vue'
 	import switchItem from '../../components/switch.vue'
 	import commentCard from '../../components/comment-card.vue'
+	import navMixin from '../../mixins/nav-mixin.js'
 	export default {
+		mixins: [navMixin],
 		components: {
 			scenicSpot,
 			playWay,
@@ -134,11 +154,32 @@
 		},
 		data() {
 			return {
+				background: {
+					backgroundColor: 'transparent',
+				},
 				show: false,
-				count: 4
+				count: 4,
+				id: '',
+				data: {},
+				imageData: []
 			}
 		},
+		onLoad: function(option) { //option为object类型，会序列化上个页面传递的参数
+			console.log(option); //打印出上个页面传递的参数。
+			this.id = option.id
+		},
+		mounted() {
+			this.$api.poiAppDetail(this.id).then(res => {
+				console.log(res)
+				this.data = res
+				const pictures = JSON.parse(JSON.stringify(this.data.pictures))
+				this.imageData = pictures.splice(0, 4)
+				console.log(this.imageData)
+				console.log(this.data.pictures)
+			})
+		},
 		methods: {
+			// handleJumpAlbum(){}
 			handleNavigateTo(url) {
 
 				uni.navigateTo({
@@ -161,8 +202,94 @@
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+	// .m-detail-wrap {
+	// 	padding-top: 562rpx;
+	// }
+	.m-swiper {
+		position: absolute;
+		width: 100%;
+		height: 562rpx;
+		left: 0;
+		top: 0;
+		&::after{
+			content: "";
+			width: 100%;
+			height: 100rpx;
+			background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
+
+		.image {
+			width: 100%;
+			height: 562rpx;
+		}
+
+		.m-small-image-wrap {
+
+			position: absolute;
+			width: 315rpx;
+			height: 64rpx;
+			background: rgba(0, 0, 0, .6);
+			border-radius: 32rpx;
+			bottom: 40rpx;
+			right: 32rpx;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			z-index: 1;
+
+			.image-wrap {
+				display: flex;
+				margin-left: 24rpx;
+
+				.image-item {
+					width: 44rpx;
+					height: 44rpx;
+					overflow: hidden;
+					margin-right: 4rpx;
+
+					.small-image {
+						width: 44rpx;
+						height: 44rpx;
+						// opacity: 0.6;
+					}
+				}
+
+
+			}
+
+			.m-total {
+				font-size: 24rpx;
+				color: #fff;
+			}
+
+			.u-arrow {
+				width: 0;
+				height: 0;
+				border-top: 12rpx solid transparent;
+				border-left: 17rpx solid #ffffff;
+				border-bottom: 12rpx solid transparent;
+				margin-right: 27rpx;
+			}
+		}
+	}
+
+	.slot-wrap {
+		.back-icon {
+			width: 48rpx;
+			height: 48rpx;
+			background: url(../../static/images/icon_nav_arrow_white@3x.png);
+			background-size: 48rpx;
+			margin-left: 32rpx;
+		}
+	}
+
 	.m-header {
+		margin-top: 440rpx;
+		height: auto;
 		padding-bottom: 48rpx;
 		border-bottom: solid 20rpx #f8f8f8;
 
@@ -185,11 +312,11 @@
 				height: 60rpx;
 				border-radius: 30rpx;
 				border: 1rpx solid rgba(230, 230, 230, 1);
-				background: url(../../static/images/icon_stars_grey@3x.png) 20rpx center no-repeat;
+				background: url(../../static/images/icon_collection@3x.png) 20rpx center no-repeat;
+				background-size: 40rpx;
 				font-size: 24rpx;
 				color: #555;
 				text-indent: 64rpx;
-				// text-align: center;
 				line-height: 60rpx;
 
 			}

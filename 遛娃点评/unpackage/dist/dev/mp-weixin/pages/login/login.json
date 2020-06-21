@@ -3,5 +3,7 @@
   "navigationBarTitleText": "",
   "backgroundColor": "#FFFFFF",
   "backgroundColorTop": "#FFFFFF",
-  "usingComponents": {}
+  "usingComponents": {
+    "u-verification-code": "/uview-ui/components/u-verification-code/u-verification-code"
+  }
 }

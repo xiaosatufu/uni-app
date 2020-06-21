@@ -45,6 +45,11 @@
   box-shadow: 0rpx 0rpx 15rpx 0rpx rgba(0, 0, 0, 0.02);
   border-radius: 12rpx;
   margin-right: 24rpx;
+  overflow: hidden;
+}
+.card-wrap .card-info .image-box .image {
+  width: 200rpx;
+  height: 200rpx;
 }
 .card-wrap .card-info .m-info {
   display: -webkit-box;

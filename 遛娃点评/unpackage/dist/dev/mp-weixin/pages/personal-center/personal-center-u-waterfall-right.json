@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "personal-center-u-waterfall-left": "/pages/personal-center/personal-center-u-waterfall-left",
+    "personal-center-u-waterfall-right": "/pages/personal-center/personal-center-u-waterfall-right"
+  }
+}

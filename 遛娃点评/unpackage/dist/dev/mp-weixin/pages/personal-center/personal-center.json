@@ -1,4 +1,13 @@
 {
   "navigationStyle": "custom",
-  "usingComponents": {}
+  "usingComponents": {
+    "u-navbar": "/uview-ui/components/u-navbar/u-navbar",
+    "u-line": "/uview-ui/components/u-line/u-line",
+    "u-gap": "/uview-ui/components/u-gap/u-gap",
+    "u-tabs-swiper": "/uview-ui/components/u-tabs-swiper/u-tabs-swiper",
+    "u-waterfall": "/uview-ui/components/u-waterfall/u-waterfall",
+    "u-loadmore": "/uview-ui/components/u-loadmore/u-loadmore",
+    "personal-center-u-waterfall-left": "/pages/personal-center/personal-center-u-waterfall-left",
+    "personal-center-u-waterfall-right": "/pages/personal-center/personal-center-u-waterfall-right"
+  }
 }

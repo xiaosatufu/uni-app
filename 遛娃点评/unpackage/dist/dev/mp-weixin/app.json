@@ -14,7 +14,10 @@
     "pages/poi/poi-comment-detail-more-play-way",
     "pages/personal-center/personal-center",
     "pages/find/find",
-    "pages/release/release"
+    "pages/release/release",
+    "pages/message/new-concerns",
+    "pages/message/comment",
+    "pages/message/star"
   ],
   "subPackages": [],
   "window": {

@@ -1,17 +1,20 @@
 <template>
-	<view class="card-wrap" @tap="handleGoDetail">
+	<view class="card-wrap" @tap="handleGoDetail(cardData.id)">
 		<view class="card-info">
-			<view class="image-box"></view>
+			<view class="image-box">
+				<image class="image" :src="cardData.thumbnailUrl" mode="scaleToFill"></image>
+			</view>
 			<view class="m-info">
-				<view class="u-title">成都大熊猫繁育研究基地</view>
+				<view class="u-title">{{cardData.name}}</view>
 				<view class="m-rate">
-					<u-rate count="count" current="3.5" active-icon="star-fill" :disabled="true" inactive-icon="star-fill"
+					<u-rate count="count" :current="cardData.score" active-icon="star-fill" :disabled="true" inactive-icon="star-fill"
 					 inactive-color="#E6E6E6" active-color="#F7AF43"></u-rate>
-					<span>9.4</span>
+					<span>{{cardData.score?cardData.score:'暂无评分'}}</span>
 				</view>
 				<view class="m-comment">
 					<view class="m-avatar"></view>
-					<view class="u-comment"><span>566</span>人点评</view>
+					<view class="u-comment" v-if="cardData.commentCount"><span>{{cardData.commentCount}}</span>人点评</view>
+					<view class="u-comment" v-else>暂无点评</view>
 				</view>
 				<view class="m-address">
 					<span class="u-location">位于成华区</span>
@@ -20,13 +23,20 @@
 			</view>
 		</view>
 		<u-line color="#f2f2f2" />
-		<card-data></card-data>
+		<card-data :tags="cardData.tag"></card-data>
 	</view>
 </template>
 
 <script>
 	import cardData from './card-footer-data.vue'
 	export default {
+		props: {
+			cardData: {
+				require: true,
+				type: Object,
+				default: {}
+			}
+		},
 		components: {
 			cardData
 		},
@@ -35,9 +45,9 @@
 				count: 4
 			};
 		},
-		methods:{
-			handleGoDetail(){
-				this.$emit('go-detail')
+		methods: {
+			handleGoDetail(id) {
+				this.$emit('go-detail',id)
 			}
 		}
 	}
@@ -55,7 +65,7 @@
 
 		.card-info {
 			display: flex;
-			
+
 			margin-bottom: 32rpx;
 
 			.image-box {
@@ -65,6 +75,14 @@
 				box-shadow: 0rpx 0rpx 15rpx 0rpx rgba(0, 0, 0, 0.02);
 				border-radius: 12rpx;
 				margin-right: 24rpx;
+				overflow: hidden;
+
+				.image {
+					width: 200rpx;
+					height: 200rpx;
+					// display: block;
+					// max-width: 100%;
+				}
 			}
 
 

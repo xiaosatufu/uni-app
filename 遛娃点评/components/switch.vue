@@ -9,10 +9,10 @@
 <script>
 	export default {
 		props: {
-			active: {
-				Type: Boolean,
-				default: false
-			},
+			// active: {
+			// 	Type: Boolean,
+			// 	default: false
+			// },
 			activeText: {
 				Type: String,
 				default: 'onssssss'

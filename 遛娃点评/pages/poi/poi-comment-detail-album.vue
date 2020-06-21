@@ -93,11 +93,11 @@
 <style lang="scss">
 	.slot-wrap {
 		.back-icon {
-			width: 32rpx;
-			height: 32rpx;
+			width: 48rpx;
+			height: 48rpx;
 			background: url(../../static/images/icon_nav_arrow_black@3x.png);
-			background-size: 100%;
-			margin-left: 44rpx;
+			background-size: 48rpx;
+			margin-left: 32rpx;
 		}
 	}
 

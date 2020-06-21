@@ -56,7 +56,7 @@
 							<view style="width: 100%;height: 24rpx;"></view>
 						</view>
 						<view class="list2" v-if="item==1">
-							<recommend></recommend>
+							<recommend :recommendData="recommendData"></recommend>
 
 							<!-- 	<recommend></recommend>
 							<view style="width: 100%;height: 24rpx;"></view>
@@ -69,29 +69,14 @@
 						</view>
 						<view class="list3" v-if="item==2">
 							<follow></follow>
-							<follow></follow>
-							<follow></follow>
 						</view>
 						<view class="list4" v-if="item==3">
-							<follow></follow>
-							<follow></follow>
-							<follow></follow>
 							<follow></follow>
 						</view>
 						<view class="list5" v-if="item==4">
 							<follow></follow>
-							<follow></follow>
-							<follow></follow>
-							<follow></follow>
-							<follow></follow>
 						</view>
 						<view class="list6" v-if="item==5">
-							<follow></follow>
-							<follow></follow>
-							<follow></follow>
-							<follow></follow>
-							<follow></follow>
-							<follow></follow>
 							<follow></follow>
 						</view>
 						<!-- <follow v-if="item==0"></follow>
@@ -106,10 +91,12 @@
 			</swiper>
 			<u-divider>已经到底了</u-divider>
 		</view>
+		<view style="width:100%;height: 150rpx;"></view>
 	</view>
 </template>
 
 <script>
+	// import {}
 	import follow from "../../components/follow.vue"
 	import recommendFollow from '../../components/recommend-follow.vue'
 	import recommend from '../../components/recommend.vue'
@@ -166,7 +153,8 @@
 				}, {
 					name: '度'
 				}],
-				tabs: [0, 1, 2, 3, 4, 5]
+				tabs: [0, 1, 2, 3, 4, 5],
+				recommendData:[]
 			}
 		},
 		// onLoad() {
@@ -185,6 +173,26 @@
 		},
 		mounted() {
 			this.calcSwiperHeight('.list1')
+			// this.
+			let query = {
+				page: '1',
+				size: '50',
+				tagId: '1271353204155625474'
+			}
+			this.$api.poiApp(query).then(response => {
+				// console.log(response)
+				this.recommendData = response.data
+				// if (response) {
+				// //把token存入store
+				// this.login(response)
+				// //跳转到首页
+				// uni.reLaunch({
+				// 	url: '../index/index'
+				// });
+				// }
+			}).catch((err) => {
+				console.log(err)
+			})
 
 		},
 		methods: {
@@ -255,6 +263,7 @@
 <style lang="scss">
 	.content {
 		background: #F8F8F8;
+		padding-bottom: env(safe-area-inset-bottom);
 	}
 
 	.u-placeholder {

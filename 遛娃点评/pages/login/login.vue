@@ -4,6 +4,10 @@
 			欢迎来到遛娃点评
 		</view>
 		<view class="login-form">
+			<view class="wrap">
+				<!-- <u-toast ref="uToast"></u-toast> -->
+				<!-- <view @tap="getCode">{{tips}}</view> -->
+			</view>
 			<form>
 				<view class="uni-form-item uni-column">
 					<view class="title">手机号码</view>
@@ -14,13 +18,16 @@
 					<div class="m-code">
 						<input class="uni-input" placeholder-class="font-color" v-model="form.smscode" placeholder="请输入验证码" />
 						<view class="u-divide"></view>
-						<div class="u-get-code">获取验证码</div>
+						<div class="u-get-code">
+							<u-verification-code :seconds="seconds" @end="end" @start="start" ref="uCode" @change="codeChange"></u-verification-code>
+							<view @tap="getCode">{{tips}}</view>
+						</div>
 					</div>
 				</view>
 				<view class="uni-btn-v">
 
 					<button class="login-btn normal-login-btn active" @click="handlelogin('normal')">登录</button>
-					<view class="login-btn wx-login-btn">
+					<view class="login-btn wx-login-btn" @tap="userLogin">
 						<view class="icon-wx"></view>
 						<text class="u-text">
 							微信快捷登录
@@ -34,19 +41,131 @@
 </template>
 
 <script>
+	import {
+		mapState,
+		mapMutations
+	} from 'vuex'
 	export default {
 		data() {
 			return {
+
+				tips: '',
+				// refCode: null,
+				seconds: 10,
 				form: {
 					mobile: '',
 					smscode: ''
+				},
+				loginData: {
+
+					type: 0,
+					code: ''
+
 				}
 			};
+		},
+		onLoad() {
+
+			uni.hideTabBar();
+			//判断token是否存在，如果存在直接进入首页
+			uni.getStorage({
+				key: 'token',
+				success: function(res) {
+					// console.log(res.data);
+
+					uni.reLaunch({
+						url: '../index/index'
+					});
+				}
+			});
 		},
 		mounted() {
 			// plus.navigator.setStatusBarStyle('dark');
 		},
 		methods: {
+			...mapMutations(['login']),
+			codeChange(text) {
+				this.tips = text;
+			},
+			userLogin() {
+				uni.login({
+					success: (res) => {
+						this.loginData.code = res.code
+
+						this.$api.authLogin(this.loginData).then(response => {
+							console.log(response)
+							if (response) {
+								//把token存入store
+								this.login(response)
+								//跳转到首页
+								uni.reLaunch({
+									url: '../index/index'
+								});
+							}
+						}).catch((err) => {
+							console.log(err)
+						})
+						// uni.getUserInfo({
+						// 	provider: 'weixin',
+						// 	success: function(infoRes) {
+						// 		console.log('用户昵称为：' + infoRes.userInfo.nickName);
+						// 	},
+						// 	fail:function(err){
+						// 		console.log(err)
+						// 	}
+						// });
+					}
+				})
+				// this.$api.authLogin(this.loginData).then(res=>{
+				// 	console.log(res)
+				// })
+			},
+			getCode() {
+				console.log(11)
+				if (this.$refs.uCode.canGetCode) {
+					// 模拟向后端请求验证码
+					uni.showLoading({
+						title: '正在获取验证码'
+					})
+					this.$api.userSendCode({
+						mobile: '18081013913'
+					}).then(res => {
+						// 获得数据 
+						console.log(res)
+					}).catch(res => {
+						// 失败进行的操作
+					})
+					// uni.request({
+					// 	url: 'http://test-liuwa.hupovip.net/user/sendCode', //仅为示例，并非真实接口地址。
+					// 	method:'POST',
+					// 	data: {
+					// 		mobile: '18081013913'
+					// 	},
+					// 	// header: {
+					// 		// 'custom-header': 'hello' //自定义请求头信息
+					// 	// },
+					// 	success: (res) => {
+					// 		console.log(res);
+					// 		// this.text = 'request success';
+					// 	}
+					// });
+					// setTimeout(() => {
+					// 	uni.hideLoading();
+					// 	// 这里此提示会被this.start()方法中的提示覆盖
+					// 	this.$u.toast('验证码已发送');
+					// 	// 通知验证码组件内部开始倒计时
+					// 	this.$refs.uCode.start();
+					// }, 2000);
+				} else {
+					this.$u.toast('倒计时结束后再发送');
+				}
+			},
+			end() {
+				this.$u.toast('倒计时结束');
+			},
+			start() {
+				this.$u.toast('倒计时开始');
+			},
 			handlelogin(type) {
 				console.log(type)
 				console.log(this.form)

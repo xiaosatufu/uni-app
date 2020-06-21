@@ -1,1 +1,1 @@
-<view class="card-wrap"><label class="_span">4A景区</label><label class="_span">熊猫幼儿园</label><label class="_span">熊猫明信片</label><label class="_span">看熊猫玩耍</label></view>
+<view class="card-wrap"><block wx:for="{{tags}}" wx:for-item="item" wx:for-index="__i0__"><label class="_span">{{item}}</label></block></view>

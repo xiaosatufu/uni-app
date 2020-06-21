@@ -3,21 +3,26 @@
 		<view class="message-wrap">
 			<tabbar-navigation :current-page="3"></tabbar-navigation>
 			<!-- <div class="u-placeholder" :style="'height:'+header.top+'px;'"></div> -->
-			<u-navbar back-text="返回" title="消息" :border-bottom="false"></u-navbar>
+			<u-navbar :is-back="false" title="消息" :border-bottom="false">
+				<!-- <view class="slot-wrap" @tap="handleBack">
+					<view class="back-icon"></view>
+				</view> -->
+			</u-navbar>
+			<!-- <tabbar-navbar title="12312ddd阿萨德阿萨德"></tabbar-navbar> -->
 			<view class="m-nav">
-				<view class="nav-item">
+				<view class="nav-item" @tap="handleNavigateTo('/pages/message/star')">
 					<view class="m-icon">
 						<view class="icon icon-star"></view>
 					</view>
 					<text class="u-text">点赞</text>
 				</view>
-				<view class="nav-item">
+				<view class="nav-item" @tap="handleNavigateTo('/pages/message/new-concerns')">
 					<view class="m-icon">
 						<view class="icon icon-follow"></view>
 					</view>
 					<text class="u-text">新增关注</text>
 				</view>
-				<view class="nav-item">
+				<view class="nav-item" @tap="handleNavigateTo('/pages/message/comment')">
 					<view class="m-icon">
 						<view class="icon icon-comment"></view>
 					</view>
@@ -48,14 +53,16 @@
 </template>
 
 <script>
+	import navMixin from '../../mixins/nav-mixin.js'
 	import messageList from '../../components/message-list.vue'
 	export default {
+		mixins: [navMixin],
 		components: {
 			messageList
 		},
 		data() {
 			return {
-
+				title: '虾爬子',
 				header: {
 					top: 0,
 					height: 0
@@ -73,12 +80,24 @@
 </script>
 
 <style lang="scss">
+	.slot-wrap {
+		.back-icon {
+			width: 48rpx;
+			height: 48rpx;
+			background: url(../../static/images/icon_nav_arrow_black@3x.png);
+			background-size: 48rpx;
+			margin-left: 32rpx;
+		}
+	}
+
 	.u-placeholder {
 		background: #fff;
 	}
+
 	.main-wrap {
 		padding-bottom: env(safe-area-inset-bottom);
 	}
+
 	.message-wrap {
 		background: #f8f8f8;
 		padding-bottom: 150rpx;
