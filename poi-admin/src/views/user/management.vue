@@ -107,9 +107,9 @@
 </template>
 
 <script>
-import { poiList } from "@/api/poi";
-import { comments } from "@/api/content";
-import { user } from "@/api/user";
+// import { poiList } from "@/api/poi";
+import { comments } from "@/api/user";
+// import { user } from "@/api/user";
 export default {
   data() {
     return {
@@ -144,9 +144,12 @@ export default {
   },
   mounted() {
     console.log(this.$route.path);
-    user(this.filterForm).then(res => {
-      console.log(res);
-    });
+    // user(this.filterForm).then(res => {
+    //   console.log(res);
+    // });
+    comments().then(res=>{
+      console.log(res)
+    })
     // this.loadPoiList();
   },
   methods: {
@@ -170,11 +173,11 @@ export default {
           this.$set(filterData, key, this.filterForm[key]);
         }
       }
-      poiList(filterData).then(res => {
-        this.loading = false;
-        this.tableData = res.data;
-        this.totalPage = res.total;
-      });
+      // poiList(filterData).then(res => {
+      //   this.loading = false;
+      //   this.tableData = res.data;
+      //   this.totalPage = res.total;
+      // });
     }
   }
 };

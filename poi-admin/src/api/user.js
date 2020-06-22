@@ -18,6 +18,15 @@ export function user(data) {
   })
 }
 
+export function comments(data) {
+  return request({
+    url: 'http://test-liuwa.hupovip.net/comments',
+    method: 'get',
+    params: { ...data }
+    // data
+  })
+}
+
 // export function getInfo(token) {
 //   return request({
 //     url: '/vue-admin-template/user/info',
