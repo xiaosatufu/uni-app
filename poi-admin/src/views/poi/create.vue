@@ -234,7 +234,6 @@ export default {
           this.files.push({ name: pictures, url: pictures });
         } else {
           const picturesArr = pictures.split(",");
-          console.log(picturesArr);
           picturesArr.forEach(item => {
             this.files.push({ name: item, url: item });
           });
