@@ -130,7 +130,7 @@
 </template>
 
 <script>
-import { poiList } from "@/api/poi";
+// import { poiList } from "@/api/poi";
 import { comments } from "@/api/content";
 export default {
   data() {

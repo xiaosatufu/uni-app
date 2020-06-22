@@ -47,7 +47,7 @@
           <el-table-column prop="type" label="类型"></el-table-column>
           <el-table-column prop="tags" label="POI标签">
             <template slot-scope="scope">
-              <el-tag>{{scope.row.tags}}</el-tag>
+              <el-tag style="margin-right:5px;" v-for="item in scope.row.tags" :key="item">{{item}}</el-tag>
             </template>
           </el-table-column>
           <el-table-column prop="address" label="地址"></el-table-column>

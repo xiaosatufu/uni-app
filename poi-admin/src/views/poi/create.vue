@@ -139,7 +139,7 @@
 <script>
 import { TMap } from "@/utils/Tmap";
 import Tinymce from "@/components/Tinymce";
-import { createPoi, poiDetail } from "@/api/poi";
+import { createPoi, poiDetail, poiEdit } from "@/api/poi";
 import { upload } from "@/api/common";
 import { searchMap } from "@/api/map";
 
@@ -151,7 +151,6 @@ export default {
   data() {
     return {
       uploadDisabled: false,
-      pageType: null,
       radioType: [
         {
           label: "游玩",
@@ -212,6 +211,17 @@ export default {
       }
     };
   },
+  computed: {
+    pageType() {
+      if (this.$route.path == "/poi/management/detail") {
+        return "detail";
+      } else if (this.$route.path == "/poi/management/create") {
+        return "create";
+      } else {
+        return "edit";
+      }
+    }
+  },
   mounted() {
     console.log(this.$route);
     this.mapTX();
@@ -228,23 +238,29 @@ export default {
       poiDetail(this.$route.query.id).then(res => {
         this.form = res;
         //处理图片
-        let pictures = res.pictures[0].pictures;
-        console.log(pictures);
-        if (pictures.indexOf(",") == -1) {
-          this.files.push({ name: pictures, url: pictures });
-        } else {
-          const picturesArr = pictures.split(",");
-          picturesArr.forEach(item => {
-            this.files.push({ name: item, url: item });
-          });
+        if (res.pictures.length != 0 && res.pictures[0].pictures) {
+          let pictures = res.pictures[0].pictures;
+          console.log(pictures);
+          if (pictures.indexOf(",") == -1) {
+            this.files.push({ name: pictures, url: pictures });
+          } else {
+            const picturesArr = pictures.split(",");
+            picturesArr.forEach(item => {
+              this.files.push({ name: item, url: item });
+            });
+          }
         }
         //处理地区
-        const areaArr = res.area.split(",");
-        const code0 = TextToCode[areaArr[0]].code;
-        const code1 = TextToCode[areaArr[0]][areaArr[1]].code;
-        const code2 = TextToCode[areaArr[0]][areaArr[1]][areaArr[2]].code;
-        this.cascaderArea = [code0, code1, code2];
-        this.uploadDisabled = true;
+        if (res.area.indexOf(",") != -1) {
+          const areaArr = res.area.split(",");
+          const code0 = TextToCode[areaArr[0]].code;
+          const code1 = TextToCode[areaArr[0]][areaArr[1]].code;
+          const code2 = TextToCode[areaArr[0]][areaArr[1]][areaArr[2]].code;
+          this.cascaderArea = [code0, code1, code2];
+        }
+        if (this.pageType == "detail") {
+          this.uploadDisabled = true;
+        }
       });
     },
     handleAddressBlur() {
@@ -335,18 +351,33 @@ export default {
           });
           this.form.pictures.push({ pictures: pictures.toString() });
           //处理地区
-          createPoi(this.form).then(res => {
-            console.log(res);
-            if (res) {
-              this.$message({
-                message: "添加成功",
-                type: "success",
-                onClose: () => {
-                  this.$router.push("/poi/management");
-                }
-              });
-            }
-          });
+          if (this.pageType == "create") {
+            createPoi(this.form).then(res => {
+              console.log(res);
+              if (res) {
+                this.$message({
+                  message: "添加成功",
+                  type: "success",
+                  onClose: () => {
+                    this.$router.push("/poi/management");
+                  }
+                });
+              }
+            });
+          } else {
+            poiEdit(this.$route.query.id, this.form).then(res => {
+              console.log(res);
+              if (res) {
+                this.$message({
+                  message: "修改成功",
+                  type: "success",
+                  onClose: () => {
+                    this.$router.push("/poi/management");
+                  }
+                });
+              }
+            });
+          }
         } else {
           console.log("error submit!!");
           return false;

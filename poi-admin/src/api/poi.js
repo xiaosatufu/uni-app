@@ -22,6 +22,17 @@ export function poiDetail(id) {
         method: 'get'
     })
 }
+export function poiEdit(id, data) {
+
+    return request({
+        url: `http://test-liuwa.hupovip.net/poi/admin/${id}`,
+        method: 'put', data
+    })
+}
+
+
+
+
 
 
 export function user() {

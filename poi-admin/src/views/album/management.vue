@@ -47,17 +47,17 @@
           <el-table-column prop="type" label="类型" width="100"></el-table-column>
           <el-table-column prop="tags" label="POI标签" width="200">
             <template slot-scope="scope">
-              <el-tag>{{scope.row.tags}}</el-tag>
+              <el-tag style="margin-right:5px;" v-for="item in scope.row.tags" :key="item">{{item}}</el-tag>
             </template>
           </el-table-column>
-          <el-table-column prop="address" label="地址" width=""></el-table-column>
+          <el-table-column prop="address" label="地址" width></el-table-column>
           <el-table-column prop="score" label="评分" width="80"></el-table-column>
           <el-table-column prop="commentCount" label="点评数" width="80"></el-table-column>
           <el-table-column prop="collectCount" label="被收藏数" width="80"></el-table-column>
           <el-table-column prop="operatorName" label="操作人" width="100"></el-table-column>
           <el-table-column label="操作" fixed="right" width="200">
             <template slot-scope="scope">
-              <el-button size="mini" @click="$router.push('/album/management/business')">商家相册</el-button>
+              <el-button size="mini" @click="handleGoAlbum(scope.row,1)">商家相册</el-button>
               <el-button
                 size="mini"
                 type="danger"
@@ -127,6 +127,17 @@ export default {
     this.loadPoiList();
   },
   methods: {
+    handleGoAlbum(row, type) {
+      console.log(row);
+      // return false;
+      if (type == 1) {
+        this.$router.push({
+          path: "/album/management/business",
+          query: { id: row.id, type: "poi" }
+        });
+      } else {
+      }
+    },
     resetForm(formName) {
       this.$refs[formName].resetFields();
     },
