@@ -15,6 +15,14 @@ export function createPoi(data) {
     })
 }
 
+export function poiDetail(id) {
+
+    return request({
+        url: `http://test-liuwa.hupovip.net/poi/admin/${id}`,
+        method: 'get'
+    })
+}
+
 
 export function user() {
     return request({

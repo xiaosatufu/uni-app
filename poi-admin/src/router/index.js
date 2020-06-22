@@ -105,6 +105,24 @@ export const constantRoutes = [
         },
         hidden: true,
         alwaysShow: true, //一直显示根路由
+      }, {
+        path: 'detail',
+        component: () => import('@/views/poi/create.vue'),
+        meta: {
+          title: '查看POI',
+          activeMenu: '/poi'
+        },
+        hidden: true,
+        alwaysShow: true, //一直显示根路由
+      }, {
+        path: 'edit',
+        component: () => import('@/views/poi/create.vue'),
+        meta: {
+          title: '编辑POI',
+          activeMenu: '/poi'
+        },
+        hidden: true,
+        alwaysShow: true, //一直显示根路由
       }]
     }]
   },

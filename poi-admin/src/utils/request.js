@@ -25,9 +25,6 @@ service.interceptors.request.use(
     console.log('进入请求拦截器')
     console.log(store.getters.token)
     if (store.getters.token) {
-      // let each request carry token
-      // ['X-Token'] is a custom headers key
-      // please modify it according to the actual situation
       config.headers['SecurityAuthorization'] = getToken()
       // config.headers['SecurityAuthorization'] = "SecurityToken@JHbNsuW5oqKGI+CcbbPbPoyp2n2sM7xweHipdsenQkxsufDhzTkhyUV4iaEYNC+AGGj1aXLe5kqTZ2MmbC6e2gZg2XZ8vUzvOCpfTf0sndbPtyU9W0Tj8stKmdQf0fodEGMMpyJFJDbaX5IyUYuJ9zYhAyKgu3Ev5PFc9R2Ij7TIfu3WjSCKp/VaSMDSpc7U"
     }
@@ -81,10 +78,10 @@ service.interceptors.response.use(
     //   return res
     // }
   },
-  error => {
-    console.log('err' + error) // for debug
+  (error) => {
+    console.log(error.response) // for debug
     Message({
-      message: error.message,
+      message: error.response.data.message,
       type: 'error',
       duration: 5 * 1000
     })

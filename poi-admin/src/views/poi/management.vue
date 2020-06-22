@@ -5,7 +5,7 @@
         <el-button type="primary" @click="$router.push('/poi/management/create')">新增</el-button>
       </div>
       <div class="table-filters">
-        <el-form :inline="true"  ref="filterForm">
+        <el-form :inline="true" ref="filterForm">
           <el-form-item label="POI名称" prop="poiName">
             <el-input v-model="filterForm.poiName"></el-input>
           </el-form-item>
@@ -57,8 +57,8 @@
           <el-table-column prop="operatorName" label="操作人"></el-table-column>
           <el-table-column label="操作" fixed="right" width="150">
             <template slot-scope="scope">
-              <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">查看</el-button>
-              <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">编辑</el-button>
+              <el-button size="mini" @click="handleDetail(scope.$index, scope.row)">查看</el-button>
+              <el-button size="mini" type="danger" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
             </template>
           </el-table-column>
           <!-- <el-table-column prop="address" label="地址" :formatter="formatter"></el-table-column> -->
@@ -119,10 +119,28 @@ export default {
     };
   },
   mounted() {
-    console.log(this.$route.path);
-    this.loadPoiList();
+    if (this.$route.path == "/poi/management") {
+      this.loadPoiList();
+    }
   },
   methods: {
+    handleDetail(index, row) {
+      console.log(row);
+      this.$router.push({
+        path: "/poi/management/detail",
+        query: {
+          id: row.id
+        }
+      });
+    },
+    handleEdit(index,row) {
+      this.$router.push({
+        path: "/poi/management/edit",
+        query: {
+          id: row.id
+        }
+      });
+    },
     resetForm(formName) {
       this.$refs[formName].resetFields();
     },

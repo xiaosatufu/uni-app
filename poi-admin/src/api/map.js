@@ -1,9 +1,9 @@
 import request from '@/utils/request'
-
-export function poiList(data) {
+export function searchMap(data) {
     return request({
-        url: 'http://test-liuwa.hupovip.net/poi/admin',
+        url: '/place/ws/geocoder/v1/',
         method: 'get',
         params: { ...data }
     })
 }
+

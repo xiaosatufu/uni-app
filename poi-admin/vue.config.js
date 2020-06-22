@@ -36,6 +36,14 @@ module.exports = {
       warnings: false,
       errors: true
     },
+
+    proxy: {
+      "/place": {
+        target: "https://apis.map.qq.com",
+        changeOrigin: true,
+        ws: true
+      }
+    },
     // proxy: {
     //   // change xxx-api/login => mock/login
     //   // detail: https://cli.vuejs.org/config/#devserver-proxy
