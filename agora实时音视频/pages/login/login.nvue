@@ -1,7 +1,6 @@
 <template>
 	<view>
 		<view>
-			1112
 			<form @submit="formSubmit" @reset="formReset">
 				<view class="uni-form-item uni-column">
 					<view class="title">input</view>
@@ -55,6 +54,7 @@
 					// 'custom-header': 'hello' //自定义请求头信息
 					// },
 					success: (res) => {
+						console.log(res)
 						console.log(res.data);
 						if (res.data.code == 1) {
 							console.log('登录成功')

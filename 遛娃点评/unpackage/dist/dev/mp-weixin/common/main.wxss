@@ -3382,9 +3382,12 @@ u-grid {
 .header-wrap .header-swiper .swiper-item {
   width: 686rpx;
   height: 266rpx;
-  background: red;
   margin: 0 auto;
   border-radius: 16rpx;
+}
+.header-wrap .header-swiper .swiper-item .image {
+  width: 686rpx;
+  height: 266rpx;
 }
 
 @charset "UTF-8";

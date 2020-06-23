@@ -73,6 +73,5 @@
     "message-page": "/pages/message/index",
     "personal-center": "/pages/personal-center/personal-center",
     "tabbar-navigation": "/components/tabbar-navigation"
-  },
-  "sitemapLocation": "sitemap93.json"
+  }
 }

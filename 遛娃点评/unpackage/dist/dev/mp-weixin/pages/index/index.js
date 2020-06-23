@@ -223,6 +223,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
 // import tabbarNavitation from '../../components/tabbar-navigation.vue'
 var _default = {
 

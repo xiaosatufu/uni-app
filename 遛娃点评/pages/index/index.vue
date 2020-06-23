@@ -22,13 +22,19 @@
 						<view class="page-section-spacing">
 							<swiper class="swiper" :autoplay="autoplay" :interval="interval" :duration="duration" style="height: 266rpx;">
 								<swiper-item>
-									<view class="swiper-item uni-bg-red">A</view>
+									<view class="swiper-item">
+										<image class="image" src="../../static/banner1.jpg" mode="aspectFit"></image>
+									</view>
 								</swiper-item>
 								<swiper-item>
-									<view class="swiper-item uni-bg-green">B</view>
+									<view class="swiper-item">
+										<image class="image" src="../../static/banner2.jpg" mode="aspectFit"></image>
+									</view>
 								</swiper-item>
 								<swiper-item>
-									<view class="swiper-item uni-bg-blue">C</view>
+									<view class="swiper-item">
+										<image class="image" src="../../static/banner3.jpg" mode="aspectFit"></image>
+									</view>
 								</swiper-item>
 							</swiper>
 						</view>
@@ -154,7 +160,7 @@
 					name: '度'
 				}],
 				tabs: [0, 1, 2, 3, 4, 5],
-				recommendData:[]
+				recommendData: []
 			}
 		},
 		// onLoad() {
@@ -352,9 +358,14 @@
 			.swiper-item {
 				width: 686rpx;
 				height: 266rpx;
-				background: red;
+				// background: red;
 				margin: 0 auto;
 				border-radius: 16rpx;
+
+				.image {
+					width: 686rpx;
+					height: 266rpx;
+				}
 			}
 		}
 

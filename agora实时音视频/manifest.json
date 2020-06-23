@@ -55,7 +55,7 @@
         },
         "nativePlugins" : {
             "TX-AgoraEngineKit" : {
-                "appId" : "07b5ac0b072a40cda0d40be720a3f182",
+                "appId" : "621b96e8ed024737be0ef6ebc4c5c04c",
                 "__plugin_info__" : {
                     "name" : "agora实时音视频 qq群: 933785472 - [试用版，仅用于自定义调试基座]",
                     "description" : "agora sdk基本函数导出 插件永久维护，欢迎提需求",
