@@ -55,29 +55,6 @@ export const constantRoutes = [
     }]
   },
 
-  // {
-  //   path: '/poi',
-  //   component: Layout,
-  //   alwaysShow: false, //一直显示根路由
-  //   meta: { title: 'POI' },
-  //   children: [
-  //     {
-  //       path: 'management',
-  //       name: 'poiManagement',
-  //       component: () => import('@/views/poi/management.vue'),
-  //       meta: { title: 'POI管理' },
-  //       children: [{
-  //         path: 'create',
-  //         name:'poiCreate',
-  //         component: () => import('@/views/poi/create.vue'),
-  //         meta: {
-  //           title: '新增POI'
-  //         },
-  //         hidden: true
-  //       }]
-  //     },
-  //   ]
-  // },
   {
     path: '/poi',
     component: Layout,
@@ -91,8 +68,6 @@ export const constantRoutes = [
       component: () => import('@/views/poi/management.vue'),
       meta: {
         activeMenu: '/poi'
-
-        //   title: 'POI管理'
       },
       hidden: true,
       alwaysShow: true, //一直显示根路由
@@ -178,12 +153,29 @@ export const constantRoutes = [
     path: '/user',
     component: Layout,
     redirect: '/user/management',
+    alwaysShow: false, //一直显示根路由
+    meta: {
+      title: '用户管理'
+    },
     children: [{
       path: 'management',
       component: () => import('@/views/user/management.vue'),
       meta: {
-        title: '用户管理'
-      }
+        // title: '用户管理',
+        activeMenu: '/user'
+      },
+      hidden: true,
+      alwaysShow: true, //一直显示根路由
+      children: [{
+        path: 'detail',
+        component: () => import('@/views/user/detail.vue'),
+        meta: {
+          title: '用户详情',
+          activeMenu: '/user'
+        },
+        hidden: true,
+        alwaysShow: true, //一直显示根路由
+      }]
     }]
   },
   {

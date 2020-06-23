@@ -2,14 +2,14 @@ import request from '@/utils/request'
 
 export function poiList(data) {
     return request({
-        url: 'http://test-liuwa.hupovip.net/poi/admin',
+        url: '/poi/admin',
         method: 'get',
         params: { ...data }
     })
 }
 export function createPoi(data) {
     return request({
-        url: 'http://test-liuwa.hupovip.net/poi/admin',
+        url: '/poi/admin',
         method: 'post',
         data
     })
@@ -18,14 +18,14 @@ export function createPoi(data) {
 export function poiDetail(id) {
 
     return request({
-        url: `http://test-liuwa.hupovip.net/poi/admin/${id}`,
+        url: `/poi/admin/${id}`,
         method: 'get'
     })
 }
 export function poiEdit(id, data) {
 
     return request({
-        url: `http://test-liuwa.hupovip.net/poi/admin/${id}`,
+        url: `/poi/admin/${id}`,
         method: 'put', data
     })
 }
@@ -37,13 +37,13 @@ export function poiEdit(id, data) {
 
 export function user() {
     return request({
-        url: 'http://test-liuwa.hupovip.net/user',
+        url: '/user',
         method: 'get'
     })
 }
 export function comments() {
     return request({
-        url: 'http://test-liuwa.hupovip.net/comments',
+        url: '/comments',
         method: 'get'
     })
 }

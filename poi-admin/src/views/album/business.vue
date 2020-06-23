@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container">
+  <div>
     <div class="m-operation">
       <el-button type="primary" @click="handleAdd">新增子相册</el-button>
     </div>
@@ -90,13 +90,6 @@ export default {
     calcPicturesNum(pictures) {
       let times = pictures.split("http").length - 1;
       return times;
-      // if (pictures.indexOf(",") == -1) {
-      //   return 1;
-      // } else {
-      //   let pictureArr = pictures.split(",");
-      //   return pictureArr.length;
-      // }
-      // return 11;
     }
   },
   methods: {

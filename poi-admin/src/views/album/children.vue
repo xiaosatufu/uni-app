@@ -6,7 +6,9 @@
 import { photoAlbums } from "@/api/album";
 export default {
   data() {
-    return {};
+    return {
+      albumList: []
+    };
   },
   mounted() {
     this.loadAlbums();
@@ -15,6 +17,7 @@ export default {
     loadAlbums() {
       photoAlbums("COMMENT").then(res => {
         console.log(res);
+        
       });
     }
   }

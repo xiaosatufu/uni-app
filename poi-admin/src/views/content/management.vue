@@ -79,7 +79,7 @@
       </div>
       <div class="m-table" style="min-width:1000px;">
         <el-table
-          :data="tableData"
+          :data="commentsList"
           style="width: 100%"
           border
           v-loading="loading"
@@ -87,27 +87,36 @@
           element-loading-spinner="el-icon-loading"
           element-loading-background="rgba(0, 0, 0, 0.6)"
         >
-          <el-table-column prop="number" label="POI编号" width="150"></el-table-column>
-          <el-table-column prop="name" label="poi名称" width="200"></el-table-column>
-          <el-table-column prop="type" label="类型" width="100"></el-table-column>
-          <el-table-column prop="tags" label="POI标签" width="200">
+          <el-table-column prop="id" label="点评编号" width="180"></el-table-column>
+          <el-table-column prop="userName" label="用户名" width="200"></el-table-column>
+          <el-table-column prop="mobile" label="手机号码" width="100"></el-table-column>
+          <el-table-column prop="context" label="内容" width="400"></el-table-column>
+          <!-- <el-table-column prop="tags" label="内容" width="200">
             <template slot-scope="scope">
               <el-tag>{{scope.row.tags}}</el-tag>
             </template>
-          </el-table-column>
-          <el-table-column prop="address" label="地址" width></el-table-column>
-          <el-table-column prop="score" label="评分" width="80"></el-table-column>
-          <el-table-column prop="commentCount" label="点评数" width="80"></el-table-column>
-          <el-table-column prop="collectCount" label="被收藏数" width="80"></el-table-column>
-          <el-table-column prop="operatorName" label="操作人" width="100"></el-table-column>
-          <el-table-column label="操作" fixed="right" width="200">
+          </el-table-column>-->
+          <!-- <el-table-column prop="address" label="地址" width></el-table-column> -->
+          <el-table-column prop="score" label="评分" width="80">
             <template slot-scope="scope">
-              <el-button size="mini" @click="$router.push('/album/management/business')">商家相册</el-button>
-              <el-button
-                size="mini"
-                type="danger"
-                @click="$router.push('/album/management/children')"
-              >遛娃相册</el-button>
+              <div>服务：{{scope.row.service}}</div>
+              <div>环境：{{scope.row.environment}}</div>
+              <div>交通：{{scope.row.traffic}}</div>
+            </template>
+          </el-table-column>
+          <el-table-column prop="average" label="总评分" width="80"></el-table-column>
+          <el-table-column prop="poiName" label="POI" width="200"></el-table-column>
+          <el-table-column prop="createdTime" label="创建时间" width="80"></el-table-column>
+          <el-table-column prop="limitState" label="状态" width="100">
+            <template slot-scope="scope">
+              <div>{{scope.row.limitState?"显示":'隐藏'}}</div>
+            </template>
+          </el-table-column>
+          <el-table-column label="操作" fixed="right" width="220">
+            <template slot-scope="scope">
+              <el-button size="mini">查看</el-button>
+              <el-button size="mini">回复</el-button>
+              <el-button size="mini">隐藏</el-button>
             </template>
           </el-table-column>
           <!-- <el-table-column prop="address" label="地址" :formatter="formatter"></el-table-column> -->
@@ -171,15 +180,18 @@ export default {
       tableData: [],
       totalPage: 0,
       currentPage: 1,
-      loading: false
+      loading: false,
+
+      commentsList: []
     };
   },
   mounted() {
     console.log(this.$route.path);
-    comments().then(res=>{
-        console.log(res)
-    })
-    this.loadPoiList();
+    comments().then(res => {
+      console.log(res);
+      this.commentsList = res.data;
+    });
+    // this.loadPoiList();
   },
   methods: {
     resetForm(formName) {
