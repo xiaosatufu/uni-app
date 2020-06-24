@@ -15,6 +15,14 @@ export function photoSaveAlbums(data) {
     })
 }
 
+export function getWalkAlbums(fromid){
+    return request({
+        url: `/admin/photoAlbums/walkAlbums?fromId=${fromid}`,
+        method: 'get'
+    })
+}
+
+
 
 
 

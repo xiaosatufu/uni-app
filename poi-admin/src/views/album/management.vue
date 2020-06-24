@@ -54,14 +54,16 @@
           <el-table-column prop="score" label="评分" width="80"></el-table-column>
           <el-table-column prop="commentCount" label="点评数" width="80"></el-table-column>
           <el-table-column prop="collectCount" label="被收藏数" width="80"></el-table-column>
-          <el-table-column prop="operatorName" label="操作人" ></el-table-column>
+          <el-table-column prop="operatorName" label="操作人"></el-table-column>
           <el-table-column label="操作" fixed="right" width="200">
             <template slot-scope="scope">
               <el-button size="mini" @click="handleGoAlbum(scope.row,1)">商家相册</el-button>
               <el-button
                 size="mini"
                 type="danger"
-                @click="$router.push('/album/management/children')"
+                @click="$router.push({path:'/album/management/children',query:{
+                  id:scope.row.id
+                }})"
               >遛娃相册</el-button>
             </template>
           </el-table-column>
