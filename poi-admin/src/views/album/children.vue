@@ -10,6 +10,7 @@ export default {
   data() {
     return {
       albumList: [],
+      preview:[],
       fromid: ""
     };
   },
