@@ -1,5 +1,7 @@
 <template>
-  <div>商家相册</div>
+  <div>
+    
+  </div>
 </template>
 
 <script>
@@ -17,7 +19,7 @@ export default {
     loadAlbums() {
       photoAlbums("COMMENT").then(res => {
         console.log(res);
-        
+
       });
     }
   }

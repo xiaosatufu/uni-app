@@ -7,8 +7,8 @@
       <div class="table-filters">
         <el-form :inline="true" ref="filterForm">
           <div class="filter-col">
-            <el-form-item label="POI名称" prop="poiName" :label-width="labelWith">
-              <el-input v-model="filterForm.poiName" placeholder="请输入POI名称"></el-input>
+            <el-form-item label="POI名称" :label-width="labelWith">
+              <el-input v-model="filterForm.keyWords" placeholder="请输入POI名称"></el-input>
             </el-form-item>
             <el-form-item label="POI类型" :label-width="labelWith">
               <el-select v-model="filterForm.poiType" placeholder="请选择" style="width:180px">
@@ -25,46 +25,56 @@
             </el-form-item>
           </div>
           <div class="filter-col">
-            <el-form-item label="用户名" prop="poiName" :label-width="labelWith">
-              <el-input v-model="filterForm.userName" placeholder="请输入用户名"></el-input>
-            </el-form-item>
-            <el-form-item label="用户手机号" :label-width="labelWith">
-              <el-input v-model="filterForm.mobile" placeholder="请输入手机号"></el-input>
-              <!-- <el-select v-model="filterForm.poiType" placeholder="请选择">
+            <el-form-item label="用户名" :label-width="labelWith">
+              <!-- <el-input v-model="filterForm.userName" placeholder="请输入用户名"></el-input> -->
+
+              <el-select
+                v-model="filterForm.userId"
+                filterable
+                remote
+                clearable
+                reserve-keyword
+                placeholder="请输入关键词"
+                :remote-method="remoteMethod"
+                :loading="userSearchloading"
+              >
                 <el-option
-                  v-for="item in options"
+                  v-for="item in userOptions"
                   :key="item.value"
                   :label="item.label"
                   :value="item.value"
                 ></el-option>
-              </el-select>-->
+              </el-select>
+            </el-form-item>
+            <el-form-item label="用户手机号" :label-width="labelWith">
+              <el-input v-model="filterForm.mobile" placeholder="请输入手机号"></el-input>
             </el-form-item>
             <el-form-item label="点评时间" :label-width="labelWith">
               <el-date-picker
                 v-model="filterForm.date"
+                type="date"
+                placeholder="选择日期"
+                value-format="yyyy-MM-dd"
+              ></el-date-picker>
+              <!-- <el-date-picker
+                v-model="datePicker"
                 type="daterange"
                 range-separator="至"
                 start-placeholder="开始日期"
                 end-placeholder="结束日期"
-              ></el-date-picker>
-              <!-- <el-input v-model="filterForm.city" placeholder="请选择日期区间"></el-input> -->
+                @change="handleDateChange"
+                value-format="yyyy-mm-dd HH:mm:ss"
+              ></el-date-picker>-->
             </el-form-item>
           </div>
           <div class="filter-col">
             <el-form-item label="点评平均分" :label-width="labelWith">
               <el-col :span="11">
                 <el-input v-model="filterForm.avgMin" placeholder="最小值"></el-input>
-                <!-- <el-date-picker
-                  type="date"
-                  placeholder="选择日期"
-                  v-model="filterForm.date1"
-                  style="width: 100%;"
-                ></el-date-picker>-->
               </el-col>
               <el-col class="line" :span="2" style="text-align:center;">-</el-col>
               <el-col :span="11">
                 <el-input v-model="filterForm.avgMax" placeholder="最大值"></el-input>
-                <!-- <el-time-picker placeholder="选择时间" v-model="filterForm.date2" style="width: 100%;"></el-time-picker> -->
               </el-col>
             </el-form-item>
             <el-form-item>
@@ -89,7 +99,7 @@
         >
           <el-table-column prop="id" label="点评编号" width="180"></el-table-column>
           <el-table-column prop="userName" label="用户名" width="200"></el-table-column>
-          <el-table-column prop="mobile" label="手机号码" width="100"></el-table-column>
+          <el-table-column prop="mobile" label="手机号码" width="110"></el-table-column>
           <el-table-column prop="context" label="内容" width="400"></el-table-column>
           <!-- <el-table-column prop="tags" label="内容" width="200">
             <template slot-scope="scope">
@@ -105,18 +115,38 @@
             </template>
           </el-table-column>
           <el-table-column prop="average" label="总评分" width="80"></el-table-column>
-          <el-table-column prop="poiName" label="POI" width="200"></el-table-column>
-          <el-table-column prop="createdTime" label="创建时间" width="80"></el-table-column>
-          <el-table-column prop="limitState" label="状态" width="100">
+          <el-table-column prop="poiName" label="POI" width="200">
+            <template slot-scope="scope">
+              <el-link
+                type="primary"
+                @click="$router.push({path:'/poi/management/detail',query:{id:scope.row.poiId}})"
+              >{{scope.row.poiName}}</el-link>
+            </template>
+          </el-table-column>
+          <el-table-column prop="createTime" label="创建时间" width="200"></el-table-column>
+          <el-table-column prop="limitState" label="状态">
             <template slot-scope="scope">
               <div>{{scope.row.limitState?"显示":'隐藏'}}</div>
             </template>
           </el-table-column>
           <el-table-column label="操作" fixed="right" width="220">
             <template slot-scope="scope">
-              <el-button size="mini">查看</el-button>
-              <el-button size="mini">回复</el-button>
-              <el-button size="mini">隐藏</el-button>
+              <el-button
+                size="mini"
+                type="primary"
+                @click="$router.push({
+                path:'/content/management/detail',
+                query:{
+                  id:scope.row.id
+                }
+              })"
+              >查看</el-button>
+              <el-button size="mini" type="primary">回复</el-button>
+              <el-button
+                size="mini"
+                :type="scope.row.limitState?'success':'danger'"
+                @click="handleIsHide(scope.row,scope.row.id)"
+              >{{scope.row.limitState?"显示":'隐藏'}}</el-button>
             </template>
           </el-table-column>
           <!-- <el-table-column prop="address" label="地址" :formatter="formatter"></el-table-column> -->
@@ -140,30 +170,33 @@
 
 <script>
 // import { poiList } from "@/api/poi";
-import { comments } from "@/api/content";
+import { comments, isHidecomment, getUserId } from "@/api/content";
 export default {
   data() {
     return {
+      // datePicker: "",
+      userSearchloading: false,
+      userOptions: [],
       labelWith: "100px",
       options: [
         {
+          value: "",
+          label: "全部"
+        },
+        {
           value: "PLAY",
-          label: "PLAY"
+          label: "游玩"
         },
         {
           value: "THEATER",
-          label: "THEATER"
+          label: "剧场"
         },
         {
           value: "HOTEL",
-          label: "HOTEL"
+          label: "酒店"
         }
       ],
       filterForm: {
-        // city: "",
-        // poiName: "",
-        // poiType: "",
-        // tag: "",
         avgMax: "",
         avgMin: "",
         city: "",
@@ -186,14 +219,41 @@ export default {
     };
   },
   mounted() {
-    console.log(this.$route.path);
-    comments().then(res => {
-      console.log(res);
-      this.commentsList = res.data;
-    });
-    // this.loadPoiList();
+    if (this.$route.query.id) {
+      this.filterForm.userId = this.$route.query.id;
+    }
+    this.loadPoiList();
   },
   methods: {
+    // handleDateChange() {
+    //   this.filterForm.start = val[0];
+    //   this.filterForm.end = val[1];
+    // },
+    remoteMethod(query) {
+      console.log(query);
+      if (query !== "") {
+        this.userSearchloading = true;
+        getUserId(query).then(res => {
+          console.log(res);
+          if (res) {
+            this.userSearchloading = false;
+            this.userOptions = res.data.map(item => {
+              return {
+                value: `${item.id}`,
+                label: `${item.nickName}`
+              };
+            });
+            console.log(this.userOptions);
+          }
+        });
+      }
+    },
+    handleIsHide(row, id) {
+      isHidecomment(id).then(res => {
+        console.log(res);
+        row.limitState = !row.limitState;
+      });
+    },
     resetForm(formName) {
       this.$refs[formName].resetFields();
     },
@@ -214,9 +274,11 @@ export default {
           this.$set(filterData, key, this.filterForm[key]);
         }
       }
-      poiList(filterData).then(res => {
+
+      comments(filterData).then(res => {
+        console.log(res);
         this.loading = false;
-        this.tableData = res.data;
+        this.commentsList = res.data;
         this.totalPage = res.total;
       });
     }

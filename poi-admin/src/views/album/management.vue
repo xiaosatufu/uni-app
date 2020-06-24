@@ -7,7 +7,7 @@
       <div class="table-filters">
         <el-form :inline="true" ref="filterForm">
           <el-form-item label="POI名称" prop="poiName">
-            <el-input v-model="filterForm.poiName"></el-input>
+            <el-input v-model="filterForm.poiName" placeholder="请输入POI名称"></el-input>
           </el-form-item>
           <el-form-item label="POI类型">
             <el-select v-model="filterForm.poiType" placeholder="请选择">
@@ -21,7 +21,7 @@
             <!-- <el-input v-model="filterForm.poiType"></el-input> -->
           </el-form-item>
           <el-form-item label="城市">
-            <el-input v-model="filterForm.city"></el-input>
+            <el-input v-model="filterForm.city" placeholder="请输入城市"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="loadPoiList">筛选</el-button>
@@ -50,11 +50,11 @@
               <el-tag style="margin-right:5px;" v-for="item in scope.row.tags" :key="item">{{item}}</el-tag>
             </template>
           </el-table-column>
-          <el-table-column prop="address" label="地址" width></el-table-column>
+          <el-table-column prop="address" label="地址" width="300"></el-table-column>
           <el-table-column prop="score" label="评分" width="80"></el-table-column>
           <el-table-column prop="commentCount" label="点评数" width="80"></el-table-column>
           <el-table-column prop="collectCount" label="被收藏数" width="80"></el-table-column>
-          <el-table-column prop="operatorName" label="操作人" width="100"></el-table-column>
+          <el-table-column prop="operatorName" label="操作人" ></el-table-column>
           <el-table-column label="操作" fixed="right" width="200">
             <template slot-scope="scope">
               <el-button size="mini" @click="handleGoAlbum(scope.row,1)">商家相册</el-button>
@@ -90,21 +90,21 @@ export default {
   data() {
     return {
       options: [
-        // {
-        //   value: "",
-        //   label: ""
-        // },
+        {
+          value: "",
+          label: "全部"
+        },
         {
           value: "PLAY",
-          label: "PLAY"
+          label: "游玩"
         },
         {
           value: "THEATER",
-          label: "THEATER"
+          label: "剧场"
         },
         {
           value: "HOTEL",
-          label: "HOTEL"
+          label: "酒店"
         }
       ],
       filterForm: {
@@ -124,7 +124,9 @@ export default {
   },
   mounted() {
     console.log(this.$route.path);
-    this.loadPoiList();
+    if (this.$route.path == "/album/management") {
+      this.loadPoiList();
+    }
   },
   methods: {
     handleGoAlbum(row, type) {

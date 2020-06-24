@@ -32,7 +32,7 @@ const actions = {
   login({ commit }, userInfo) {
     const { account, password } = userInfo
     return new Promise((resolve, reject) => {
-      alert(1)
+      // alert(1)
       login({ account: account.trim(), password: password }).then(response => {
         console.log(response)
         // const { data } = response
@@ -79,14 +79,17 @@ const actions = {
   // user logout
   logout({ commit, state }) {
     return new Promise((resolve, reject) => {
-      logout(state.token).then(() => {
-        removeToken() // must remove  token  first
-        resetRouter()
-        commit('RESET_STATE')
-        resolve()
-      }).catch(error => {
-        reject(error)
-      })
+
+      removeToken() // must remove  token  first
+      resetRouter()
+      // logout(state.token).then(() => {
+      //   removeToken() // must remove  token  first
+      //   resetRouter()
+      //   commit('RESET_STATE')
+      resolve()
+      // }).catch(error => {
+      //   reject(error)
+      // })
     })
   },
 

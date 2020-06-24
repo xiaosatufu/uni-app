@@ -61,7 +61,8 @@ export const constantRoutes = [
     redirect: '/poi/management',
     alwaysShow: false, //一直显示根路由
     meta: {
-      title: 'POI管理'
+      title: 'POI管理',
+      icon: 'example'
     },
     children: [{
       path: 'management',
@@ -107,7 +108,8 @@ export const constantRoutes = [
     redirect: '/album/management',
     meta: {
 
-      title: '相册管理'
+      title: '相册管理',
+      icon: 'nested'
     },
     children: [{
       path: 'management',
@@ -141,12 +143,31 @@ export const constantRoutes = [
     path: '/content',
     component: Layout,
     redirect: '/content/management',
+    meta: {
+      title: '内容管理',
+      icon: 'documentation'
+    },
+    alwaysShow: false, //一直显示根路由
     children: [{
       path: 'management',
       component: () => import('@/views/content/management.vue'),
       meta: {
-        title: '内容管理'
-      }
+        activeMenu: '/content'
+      },
+      hidden: true,
+      alwaysShow: true, //一直显示根路由
+      children: [
+        {
+          path: 'detail',
+          component: () => import('@/views/content/detail.vue'),
+          meta: {
+            title: '内容详情',
+            activeMenu: '/content'
+          },
+          hidden: true,
+          alwaysShow: true, //一直显示根路由
+        }
+      ]
     }]
   },
   {
@@ -155,7 +176,9 @@ export const constantRoutes = [
     redirect: '/user/management',
     alwaysShow: false, //一直显示根路由
     meta: {
-      title: '用户管理'
+      title: '用户管理',
+
+      icon: 'peoples'
     },
     children: [{
       path: 'management',
@@ -186,7 +209,9 @@ export const constantRoutes = [
       path: 'tool',
       component: () => import('@/views/marketing/tool.vue'),
       meta: {
-        title: '营销工具'
+        title: '营销工具',
+
+        icon: 'table'
       }
     }]
   },

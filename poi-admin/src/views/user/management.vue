@@ -1,9 +1,6 @@
 <template>
   <div class="app-container">
     <template v-if="$route.path=='/user/management'">
-      <!-- <div class="m-header-btns">
-        <el-button type="primary" @click="$router.push('/poi/management/create')">新增</el-button>
-      </div>-->
       <div class="table-filters">
         <el-form :inline="true" ref="filterForm">
           <div class="filter-col">
@@ -26,7 +23,7 @@
           </div>
           <div class="filter-col">
             <el-form-item label="会员状态" :label-width="labelWith">
-              <el-select v-model="filterForm.limitState" placeholder="请选择" style="width:180px">
+              <el-select v-model="filterForm.isMember" placeholder="请选择" style="width:180px">
                 <el-option
                   v-for="item in memberOption"
                   :key="item.value"
@@ -43,7 +40,7 @@
                 start-placeholder="开始日期"
                 end-placeholder="结束日期"
                 @change="handleDateChange"
-                value-format="yyyy-mm-dd HH:mm:ss"
+                value-format="yyyy-MM-dd HH:mm:ss"
               ></el-date-picker>
             </el-form-item>
             <el-form-item>
@@ -74,18 +71,33 @@
           </el-table-column>
           <el-table-column prop="nickName" label="用户名" width="100"></el-table-column>
           <el-table-column prop="mobile" label="手机号" width="110"></el-table-column>
-          <el-table-column prop="context" label="琥珀亲子" width="100"></el-table-column>
-          <el-table-column prop="context" label="会员状态" width="100"></el-table-column>
-          <el-table-column prop="context" label="收藏数" width="100"></el-table-column>
-          <el-table-column prop="context" label="点评数" width="100"></el-table-column>
-          <el-table-column prop="context" label="玩法数" width="100"></el-table-column>
-          <el-table-column prop="context" label="粉丝" width="100"></el-table-column>
-          <el-table-column prop="context" label="关注" width="100"></el-table-column>
-          <el-table-column prop="context" label="创建时间" width="100"></el-table-column>
-          <el-table-column label="操作" fixed="right" width="220">
+          <el-table-column prop="authorize" label="琥珀亲子" width="100">
             <template slot-scope="scope">
-              <el-button size="mini" @click="handleDetail(scope.row.id)">查看</el-button>
-              <el-button size="mini" @click="handleIsAble(scope.row)">{{scope.row.dt?'注销':'启用'}}</el-button>
+              <div>{{scope.row.authorize?'已授权':'未授权'}}</div>
+            </template>
+          </el-table-column>
+          <el-table-column prop="isMember" label="会员状态" width="100">
+            <template slot-scope="scope">
+              <div v-if="scope.row.isMember==0">非会员</div>
+              <div v-else-if="scope.row.isMember==1">会员</div>
+              <div v-else-if="scope.row.isMember==-1">过期会员</div>
+              <div v-else>-</div>
+            </template>
+          </el-table-column>
+          <el-table-column prop="collectCount" label="收藏数" width="100"></el-table-column>
+          <el-table-column prop="commentCount" label="点评数" width="100"></el-table-column>
+          <!-- <el-table-column prop="context" label="玩法数" width="100"></el-table-column>
+          <el-table-column prop="context" label="粉丝" width="100"></el-table-column>
+          <el-table-column prop="context" label="关注" width="100"></el-table-column>-->
+          <el-table-column prop="createTime" label="创建时间"></el-table-column>
+          <el-table-column label="操作" fixed="right" width="150">
+            <template slot-scope="scope">
+              <el-button size="mini" type="primary" @click="handleDetail(scope.row.id)">查看</el-button>
+              <el-button
+                size="mini"
+                :type="scope.row.limitState?'danger':'success'"
+                @click="handleIsAble(scope.row)"
+              >{{scope.row.limitState?'注销':'启用'}}</el-button>
             </template>
           </el-table-column>
           <!-- <el-table-column prop="address" label="地址" :formatter="formatter"></el-table-column> -->
@@ -121,11 +133,11 @@ export default {
           label: "全部"
         },
         {
-          value: true,
+          value: "1",
           label: "已授权"
         },
         {
-          value: false,
+          value: "0",
           label: "未授权"
         }
       ],
@@ -135,15 +147,15 @@ export default {
           label: "全部"
         },
         {
-          value: 1,
+          value: "1",
           label: "会员"
         },
         {
-          value: 0,
+          value: "0",
           label: "非会员"
         },
         {
-          value: -1,
+          value: "-1",
           label: "过期会员"
         }
       ],
@@ -154,6 +166,7 @@ export default {
         end: "",
         username: "",
         mobile: "",
+        isMember: "",
         limitState: "",
         size: 10,
         page: 1
@@ -186,15 +199,15 @@ export default {
     handleIsAble(row) {
       // console.log(row);
       // row.dt = !row.dt;
-      if (row.dt) {
+      if (row.limitState) {
         userDisable(row.id).then(res => {
           console.log(res);
-          row.dt = !row.dt;
+          row.limitState = !row.limitState;
         });
       } else {
         userEnable(row.id).then(res => {
           console.log(res);
-          row.dt = !row.dt;
+          row.limitState = !row.limitState;
         });
       }
     },
@@ -211,14 +224,18 @@ export default {
     },
 
     loadUserList() {
+      this.loading = true;
       let filterData = {};
       for (let key in this.filterForm) {
         if (this.filterForm[key]) {
           this.$set(filterData, key, this.filterForm[key]);
         }
       }
+      console.log(filterData);
+      console.log(this.filterForm);
       adminUser(filterData).then(res => {
         // console.log(res)
+        this.loading = false;
         this.userList = res.data;
         this.totalPage = res.total;
       });

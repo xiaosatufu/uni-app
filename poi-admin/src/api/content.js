@@ -8,3 +8,26 @@ export function comments(data) {
     })
 }
 
+export function isHidecomment(id) {
+    return request({
+        url: `/admin/comments/${id}/hide`,
+        method: 'put'
+    })
+}
+
+export function commentDetail(id) {
+    return request({
+        url: `/admin/comments/${id}/show`,
+        method: 'get'
+    })
+}
+export function getUserId(name) {
+    return request({
+        url: `/admin/comments/get/${name}`,
+        method: 'get'
+    })
+}
+
+
+
+

@@ -142,7 +142,6 @@ export default {
             let files = [];
             picturesArr.forEach(picItem => {
               files.push({ name: picItem, url: picItem });
-              // item.files = [{ name: picItem.pictures, url: picItem.pictures }];
             });
             item.files = files;
           }
