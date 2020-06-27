@@ -17,8 +17,8 @@
 
 				</view>
 				<view class="m-operation">
-					<view class="edit icon"></view>
-					<view class="setting icon">
+					<view class="edit icon"  @tap="handleNavogateto('/pages/personal-center/set-up')"></view>
+					<view class="setting icon" @tap="handleNavogateto('/pages/personal-center/my-comments')">
 
 					</view>
 				</view>
@@ -35,8 +35,8 @@
 				</view>
 				<view class="m-intro">地表最强遛娃指南小姐姐~</view>
 				<view class="m-more">
-					<view class="item">关注<span>56</span></view>
-					<view class="item">粉丝<span>100</span></view>
+					<view class="item" @tap="handleNavogateto('/pages/personal-center/follow')">关注<span>56</span></view>
+					<view class="item" @tap="handleNavogateto('/pages/personal-center/fans')">粉丝<span>100</span></view>
 					<view class="item">获赞<span>400</span></view>
 				</view>
 			</view>
@@ -220,6 +220,12 @@
 			}, 1000)
 		},
 		methods: {
+			handleNavogateto(url) {
+
+				uni.navigateTo({
+					url: url
+				});
+			},
 
 			calcSwiperHeight(queryParam) {
 

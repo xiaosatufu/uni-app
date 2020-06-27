@@ -3,10 +3,12 @@
   "navigationStyle": "custom",
   "backgroundColorTop": "#FA6830",
   "usingComponents": {
+    "u-swiper": "/uview-ui/components/u-swiper/u-swiper",
     "u-tabs-swiper": "/uview-ui/components/u-tabs-swiper/u-tabs-swiper",
     "u-divider": "/uview-ui/components/u-divider/u-divider",
     "follow": "/components/follow",
     "recommend-follow": "/components/recommend-follow",
-    "recommend": "/components/recommend"
+    "recommend": "/components/recommend",
+    "uni-transition": "/components/uni-transition"
   }
 }

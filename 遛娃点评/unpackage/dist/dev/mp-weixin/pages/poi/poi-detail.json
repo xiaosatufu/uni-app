@@ -4,6 +4,7 @@
     "u-navbar": "/uview-ui/components/u-navbar/u-navbar",
     "u-rate": "/uview-ui/components/u-rate/u-rate",
     "u-divider": "/uview-ui/components/u-divider/u-divider",
+    "u-empty": "/uview-ui/components/u-empty/u-empty",
     "u-popup": "/uview-ui/components/u-popup/u-popup",
     "scenic-spot": "/components/scenic-spot",
     "play-way": "/components/play-way",

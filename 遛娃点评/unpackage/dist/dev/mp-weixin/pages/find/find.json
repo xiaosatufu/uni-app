@@ -1,3 +1,9 @@
 {
-  "usingComponents": {}
+  "navigationStyle": "custom",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "u-swiper": "/uview-ui/components/u-swiper/u-swiper",
+    "recommend": "/components/recommend",
+    "uni-transition": "/components/uni-transition"
+  }
 }

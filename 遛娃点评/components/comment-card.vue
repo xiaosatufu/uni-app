@@ -2,34 +2,18 @@
 	<view>
 
 		<view class="card-wrap" @tap="handleGoDetail">
-			<card-top time="3小时前">
+			<card-top :time="date" :cardData="cardData">
 				<template v-slot:info>
 
-					<u-rate count="count" current="3.5" active-icon="star-fill" :disabled="true" inactive-icon="star-fill"
+					<u-rate count="count" :current="cardData.average" active-icon="star-fill" :disabled="true" inactive-icon="star-fill"
 					 inactive-color="#E6E6E6" active-color="#F7AF43"></u-rate>
 				</template>
 			</card-top>
 			<view class="m-text">
-				这个地方在抖音，朋友圈刷爆了，好火好🔥那我肯定要去抽热闹的嘿嘿，想着5.1人比较多就等到了4号，那天太热了没怎么拍照，网红景点也只打卡了3个，等后…
+				{{cardData.context}}
 			</view>
-			<image-box  width="218rpx"></image-box>
-			<card-footer :isShowLable="true"></card-footer>
-
-		</view>
-		<u-line color="#f2f2f2" />
-		<view class="card-wrap">
-			<card-top time="3小时前">
-				<template v-slot:info>
-
-					<u-rate count="count" current="3.5" active-icon="star-fill" :disabled="true" inactive-icon="star-fill"
-					 inactive-color="#E6E6E6" active-color="#F7AF43"></u-rate>
-				</template>
-			</card-top>
-			<view class="m-text">
-				这个地方在抖音，朋友圈刷爆了，好火好🔥那我肯定要去抽热闹的嘿嘿，想着5.1人比较多就等到了4号，那天太热了没怎么拍照，网红景点也只打卡了3个，等后…
-			</view>
-			<image-box width="218rpx"></image-box>
-			<card-footer ></card-footer>
+			<image-box width="218rpx" limit='3' :images="cardData.picUrls"></image-box>
+			<card-footer :isShowLable="true" :cardData="cardData"></card-footer>
 
 		</view>
 		<u-line color="#f2f2f2" />
@@ -40,22 +24,37 @@
 	import cardTop from './card-top.vue'
 	import imageBox from './image-box.vue'
 	import cardFooter from './card-footer.vue'
+	import {
+		getDateDiff
+	} from '../common/util.js'
 	export default {
 		components: {
 			cardTop,
 			imageBox,
 			cardFooter
 		},
+		props: {
+			cardData: {
+				type: Object,
+				default: {}
+			}
+		},
+
+		mounted() {
+			console.log(this.cardData)
+			this.date = getDateDiff(this.cardData.createTime)
+		},
 		data() {
 			return {
-				count: 4
+				count: 5,
+				date: ''
 			};
 		},
-		methods:{
-			handleGoDetail(){
-				
+		methods: {
+			handleGoDetail() {
+
 				uni.navigateTo({
-					url: '/pages/poi/poi-comment-detail'
+					url: `/pages/poi/poi-comment-detail?id=${this.cardData.id}`
 				});
 			}
 		}

@@ -17,7 +17,15 @@
     "pages/release/release",
     "pages/message/new-concerns",
     "pages/message/comment",
-    "pages/message/star"
+    "pages/message/star",
+    "pages/personal-center/follow",
+    "pages/personal-center/fans",
+    "pages/personal-center/my-comments",
+    "pages/personal-center/set-up",
+    "pages/personal-center/set-up-nickname",
+    "pages/personal-center/set-up-autograph",
+    "pages/personal-center/set-up-cell-phone-number",
+    "pages/personal-center/set-up-like"
   ],
   "subPackages": [],
   "window": {
@@ -72,6 +80,8 @@
     "index-page": "/pages/index/index",
     "message-page": "/pages/message/index",
     "personal-center": "/pages/personal-center/personal-center",
-    "tabbar-navigation": "/components/tabbar-navigation"
-  }
+    "tabbar-navigation": "/components/tabbar-navigation",
+    "loading": "/components/loading"
+  },
+  "sitemapLocation": "sitemap88.json"
 }

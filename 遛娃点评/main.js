@@ -15,6 +15,9 @@ import tabbarNavigation from './components/tabbar-navigation.vue'
 Vue.component('tabbarNavigation',tabbarNavigation)
 // import tabbarNavbar from './components/tabbar-navbar.vue'
 // Vue.component('tabbarNavbar',tabbarNavbar)
+import loading from './components/loading.vue'
+Vue.component('loading',loading)
+
 
 
 

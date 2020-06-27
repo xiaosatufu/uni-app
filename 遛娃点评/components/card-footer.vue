@@ -1,15 +1,15 @@
 <template>
 	<view class="m-card-footer">
-		<view class="left content" v-if="isShowLable">遛娃周末好去处</view>
+		<view class="left content" v-if="cardData.tagNames&&cardData.tagNames.length>0">{{}}</view>
 		<view class="left" v-else></view>
-		
+
 		<view class="right">
+			<view class="m-star m-item" @tap.stop="handleStar">
+				<view class="icon"></view><text>{{cardData.likeCount?cardData.likeCount:0}}</text>
+			</view>
 			<view class="m-message m-item">
 				<view class="icon"></view>
 				<text>25</text>
-			</view>
-			<view class="m-star m-item">
-				<view class="icon"></view><text>33</text>
 			</view>
 		</view>
 	</view>
@@ -17,16 +17,42 @@
 
 <script>
 	export default {
-		props:{
-			isShowLable:{
-				type:Boolean,
-				default:false
+		props: {
+			isShowLable: {
+				type: Boolean,
+				default: false
+			},
+			cardData: {
+				type: Object,
+				default: {}
 			}
 		},
 		data() {
 			return {
 
 			};
+		},
+		methods: {
+
+			handleStar() {
+				console.log('star')
+				// this.$api
+				if (!this.cardData.likeCount) {
+
+					this.$api.poiCommentLike({
+						commentId: this.cardData.id
+					}).then(res => {
+						console.log(res)
+					})
+				} else {
+
+					this.$api.poiCommentLikeCancel({
+						commentId: this.cardData.id
+					}).then(res => {
+						console.log(res)
+					})
+				}
+			}
 		}
 	}
 </script>
@@ -45,7 +71,7 @@
 
 			&.content {
 				// background: rgba(253, 237, 229, 1);
-				background: url(../static/images/icon_label_topic_orange@3x.png) #FDEDE5 12px center  no-repeat;
+				background: url(../static/images/icon_label_topic_orange@3x.png) #FDEDE5 12px center no-repeat;
 				background-size: 32rpx;
 				font-size: 24rpx;
 				color: #F13B03;

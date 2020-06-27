@@ -90,7 +90,10 @@
 		},
 		{
 			"path": "pages/find/find",
-			"style": {}
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTextStyle": "black"
+			}
 		}
 
 		, {
@@ -115,6 +118,56 @@
 			}
 		}, {
 			"path": "pages/message/star",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTextStyle": "black"
+			}
+		}, {
+			"path": "pages/personal-center/follow",
+			"style": {
+
+				"navigationStyle": "custom",
+				"navigationBarTextStyle": "black"
+			}
+		}, {
+			"path": "pages/personal-center/fans",
+			"style": {
+
+				"navigationStyle": "custom",
+				"navigationBarTextStyle": "black"
+			}
+		}, {
+			"path": "pages/personal-center/my-comments",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTextStyle": "black"
+			}
+		}, {
+			"path": "pages/personal-center/set-up",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTextStyle": "black"
+			}
+		}, {
+			"path": "pages/personal-center/set-up-nickname",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTextStyle": "black"
+			}
+		}, {
+			"path": "pages/personal-center/set-up-autograph",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTextStyle": "black"
+			}
+		}, {
+			"path": "pages/personal-center/set-up-cell-phone-number",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTextStyle": "black"
+			}
+		}, {
+			"path": "pages/personal-center/set-up-like",
 			"style": {
 				"navigationStyle": "custom",
 				"navigationBarTextStyle": "black"

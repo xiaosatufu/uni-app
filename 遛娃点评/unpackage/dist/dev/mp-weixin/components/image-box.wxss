@@ -38,5 +38,18 @@
   background: #fbf3ef;
   box-shadow: 0px 0px 14rpx 0px rgba(0, 0, 0, 0.02);
   border-radius: 12rpx;
+  position: relative;
+}
+.image-wrap .image-item .label {
+  position: absolute;
+  width: 60rpx;
+  height: 60rpx;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 12rpx 0rpx 12rpx 0rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 60rpx;
+  bottom: 0;
+  right: 0;
 }
 

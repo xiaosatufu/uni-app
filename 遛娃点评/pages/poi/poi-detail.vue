@@ -8,21 +8,21 @@
 		</u-navbar>
 
 		<view class="m-swiper" @tap="handleNavigateTo('/pages/poi/poi-comment-detail-album')">
-			<image class="image" :src="data.pictures[0].pictures"></image>
+			<image class="image" :src="poiData.pictures[0].pictures"></image>
 			<view class="m-small-image-wrap">
 				<view class="image-wrap">
 					<view v-for="item in imageData" class="image-item" :key="item.id">
 						<image class="small-image" :src="item.pictures"></image>
 					</view>
 				</view>
-				<view class="m-total">{{data.pictures.length}}张</view>
+				<view class="m-total">{{poiData.pictures.length}}张</view>
 				<view class="u-arrow"></view>
 			</view>
 		</view>
 		<view class="m-header">
 			<view class="m-title">
-				<view class="u-name">{{data.name}}</view>
-				<view class="m-btn">收藏</view>
+				<view class="u-name">{{poiData.name}}</view>
+				<view class="m-btn" @tap="handleCollect(poiData.id)">收藏</view>
 			</view>
 			<view class="m-rate">
 				<view class="m-info">
@@ -37,7 +37,7 @@
 				</view>
 				<view class="u-comment">已有<span>180</span>人点评</view>
 			</view>
-			<view class="u-introduce">{{data.introduction}}</view>
+			<view class="u-introduce">{{poiData.introduction}}</view>
 		</view>
 		<view class="m-scenic-spot">
 			<view class="scenic-card">
@@ -55,12 +55,12 @@
 						开放时间
 					</template>
 					<template v-slot:right>
-						{{data.businessTime}}
+						{{poiData.businessTime}}
 					</template>
 				</scenic-spot>
 				<scenic-spot iconType="location">
 					<template v-slot:left>
-						{{data.address}}
+						{{poiData.address}}
 					</template>
 				</scenic-spot>
 			</view>
@@ -108,25 +108,28 @@
 		</view>
 		<view class="m-comment">
 			<view class="comment-header">
-				<view class="title">点评(40)</view>
+				<view class="title">点评({{commentsData.length}})</view>
 				<view class="right">
 					<switch-item></switch-item>
 				</view>
 			</view>
-			<view class="comment-content">
-				<comment-card></comment-card>
+			<view class="comment-content" v-if="commentsData&&commentsData.length>0">
+				<comment-card v-for="item in commentsData" :key="item" :cardData="item"></comment-card>
 				<u-divider color="#D9D9D9" height="160">已经到底啦</u-divider>
+			</view>
+			<view class="comment-content" v-else>
+				<u-empty text="快来发布第一条点评吧~" mode="message"></u-empty>
 			</view>
 		</view>
 		<u-popup v-model="show" mode="bottom" border-radius="40" :safe-area-inset-bottom="true">
 			<view class="popup-content">
 				<view class="title">选择您要进行的操作</view>
 				<view class="m-operation">
-					<view class="operation-item" @tap="handleNavigateTo('/pages/poi/poi-play-way-push')">
+					<view class="operation-item" @tap="handleNavigateTo(`/pages/poi/poi-play-way-push?poiId=${id}`)">
 						<view class="icon play-way"></view>
 						<text>发玩法</text>
 					</view>
-					<view class="operation-item" @tap="handleNavigateTo('/pages/poi/poi-comment-push')">
+					<view class="operation-item" @tap="handleNavigateTo(`/pages/poi/poi-comment-push?poiId=${id}&poiName=${poiData.name}`)">
 						<view class="icon comment"></view>
 						<text>写点评</text>
 					</view>
@@ -160,25 +163,55 @@
 				show: false,
 				count: 4,
 				id: '',
-				data: {},
-				imageData: []
+				poiData: {},
+				imageData: [],
+				commentsData: []
 			}
 		},
 		onLoad: function(option) { //option为object类型，会序列化上个页面传递的参数
-			console.log(option); //打印出上个页面传递的参数。
 			this.id = option.id
+			this.loadDetail()
+
+			this.loadComments()
 		},
 		mounted() {
-			this.$api.poiAppDetail(this.id).then(res => {
-				console.log(res)
-				this.data = res
-				const pictures = JSON.parse(JSON.stringify(this.data.pictures))
-				this.imageData = pictures.splice(0, 4)
-				console.log(this.imageData)
-				console.log(this.data.pictures)
+			const self = this
+			uni.$on('commentPushSucess', function(data) {
+				// console.log('监听到事件来自 update ，携带参数 msg 为：' + data.msg);
+				self.show = false
+				self.loadComments()
 			})
 		},
 		methods: {
+			loadDetail() {
+				this.$api.poiAppDetail(this.id).then(res => {
+					console.log(res)
+					this.poiData = res
+
+					const pictures = JSON.parse(JSON.stringify(this.poiData.pictures))
+					this.imageData = pictures.splice(0, 4)
+					// console.log(this.imageData)
+					// console.log(this.poiData.pictures)
+				})
+			},
+			loadComments() {
+				this.$api.poiComments({
+					poiId: this.id
+				}).then(res => {
+					// console.log(res)
+					this.commentsData = res.data
+				})
+			},
+			handleCollect(id) {
+				// console.log(this.data)
+				const submitData = {
+					// ,
+					collect: {"collect":!this.poiData.collected,id: this.id}
+				}
+				this.$api.poiAppCollect(submitData).then(res => {
+					console.log(res)
+				})
+			},
 			// handleJumpAlbum(){}
 			handleNavigateTo(url) {
 
@@ -212,11 +245,12 @@
 		height: 562rpx;
 		left: 0;
 		top: 0;
-		&::after{
+
+		&::after {
 			content: "";
 			width: 100%;
 			height: 100rpx;
-			background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+			background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
 			position: absolute;
 			bottom: 0;
 			left: 0;

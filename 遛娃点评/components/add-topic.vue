@@ -9,21 +9,36 @@
 		<view class="m-topic-wrap">
 			<!-- <view class="topic-item"></view> -->
 
-			<view class="topic-item active">遛娃周末好去处</view>
+			<!-- <view class="topic-item active">遛娃周末好去处</view>
 			<view class="topic-item">遛娃周末处</view>
 			<view class="topic-item">好去处</view>
 			<view class="topic-item">遛娃周末好去处</view>
-			<view class="topic-item">遛娃周末好去处</view>
+			<view class="topic-item">遛娃周末好去处</view> -->
+			<view class="topic-item" v-for="(value,key,index) in topic" :key="index" :calss="key==current?'active':''" @tap="handleIndex(key)">
+				<!-- {{ index }}. {{ key }} - {{ value }} -->
+				{{value}}
+			</view>
 		</view>
 	</view>
 </template>
 
 <script>
 	export default {
+		props: {
+			topic: {
+				type: Object,
+				default: {}
+			}
+		},
 		data() {
 			return {
-
+				current: ''
 			};
+		},
+		methods:{
+			handleIndex(key) {
+				this.current = key
+			}
 		}
 	}
 </script>
@@ -61,9 +76,10 @@
 	}
 
 	.m-topic-wrap {
-		margin:0 32rpx;
+		margin: 0 32rpx;
 		display: flex;
 		flex-wrap: wrap;
+
 		.topic-item {
 			// width: 244rpx;
 			padding-right: 20rpx;
@@ -73,7 +89,7 @@
 			color: #222222;
 			line-height: 48rpx;
 			text-indent: 57rpx;
-			margin:0  20rpx 20rpx 0;
+			margin: 0 20rpx 20rpx 0;
 
 			background: url(../static/images/icon_poi_topic@3x.png) #FDEDE5 12px center no-repeat;
 			background-size: 32rpx;

@@ -2,6 +2,16 @@
 	<view class="content">
 		<tabbar-navigation :current-page="0"></tabbar-navigation>
 		<div class="u-placeholder" :style="'height:'+header.top+'px;'"></div>
+
+		<uni-transition :duration="200" :mode-class="modeClass" :show="transShow" :styles="transfromClass">
+
+			<view class="fixed-wrap" :style="'padding-top:'+header.top+'px;'">
+				<view class="search-box">
+					<view class="icon"></view>
+					<view class="text">大家都在搜索“国庆必去景点”</view>
+				</view>
+			</view>
+		</uni-transition>
 		<view class="header-wrap">
 			<view class="m-header" :style="'height:' +  header.height + 'px;'">
 				<view class="u-address">
@@ -16,46 +26,25 @@
 				<view class="u-search-icon"></view>
 				<text class="u-text">大家都在搜索“国庆必去景点”</text>
 			</view>
-			<div class="header-swiper">
-				<view class="uni-padding-wrap">
-					<view class="page-section swiper">
-						<view class="page-section-spacing">
-							<swiper class="swiper" :autoplay="autoplay" :interval="interval" :duration="duration" style="height: 266rpx;">
-								<swiper-item>
-									<view class="swiper-item">
-										<image class="image" src="../../static/banner1.jpg" mode="aspectFit"></image>
-									</view>
-								</swiper-item>
-								<swiper-item>
-									<view class="swiper-item">
-										<image class="image" src="../../static/banner2.jpg" mode="aspectFit"></image>
-									</view>
-								</swiper-item>
-								<swiper-item>
-									<view class="swiper-item">
-										<image class="image" src="../../static/banner3.jpg" mode="aspectFit"></image>
-									</view>
-								</swiper-item>
-							</swiper>
-						</view>
-					</view>
-				</view>
-			</div>
+			<view class="header-swiper">
+				<u-swiper :list="swiperList" :effect3d="true" border-radius="16" height="266"></u-swiper>
+			</view>
 		</view>
 
 
-		<view>
+		<view class="nav-header">
 			<u-tabs-swiper @change="handleChange" ref="uTabs" :list="list" bar-height="40" bar-width="40" :bar-style="barStyle"
 			 font-size="32" :is-scroll="true" active-color="#3D3D3D" inactive-color="#3D3D3D" :active-item-style="activeItemStyle"
 			 :current="current" gutter="80" height="100"></u-tabs-swiper>
 		</view>
-		<view style="margin-top: 47rpx;">
+		<view style="margin-top: 47rpx;background-color: #F8F8F8;">
 
 			<swiper :current="swiperCurrent" @transition="transition" @animationfinish="animationfinish" :style="{height:aheight?aheight+'px':'auto'}">
 				<swiper-item class="swiper-item" v-for="(item, index) in tabs" :key="index">
 					<scroll-view scroll-y style="height:101%;width: 100%;" @scrolltolower="onreachBottom">
 						<view class="list1" v-if="item==0">
 							<recommend-follow></recommend-follow>
+							<view style="width: 100%;height: 24rpx;"></view>
 							<follow></follow>
 							<view style="width: 100%;height: 24rpx;"></view>
 							<follow></follow>
@@ -106,6 +95,7 @@
 	import follow from "../../components/follow.vue"
 	import recommendFollow from '../../components/recommend-follow.vue'
 	import recommend from '../../components/recommend.vue'
+	import uniTransition from '../../components/uni-transition.vue'
 	// import tabbarNavitation from '../../components/tabbar-navigation.vue'
 	export default {
 
@@ -113,10 +103,16 @@
 			follow,
 			recommendFollow,
 			recommend,
+			uniTransition
 			// tabbarNavitation
 		},
 		data() {
 			return {
+				transShow: false,
+				modeClass: ['fade'],
+				transfromClass: {
+					'z-index': '9999'
+				},
 				activeItemStyle: {
 					position: 'relative',
 					fontSize: "44rpx"
@@ -156,11 +152,46 @@
 					name: '攻略'
 				}, {
 					name: '萌娃'
-				}, {
-					name: '度'
 				}],
-				tabs: [0, 1, 2, 3, 4, 5],
-				recommendData: []
+				tabs: [0, 1, 2, 3, 4],
+				recommendData: [],
+				swiperList: [{
+						image: '/static/1.png',
+						title: '蒹葭苍苍，白露为霜。所谓伊人，在水一方'
+					},
+					{
+						image: '/static/1.png',
+						title: '蒹葭苍苍，白露为霜。所谓伊人，在水一方'
+					},
+					{
+						image: '/static/1.png',
+						title: '蒹葭苍苍，白露为霜。所谓伊人，在水一方'
+					}
+				]
+			}
+		},
+		onPageScroll(res) {
+			// console.log(res.scrollTop)
+			if (res.scrollTop >= 40) {
+				uni.setNavigationBarColor({
+					frontColor: '#000000',
+					backgroundColor: '#FA6830',
+					animation: {
+						duration: 400,
+						timingFunc: 'easeIn'
+					}
+				})
+				this.transShow = true
+			} else {
+				uni.setNavigationBarColor({
+					frontColor: '#ffffff',
+					backgroundColor: '#FA6830',
+					animation: {
+						duration: 400,
+						timingFunc: 'easeIn'
+					}
+				})
+				this.transShow = false
 			}
 		},
 		// onLoad() {
@@ -185,20 +216,20 @@
 				size: '50',
 				tagId: '1271353204155625474'
 			}
-			this.$api.poiApp(query).then(response => {
-				// console.log(response)
-				this.recommendData = response.data
-				// if (response) {
-				// //把token存入store
-				// this.login(response)
-				// //跳转到首页
-				// uni.reLaunch({
-				// 	url: '../index/index'
-				// });
-				// }
-			}).catch((err) => {
-				console.log(err)
-			})
+			// this.$api.poiApp(query).then(response => {
+			// 	// console.log(response)
+			// 	this.recommendData = response.data
+			// 	// if (response) {
+			// 	// //把token存入store
+			// 	// this.login(response)
+			// 	// //跳转到首页
+			// 	// uni.reLaunch({
+			// 	// 	url: '../index/index'
+			// 	// });
+			// 	// }
+			// }).catch((err) => {
+			// 	console.log(err)
+			// })
 
 		},
 		methods: {
@@ -266,9 +297,9 @@
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	.content {
-		background: #F8F8F8;
+		background: #ffffff;
 		padding-bottom: env(safe-area-inset-bottom);
 	}
 
@@ -281,7 +312,7 @@
 		width: 100%;
 		height: 372rpx;
 		// border: solid 1px yellow;
-		background: url(../../static/images/bg_head_gradient@3x.png) center bottom;
+		background: url(../../static/images/bg_head_gradient@3x.png) center bottom #fff;
 		background-size: 100%;
 		background-repeat: no-repeat;
 		margin-bottom: 120rpx;
@@ -369,5 +400,53 @@
 			}
 		}
 
+	}
+
+	.fixed-wrap {
+		position: fixed;
+		top: 0;
+		background: #FFFFFF;
+		width: 100%;
+		padding-bottom: 12rpx;
+		z-index: 9999;
+
+		.search-box {
+			width: 500rpx;
+			height: 64rpx;
+			background: rgba(244, 244, 244, 1);
+			border-radius: 32rpx;
+			display: flex;
+			align-items: center;
+			margin-left: 32rpx;
+
+			.icon {
+				width: 40rpx;
+				height: 40rpx;
+				background: url(../../static/images/icon_home_search_grey@3x.png);
+				background-size: 40rpx;
+				align-items: center;
+				margin: 0 10rpx 0 32rpx;
+			}
+
+			.text {
+				font-size: 28rpx;
+				color: #555;
+			}
+		}
+	}
+
+	.nav-header {
+		position: relative;
+
+		&::after {
+			content: "";
+			width: 750rpx;
+			height: 99rpx;
+			background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(248, 248, 248, 1) 100%);
+			// background: red;
+			position: absolute;
+			left: 0;
+			bottom: -100%;
+		}
 	}
 </style>

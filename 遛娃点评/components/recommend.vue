@@ -1,11 +1,15 @@
 <template>
-	<view>
+	<view style="padding-top: 120rpx;background: #FFFFFF;">
 		<filter :filterData="filterData"></filter>
-		<block v-for="(item,index) in recommendData" :key="index">
+		<view style="background: #f8f8f8;">
 
-			<card :cardData="item" @go-detail="handleGoDetail"></card>
-			<view style="width: 100%;height: 24rpx;"></view>
-		</block>
+			<loading v-if="recommendData&&recommendData.length==0" style="position: relative;top: 100rpx;"></loading>
+			<block v-for="(item,index) in recommendData" :key="index">
+
+				<card :cardData="item" @go-detail="handleGoDetail"></card>
+				<view style="width: 100%;height: 24rpx;"></view>
+			</block>
+		</view>
 	</view>
 </template>
 
@@ -39,6 +43,9 @@
 	}
 </script>
 
-<style lang="scss">
-
+<style lang="scss" scoped>
+	body,
+	html {
+		background: #f8f8f8;
+	}
 </style>

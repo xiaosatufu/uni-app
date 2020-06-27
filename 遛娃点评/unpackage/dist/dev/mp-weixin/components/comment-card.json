@@ -1,10 +1,10 @@
 {
-  "component": true,
   "usingComponents": {
     "u-rate": "/uview-ui/components/u-rate/u-rate",
     "u-line": "/uview-ui/components/u-line/u-line",
     "card-top": "/components/card-top",
     "image-box": "/components/image-box",
     "card-footer": "/components/card-footer"
-  }
+  },
+  "component": true
 }

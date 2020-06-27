@@ -1,0 +1,13 @@
+{
+  "navigationStyle": "custom",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "u-navbar": "/uview-ui/components/u-navbar/u-navbar",
+    "u-line": "/uview-ui/components/u-line/u-line",
+    "u-action-sheet": "/uview-ui/components/u-action-sheet/u-action-sheet",
+    "card-top": "/components/card-top",
+    "image-box": "/components/image-box",
+    "address-box": "/components/address",
+    "card-footer": "/components/card-footer"
+  }
+}

@@ -25,11 +25,11 @@
 /* 透明度 */
 /* 文章场景相关 */
 .slot-wrap .back-icon {
-  width: 32rpx;
-  height: 32rpx;
+  width: 48rpx;
+  height: 48rpx;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAABGElEQVRYR+2XMQrCMBhGXycX7+NBXJz0FCLorIuCq6tOTp7KI+igixJoIEq1afKFBLTQqS19+d6f5E9FYVdVGA9/oDYjP5GQGeQAONd3Wygvz9UJ9YEFMAFOwAy4diFSAhmYKTCuAbbADrjnADIDWwEjoAfsgSVw6QJj3lUk5Gq6AUdgDjy6wiiA3jUdgHVIMhY+JiGZJjfJUCCpplgguaYYoCSaQoGSaQoBSqopBGgIbGIXPZ91yXeWFQdUnDKTdlFF7a7skk30Uz351pD7fVJ9IUBJ9YUC2U5Bri8GyCbldolZ2w9bV9LZF5uQfPapgJr0ZW3ym/RlPwa5+oo5KPps6F/fUdZQNIziGCSBCGnQ5D9Wbq5J4Z4goVIlwTCbpgAAAABJRU5ErkJggg==);
-  background-size: 100%;
-  margin-left: 44rpx;
+  background-size: 48rpx;
+  margin-left: 32rpx;
 }
 .m-operation {
   height: 140rpx;

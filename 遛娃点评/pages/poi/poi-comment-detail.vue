@@ -1,7 +1,7 @@
 <template>
 	<view>
 
-		<u-navbar :is-back="false" title="成都大熊猫繁育研" :border-bottom="false">
+		<u-navbar :is-back="false" :title="detail.poiName" :border-bottom="false">
 			<view class="slot-wrap" @tap="handleBack">
 				<view class="back-icon"></view>
 			</view>
@@ -9,27 +9,23 @@
 		<view class="content">
 			<view class="u-tt">点评详情</view>
 			<view class="m-detail" @tap="handleGoAlbum">
-				<card-top time="3小时前">
+				<card-top :time="date" :cardData="detail">
 					<template v-slot:info>
 
-						<u-rate count="count" current="3.5" active-icon="star-fill" :disabled="true" inactive-icon="star-fill"
+						<u-rate count="count" :current="detail.average" active-icon="star-fill" :disabled="true" inactive-icon="star-fill"
 						 inactive-color="#E6E6E6" active-color="#F7AF43"></u-rate>
 					</template>
 				</card-top>
 				<view class="m-text">
-					这个地方在抖音，朋友圈刷爆了，好火好🔥那我肯定要去抽热闹的嘿嘿，想着5.1人比较多就等到了4号，那天太热了没怎么拍照，网红景点也只打卡了3个，等以后机会我第一好好发挥，不拍个1000张不散场，哈哈哈~
-					继续往里面走，就会发现大熊猫和小浣熊还有很多漂亮的孔雀，小朋友很喜欢，很可爱。最后，献上我仅有的照片，还是非常推荐大家去玩的，不论是亲子，情侣，闺蜜，都很适合😊😊
+					{{detail.context}}
 				</view>
 				<view class="m-images">
-					<view class="image-item"></view>
-					<view class="image-item"></view>
-					<view class="image-item"></view>
-					<view class="image-item"></view>
-					<view class="image-item"></view>
-					<view class="image-item"></view>
+					<view class="image-item" v-for="item in detail.picUrls" :key="item">
+						<image :src="item" style="width: 218rpx;height: 218rpx;" mode="aspectFill"></image>
+					</view>
 				</view>
 
-				<card-footer :isShowLable="true"></card-footer>
+				<card-footer :isShowLable="true" :cardData="detail"></card-footer>
 			</view>
 			<reply></reply>
 			<u-divider color="#D9D9D9" height="160">已经到底啦</u-divider>
@@ -42,6 +38,9 @@
 	import cardTop from '../../components/card-top.vue'
 	import cardFooter from '../../components/card-footer.vue'
 	import reply from '../../components/reply.vue'
+	import {
+		getDateDiff
+	} from '../../common/util.js'
 	export default {
 		components: {
 			cardTop,
@@ -50,31 +49,51 @@
 		},
 		data() {
 			return {
+				id: '',
+				detail: {},
 
+				date: '',
+				
 			}
+		},
+		onLoad: function(option) { //option为object类型，会序列化上个页面传递的参数
+			console.log(option)
+			this.id = option.id
+			this.loadDetail()
+
 		},
 		methods: {
 			handleBack() {
 				uni.navigateBack();
 			},
 			handleGoAlbum() {
-
 				uni.navigateTo({
 					url: '/pages/poi/poi-comment-detail-album'
 				});
+			},
+			loadDetail() {
+				this.$api.poiCommentDetail({
+					id: this.id
+				}).then(res => {
+					console.log(res)
+					this.detail = res
+
+					this.date = getDateDiff(this.detail.createTime)
+				})
 			}
 		}
 	}
 </script>
 
 <style lang="scss">
+
 	.slot-wrap {
 		.back-icon {
-			width: 32rpx;
-			height: 32rpx;
+			width: 48rpx;
+			height: 48rpx;
 			background: url(../../static/images/icon_nav_arrow_black@3x.png);
-			background-size: 100%;
-			margin-left: 44rpx;
+			background-size: 48rpx;
+			margin-left: 32rpx;
 		}
 	}
 

@@ -12,16 +12,16 @@ request.globalRequest = (url, method, data, power) => {
 
 	switch (power) {
 		case 1:
-
-			uni.getStorage({
-				key: 'token',
-				success: function(res) {
-					// console.log(res.data);
-
-					// console.log(res.data)
-					headers['SecurityAuthorization'] = res.data
-				}
-			});
+			const token = uni.getStorageSync('token');
+			if (token) {
+				headers['SecurityAuthorization'] = token
+			}
+			// uni.getStorageSync({
+			// 	key: 'token',
+			// 	success: function(res) {
+			// 		headers['SecurityAuthorization'] = res.data
+			// 	}
+			// });
 			break;
 		case 2:
 			headers['Authorization'] = 'Basic a3N1ZGlfcGM6a3N1ZGlfcGM='
@@ -45,18 +45,15 @@ request.globalRequest = (url, method, data, power) => {
 		header: headers
 	}).then(res => {
 		console.log(res)
+		if (res[1].data.errCode == 401) {
+
+			uni.clearStorageSync()
+			uni.reLaunch({
+				url: '/pages/login/login'
+			});
+			return false
+		}
 		// alert(JSON.stringify(res))
-		uni.showModal({
-			title: '提示',
-			content: res,
-			success: function(res) {
-				if (res.confirm) {
-					console.log('用户点击确定');
-				} else if (res.cancel) {
-					console.log('用户点击取消');
-				}
-			}
-		});
 		return res[1].data
 		// if (res[1].data.status && res[1].data.code == 200) {
 		// 	return res[1]
@@ -65,9 +62,14 @@ request.globalRequest = (url, method, data, power) => {
 		// }
 	}).catch(parmas => {
 
-		switch (parmas.code) {
+		// console.log(parmas[1].data.errCode==401)
+
+		switch (parmas[1].data.errCode) {
 			case 401:
 				uni.clearStorageSync()
+				uni.reLaunch({
+					url: '/pages/login/login'
+				});
 				break
 			default:
 				uni.showToast({

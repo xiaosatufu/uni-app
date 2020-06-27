@@ -2,7 +2,7 @@
 	<view class="card-wrap" @tap="handleGoDetail(cardData.id)">
 		<view class="card-info">
 			<view class="image-box">
-				<image class="image" :src="cardData.thumbnailUrl" mode="scaleToFill"></image>
+				<image class="image" :src="thumbnailUrl" mode="aspectFit"></image>
 			</view>
 			<view class="m-info">
 				<view class="u-title">{{cardData.name}}</view>
@@ -40,9 +40,17 @@
 		components: {
 			cardData
 		},
+		mounted(){
+			if(this.cardData.thumbnailUrl && this.cardData.thumbnailUrl.indexOf(',')!=-1) {
+				this.thumbnailUrl = this.cardData.thumbnailUrl.split(',')[0]
+			} else {
+				this.thumbnailUrl = this.cardData.thumbnailUrl
+			}
+		},
 		data() {
 			return {
-				count: 4
+				count: 5,
+				thumbnailUrl:''
 			};
 		},
 		methods: {
@@ -56,7 +64,7 @@
 <style lang="scss">
 	.card-wrap {
 		margin: 0 32rpx 0;
-		padding: 32rpx 24rpx;
+		padding: 32rpx 24rpx 0;
 		background: rgba(255, 255, 255, 1);
 		box-shadow: 0px 0px 14rpx 0px rgba(0, 0, 0, 0.02);
 		border-radius: 16rpx;

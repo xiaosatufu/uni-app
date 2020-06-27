@@ -1,9 +1,11 @@
 <template>
 	<view class="card-top-wrap">
 		<view class="top-left">
-			<view class="avatar"></view>
+			<!-- <u-avatar :src="cardData.avatar" size="67rpx"></u-avatar> -->
+			<view class="avatar">
+			</view>
 			<view class="info">
-				<view class="name">陈晓帅</view>
+				<view class="name">{{cardData.userName}}</view>
 				<view class="u-info">
 					<slot name="info"></slot>
 				</view>
@@ -12,7 +14,7 @@
 		<view class="top-right">
 			<!-- <slot></slot> -->
 			<!-- <slot name="right"></slot> -->
-			<view class="btn-more" v-if="type=='more'"></view>
+			<view class="btn-more" v-if="type=='more'" @tap="handleMore"></view>
 			<view class="btn-focus" v-if="type=='focus'">关注</view>
 			<view class="time" v-if="time">{{time}}</view>
 		</view>
@@ -23,12 +25,16 @@
 	export default {
 		props: {
 			type: {
-				type:String,
+				type: String,
 				default: ''
 			},
-			time:{
-				type:String,
-				default:''
+			time: {
+				type: String,
+				default: ''
+			},
+			cardData: {
+				type: Object,
+				default: {}
 			}
 		},
 		data() {
@@ -38,6 +44,11 @@
 		},
 		mounted() {
 			console.log(this.type)
+		},
+		methods:{
+			handleMore(){
+				this.$emit('more-click')
+			}
 		}
 	}
 </script>
@@ -92,6 +103,7 @@
 				font-size: 24rpx;
 				color: #fff;
 			}
+
 			.time {
 				font-size: 24rpx;
 				color: #b3b3b3;
