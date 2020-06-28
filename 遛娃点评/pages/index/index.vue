@@ -160,11 +160,19 @@
 						title: '蒹葭苍苍，白露为霜。所谓伊人，在水一方'
 					},
 					{
-						image: '/static/1.png',
+						image: '/static/2.png',
 						title: '蒹葭苍苍，白露为霜。所谓伊人，在水一方'
 					},
 					{
-						image: '/static/1.png',
+						image: '/static/3.png',
+						title: '蒹葭苍苍，白露为霜。所谓伊人，在水一方'
+					},
+					{
+						image: '/static/4.png',
+						title: '蒹葭苍苍，白露为霜。所谓伊人，在水一方'
+					},
+					{
+						image: '/static/5.png',
 						title: '蒹葭苍苍，白露为霜。所谓伊人，在水一方'
 					}
 				]

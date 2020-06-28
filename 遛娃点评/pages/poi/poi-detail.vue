@@ -22,7 +22,7 @@
 		<view class="m-header">
 			<view class="m-title">
 				<view class="u-name">{{poiData.name}}</view>
-				<view class="m-btn" @tap="handleCollect(poiData.id)">收藏</view>
+				<view class="m-btn" @tap="handleCollect(poiData.id)" :class="poiData.collected?'active':''">收藏</view>
 			</view>
 			<view class="m-rate">
 				<view class="m-info">
@@ -203,13 +203,14 @@
 				})
 			},
 			handleCollect(id) {
-				// console.log(this.data)
 				const submitData = {
-					// ,
-					collect: {"collect":!this.poiData.collected,id: this.id}
+					"collect": !this.poiData.collected
 				}
-				this.$api.poiAppCollect(submitData).then(res => {
+				this.$api.poiAppCollect(id, submitData).then(res => {
 					console.log(res)
+					if (res) {
+						this.poiData.collected = !this.poiData.collected
+					}
 				})
 			},
 			// handleJumpAlbum(){}
@@ -352,6 +353,11 @@
 				color: #555;
 				text-indent: 64rpx;
 				line-height: 60rpx;
+
+				&.active {
+					background: url(../../static/images/icon_stars_normal@3x.png) 20rpx center no-repeat;
+					background-size: 40rpx;
+				}
 
 			}
 		}

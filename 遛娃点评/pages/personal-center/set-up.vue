@@ -11,7 +11,9 @@
 				<view class="cell-item avatar">
 					<view class="cell-left">
 						<view class="m-avatar">
-							<view class="u-avatar"></view>
+							<view class="u-avatar">
+								<image :src="userInfo.avatar" mode="aspectFill" class="avatar"></image>
+							</view>
 							<view class="text">修改头像</view>
 						</view>
 					</view>
@@ -25,7 +27,7 @@
 						<text>昵称</text>
 					</view>
 					<view class="cell-right">
-						<view class="info">潘旺旺lwdp</view>
+						<view class="info">{{userInfo.nickName}}</view>
 
 						<view class="arrow"></view>
 					</view>
@@ -56,7 +58,7 @@
 						<text>城市</text>
 					</view>
 					<view class="cell-right">
-						<view class="info">四川，成都</view>
+						<view class="info">{{userInfo.province}},{{userInfo.city}}</view>
 
 						<view class="arrow"></view>
 					</view>
@@ -82,7 +84,7 @@
 						<view class="arrow"></view>
 					</view>
 				</view>
-				<view class="cell-item ">
+				<view class="cell-item " @tap="handleChooseAddress">
 					<view class="cell-left">
 						<text>收货地址</text>
 					</view>
@@ -114,7 +116,21 @@
 		data() {
 			return {
 
+				userInfo: {}
 			};
+		},
+		onLoad() {
+
+			try {
+				const value = uni.getStorageSync('userInfo');
+				if (value) {
+					// console.log(value);
+					this.userInfo = value
+
+				}
+			} catch (e) {
+				// error
+			}
 		},
 		methods: {
 			handleNavogateto(url) {
@@ -122,6 +138,20 @@
 				uni.navigateTo({
 					url: url
 				});
+			},
+			handleChooseAddress() {
+				uni.chooseAddress({
+					success(res) {
+						console.log(res.userName)
+						console.log(res.postalCode)
+						console.log(res.provinceName)
+						console.log(res.cityName)
+						console.log(res.countyName)
+						console.log(res.detailInfo)
+						console.log(res.nationalCode)
+						console.log(res.telNumber)
+					}
+				})
 			}
 		}
 	}
@@ -183,6 +213,13 @@
 								background-color: pink;
 								margin-right: 20rpx;
 								border-radius: 100%;
+								overflow: hidden;
+
+								.avatar {
+									width: 120rpx;
+									height: 120rpx;
+									border-radius: 100%;
+								}
 							}
 
 							.text {}

@@ -27,12 +27,15 @@
 				<view class="uni-btn-v">
 
 					<button class="login-btn normal-login-btn active" @click="handlelogin('normal')">登录</button>
-					<view class="login-btn wx-login-btn" @tap="userLogin">
+					<button class="login-btn wx-login-btn" lang="zh_CN" open-type="getUserInfo" @getuserinfo="handleGetUserInfo">
 						<view class="icon-wx"></view>
 						<text class="u-text">
 							微信快捷登录
 						</text>
-					</view>
+					</button>
+					<!-- 	<view class="login-btn wx-login-btn" @tap="userLogin">
+						
+					</view> -->
 				</view>
 			</form>
 		</view>
@@ -61,11 +64,12 @@
 					type: 0,
 					code: ''
 
-				}
+				},
+				wxParams: {}
 			};
 		},
 		onLoad() {
-
+			this.getSettingMes()
 			uni.hideTabBar();
 			//判断token是否存在，如果存在直接进入首页
 			uni.getStorage({
@@ -83,9 +87,49 @@
 			// plus.navigator.setStatusBarStyle('dark');
 		},
 		methods: {
-			...mapMutations(['login']),
+			...mapMutations(['login', 'saveUserInfo']),
 			codeChange(text) {
 				this.tips = text;
+			},
+			handleGetUserInfo(res) {
+				console.log('=======')
+				console.log(res)
+				console.log('=======')
+				//获取用户信息
+				if (res.detail.userInfo) {
+					console.log(1)
+					this.wxParams = res.detail
+					this.userLogin()
+				} else {
+
+					console.log(2)
+				}
+
+			},
+
+			// 查看已授权选项
+			getSettingMes() {
+				let _this = this;
+				uni.getSetting({
+					success(res) {
+						if (res.authSetting['scope.userInfo']) {
+							// 用户信息已授权，获取用户信息
+							uni.getUserInfo({
+								success(res) {
+									console.log(res);
+								},
+								fail() {
+									console.log("获取用户信息失败")
+								}
+							})
+						} else if (!res.authSetting['scope.userInfo']) {
+							console.log("需要点击按钮手动授权")
+						}
+					},
+					fail() {
+						console.log("获取已授权选项失败")
+					}
+				})
 			},
 			userLogin() {
 				uni.login({
@@ -97,10 +141,8 @@
 							if (response) {
 								//把token存入store
 								this.login(response)
-								//跳转到首页
-								uni.reLaunch({
-									url: '../index/index'
-								});
+								//同步数据
+								this.handleAuthUserInfo()
 							}
 						}).catch((err) => {
 							console.log(err)
@@ -119,6 +161,30 @@
 				// this.$api.authLogin(this.loginData).then(res=>{
 				// 	console.log(res)
 				// })
+			},
+			handleAuthUserInfo() {
+				const submitData = {
+					wxEncryptionUser: {
+						encryptedData: this.wxParams.encryptedData,
+						iv: this.wxParams.iv,
+						rawData: this.wxParams.rawData,
+						signature: this.wxParams.signature,
+						userInfo: JSON.stringify(this.wxParams.userInfo)
+					},
+					type: '0'
+				}
+				this.$api.authUserInfo(submitData).then(response => {
+					console.log(response)
+					if (response) {
+						
+						this.saveUserInfo(response)
+						// 跳转到首页
+						uni.reLaunch({
+							url: '../index/index'
+						});
+
+					}
+				})
 			},
 			getCode() {
 				console.log(11)

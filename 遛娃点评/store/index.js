@@ -10,17 +10,27 @@ const store = new Vuex.Store({
 		login(state, user) {
 			console.log(user)
 			state.token = user.token
-			state.userInfo = user.userResult
-			uni.setStorage({
-				key: 'token',
-				data: user.token
-			})
-			uni.setStorage({
-				key: 'userInfo',
-				data: user.userResult
-			})
+			// uni.setStorage({
+			// 	key: 'token',
+			// 	data: user.token
+			// })
 			console.log(state)
 
+			try {
+				uni.setStorageSync('token', user.token);
+			} catch (e) {
+				// error
+			}
+
+
+		},
+		saveUserInfo(state, userInfo) {
+
+			state.userInfo = userInfo
+			uni.setStorage({
+				key: 'userInfo',
+				data: userInfo
+			})
 		}
 	},
 	actions: {}

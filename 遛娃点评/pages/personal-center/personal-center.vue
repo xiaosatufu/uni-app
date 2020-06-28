@@ -14,20 +14,21 @@
 			</view>
 			<view class="m-user-info">
 				<view class="m-avatar">
-
+					<!-- <u-avatar :src="userInfo.avatar" size="160" class="avatar"></u-avatar> -->
+					<image :src="userInfo.avatar" mode="aspectFill" class="avatar"></image>
 				</view>
 				<view class="m-operation">
-					<view class="edit icon"  @tap="handleNavogateto('/pages/personal-center/set-up')"></view>
+					<view class="edit icon" @tap="handleNavogateto('/pages/personal-center/set-up')"></view>
 					<view class="setting icon" @tap="handleNavogateto('/pages/personal-center/my-comments')">
 
 					</view>
 				</view>
 				<view class="m-name">
-					<span>潘旺旺lwdp</span>
-					<view class="icon-sex"></view>
+					<span>{{userInfo.nickName}}</span>
+					<view class="icon-sex" :class="userInfo.sex==0?'male':'female'"></view>
 				</view>
 				<view class="m-detail">
-					<view>四川成都</view>
+					<view>{{userInfo.province}}{{userInfo.city}}</view>
 					<u-line color="#f2f2f2" direction="col" length="20rpx" margin="0 16rpx" />
 					<view><span>10</span>个目的地</view>
 					<u-line color="#f2f2f2" direction="col" length="20rpx" margin="0 16rpx" />
@@ -201,7 +202,8 @@
 						title: '大型游乐场最棒的是各种刺激的项目，夏天…',
 						image: 'http://pic2.sc.chinaz.com/Files/pic/pic9/202002/zzpic23369_s.jpg',
 					},
-				]
+				],
+				userInfo: {}
 			};
 		},
 		onLoad() {
@@ -210,6 +212,24 @@
 				//计算swiper高度
 				this.calcSwiperHeight('.list1')
 			}, 500)
+			try {
+				const value = uni.getStorageSync('userInfo');
+				if (value) {
+					// console.log(value);
+					this.userInfo = value
+
+				}
+			} catch (e) {
+				// error
+			}
+			// this.userInfo 
+			// uni.getStorage({
+			// 	key: 'userInfo',
+			// 	success: function(res) {
+			// 		console.log(res.data);
+			// 		this.userInfo = res.data
+			// 	}
+			// });
 		},
 		onReachBottom() {
 			this.loadStatus = 'loading';
@@ -302,6 +322,7 @@
 <style lang="scss">
 	.m-tabs {
 		position: relative;
+
 		&::after {
 			content: "";
 			width: 100%;
@@ -352,13 +373,21 @@
 		.m-avatar {
 			width: 160rpx;
 			height: 160rpx;
-			background: pink;
-			border: solid 10rpx #ffffff;
+			// background: pink;
+			// border: solid 10rpx #ffffff;
 			position: absolute;
 			border-radius: 100%;
 			left: 40rpx;
 			top: -50rpx;
-			box-sizing: border-box;
+			// box-sizing: border-box;
+			// overflow: hidden;
+
+			.avatar {
+				border: solid 10rpx #ffffff;
+				width: 160rpx;
+				height: 160rpx;
+				border-radius: 100%;
+			}
 		}
 
 		.m-operation {
@@ -395,8 +424,17 @@
 			.icon-sex {
 				width: 40rpx;
 				height: 40rpx;
-				background: url(../../static/images/icon_female@3x.png);
-				background-size: 40rpx;
+
+				&.male {
+
+					background: url(../../static/images/icon_male@3x.png);
+					background-size: 40rpx;
+				}
+
+				&.female {
+					background: url(../../static/images/icon_female@3x.png);
+					background-size: 40rpx;
+				}
 			}
 		}
 

@@ -22,6 +22,10 @@ api.upload = params => request.globalRequest(`app/upload`, 'POST', params,3)
 api.userSendCode = params => request.globalRequest(`user/sendCode`, 'POST', params)
 //登录
 api.authLogin = params => request.globalRequest(`auth/login`, 'POST', params)
+//用户信息
+api.authUserInfo = params =>request.globalRequest(`auth/userInfo`, 'POST', params,1)
+
+
 //poi列表
 api.poiApp = params => request.globalRequest(`poi/app${formatGetUri(params)}`, 'GET', {}, 1)
 
@@ -32,7 +36,7 @@ api.poiAppDetail = params => request.globalRequest(`poi/app/${params}`, 'GET', {
 
 //收藏
 
-api.poiAppCollect = params => request.globalRequest(`poi/app/${params.id}/collect`, 'POST', params, 1)
+api.poiAppCollect = (id,params) => request.globalRequest(`poi/app/${id}/collect`, 'POST', params, 1)
 
 
 //获取评论

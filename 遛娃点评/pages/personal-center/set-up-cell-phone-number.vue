@@ -12,9 +12,9 @@
 		<view class="u-notice">
 			*为了您的账户安全，30天内只能更换1次手机号，如果您需要登录其他账号，请返回页面底部切换账号。
 		</view>
-		<view class="u-btn">
-			选好了
-		</view>
+		<button class="u-btn" open-type="getPhoneNumber" @getphonenumber="decryptPhoneNumber">
+			确认更换
+		</button>
 	</view>
 </template>
 
@@ -26,6 +26,11 @@
 			return {
 
 			};
+		},
+		methods:{
+			decryptPhoneNumber(res){
+				console.log(res)
+			}
 		}
 	}
 </script>
@@ -45,7 +50,7 @@
 		font-size: 40rpx;
 		color: #222;
 		font-weight: 700;
-		margin:160rpx 0 100rpx 0;
+		margin: 160rpx 0 100rpx 0;
 		text-align: center;
 		line-height: 60rpx;
 
@@ -57,7 +62,7 @@
 	.u-notice {
 		font-size: 28rpx;
 		color: #555;
-		margin:0 60rpx;
+		margin: 0 60rpx;
 		line-height: 40rpx;
 	}
 

@@ -24,14 +24,14 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.slot-wrap .back-icon.data-v-5cc876ec {
+.slot-wrap .back-icon.data-v-51cbdad2 {
   width: 48rpx;
   height: 48rpx;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAABGElEQVRYR+2XMQrCMBhGXycX7+NBXJz0FCLorIuCq6tOTp7KI+igixJoIEq1afKFBLTQqS19+d6f5E9FYVdVGA9/oDYjP5GQGeQAONd3Wygvz9UJ9YEFMAFOwAy4diFSAhmYKTCuAbbADrjnADIDWwEjoAfsgSVw6QJj3lUk5Gq6AUdgDjy6wiiA3jUdgHVIMhY+JiGZJjfJUCCpplgguaYYoCSaQoGSaQoBSqopBGgIbGIXPZ91yXeWFQdUnDKTdlFF7a7skk30Uz351pD7fVJ9IUBJ9YUC2U5Bri8GyCbldolZ2w9bV9LZF5uQfPapgJr0ZW3ym/RlPwa5+oo5KPps6F/fUdZQNIziGCSBCGnQ5D9Wbq5J4Z4goVIlwTCbpgAAAABJRU5ErkJggg==);
   background-size: 48rpx;
   margin-left: 32rpx;
 }
-.main-tt.data-v-5cc876ec {
+.main-tt.data-v-51cbdad2 {
   font-size: 40rpx;
   color: #222;
   font-weight: 700;
@@ -39,16 +39,16 @@
   text-align: center;
   line-height: 60rpx;
 }
-.main-tt ._span.data-v-5cc876ec {
+.main-tt ._span.data-v-51cbdad2 {
   color: #F13B03;
 }
-.u-notice.data-v-5cc876ec {
+.u-notice.data-v-51cbdad2 {
   font-size: 28rpx;
   color: #555;
   margin: 0 60rpx;
   line-height: 40rpx;
 }
-.u-btn.data-v-5cc876ec {
+.u-btn.data-v-51cbdad2 {
   width: 630rpx;
   height: 100rpx;
   background: -webkit-linear-gradient(312deg, #fd763e 0%, #f13b03 100%);

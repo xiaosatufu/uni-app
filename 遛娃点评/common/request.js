@@ -45,7 +45,7 @@ request.globalRequest = (url, method, data, power) => {
 		header: headers
 	}).then(res => {
 		console.log(res)
-		if (res[1].data.errCode == 401) {
+		if (res[1].data.errCode == 401 || res[1].data.status == 500) {
 
 			uni.clearStorageSync()
 			uni.reLaunch({
@@ -61,11 +61,12 @@ request.globalRequest = (url, method, data, power) => {
 		// 	throw res[1].data
 		// }
 	}).catch(parmas => {
+		console.log(parmas)
 
 		// console.log(parmas[1].data.errCode==401)
 
-		switch (parmas[1].data.errCode) {
-			case 401:
+		switch (parmas[1].data.status) {
+			case 500:
 				uni.clearStorageSync()
 				uni.reLaunch({
 					url: '/pages/login/login'
