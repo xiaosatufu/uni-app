@@ -82,4 +82,7 @@
   font-size: 24rpx;
   color: #b3b3b3;
 }
+.card-wrap .card-info .m-info .m-address .u-distance {
+  margin-left: 20rpx;
+}
 

@@ -24,7 +24,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.u-badge-box.data-v-2b1712d8 {
+.u-badge-box.data-v-1f180c20 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: inline-flex;
@@ -35,24 +35,24 @@
   -webkit-align-items: center;
           align-items: center;
 }
-.u-badge.data-v-2b1712d8 {
+.u-badge.data-v-1f180c20 {
   line-height: 24rpx;
   padding: 4rpx 8rpx;
   border-radius: 100rpx;
 }
-.u-badge-dot.data-v-2b1712d8 {
+.u-badge-dot.data-v-1f180c20 {
   height: 16rpx;
   width: 16rpx;
   border-radius: 100rpx;
   line-height: 1;
 }
-.u-badge-mini.data-v-2b1712d8 {
+.u-badge-mini.data-v-1f180c20 {
   -webkit-transform: scale(0.8);
           transform: scale(0.8);
   -webkit-transform-origin: center center;
           transform-origin: center center;
 }
-.u-info.data-v-2b1712d8 {
+.u-info.data-v-1f180c20 {
   background: #909399;
   color: #fff;
 }

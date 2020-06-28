@@ -18,8 +18,8 @@
 					<image :src="userInfo.avatar" mode="aspectFill" class="avatar"></image>
 				</view>
 				<view class="m-operation">
-					<view class="edit icon" @tap="handleNavogateto('/pages/personal-center/set-up')"></view>
-					<view class="setting icon" @tap="handleNavogateto('/pages/personal-center/my-comments')">
+					<view class="edit icon" @tap="handleNavogateto('/pages/personal-center/my-comments')"></view>
+					<view class="setting icon" @tap="handleNavogateto('/pages/personal-center/set-up')">
 
 					</view>
 				</view>

@@ -91,8 +91,7 @@
 		{
 			"path": "pages/find/find",
 			"style": {
-				"navigationStyle": "custom",
-				"navigationBarTextStyle": "black"
+				"navigationStyle": "custom"
 			}
 		}
 

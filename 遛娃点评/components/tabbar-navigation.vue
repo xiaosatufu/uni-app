@@ -154,9 +154,9 @@
 	.tabbar-container .center-item .item-top {
 		flex-shrink: 0;
 		width: 150rpx;
-		height: 148rpx;
+		height: 138rpx;
 		position: absolute;
-		top: -60rpx;
+		top: -50rpx;
 		// left: calc(50% - 50rpx);
 		// border:solid 1px red;
 		border-radius: 50%;

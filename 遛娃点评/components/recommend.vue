@@ -1,5 +1,5 @@
 <template>
-	<view style="padding-top: 120rpx;background: #FFFFFF;">
+	<view style="padding-top: 100rpx;background: #FFFFFF;">
 		<filter :filterData="filterData"></filter>
 		<view style="background: #f8f8f8;">
 

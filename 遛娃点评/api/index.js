@@ -54,7 +54,11 @@ api.poiCommentLikeCancel = params => request.globalRequest(`app/comments/${param
 
 
 
+//地理位置解析
 
+// /location/parser
+
+api.locationParser = params => request.globalRequest(`location/parser${formatGetUri(params)}`, 'GET', {}, 1)
 
 
 

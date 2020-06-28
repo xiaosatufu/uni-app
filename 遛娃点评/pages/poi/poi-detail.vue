@@ -1,143 +1,150 @@
 <template>
 	<view class="m-detail-wrap">
+		<view class="loading-box" v-if="!poiData.name">
 
-		<u-navbar :is-back="false" title=" " :background="background" :border-bottom="false">
-			<view class="slot-wrap" @tap="handleBack">
-				<view class="back-icon"></view>
-			</view>
-		</u-navbar>
-
-		<view class="m-swiper" @tap="handleNavigateTo('/pages/poi/poi-comment-detail-album')">
-			<image class="image" :src="poiData.pictures[0].pictures"></image>
-			<view class="m-small-image-wrap">
-				<view class="image-wrap">
-					<view v-for="item in imageData" class="image-item" :key="item.id">
-						<image class="small-image" :src="item.pictures"></image>
-					</view>
-				</view>
-				<view class="m-total">{{poiData.pictures.length}}张</view>
-				<view class="u-arrow"></view>
-			</view>
+			<loading></loading>
 		</view>
-		<view class="m-header">
-			<view class="m-title">
-				<view class="u-name">{{poiData.name}}</view>
-				<view class="m-btn" @tap="handleCollect(poiData.id)" :class="poiData.collected?'active':''">收藏</view>
-			</view>
-			<view class="m-rate">
-				<view class="m-info">
-					<view class="u-rate">9.4</view>
-					<view class="m-comment-rate">
-						<view class="u-text">遛娃点评评分</view>
-						<view class="rate">
-							<u-rate count="count" current="3.5" active-icon="star-fill" :disabled="true" inactive-icon="star-fill"
-							 inactive-color="#E6E6E6" active-color="#F7AF43"></u-rate>
+
+		<block v-else>
+
+			<u-navbar :is-back="false" title=" " :background="background" :border-bottom="false">
+				<view class="slot-wrap" @tap="handleBack">
+					<view class="back-icon"></view>
+				</view>
+			</u-navbar>
+
+			<view class="m-swiper" @tap="handleNavigateTo('/pages/poi/poi-comment-detail-album')">
+				<image class="image" :src="poiData.pictures[0].pictures"></image>
+				<view class="m-small-image-wrap">
+					<view class="image-wrap">
+						<view v-for="item in imageData" class="image-item" :key="item.id">
+							<image class="small-image" :src="item.pictures"></image>
 						</view>
 					</view>
+					<view class="m-total">{{poiData.pictures.length}}张</view>
+					<view class="u-arrow"></view>
 				</view>
-				<view class="u-comment">已有<span>180</span>人点评</view>
 			</view>
-			<view class="u-introduce">{{poiData.introduction}}</view>
-		</view>
-		<view class="m-scenic-spot">
-			<view class="scenic-card">
-
-				<scenic-spot iconType="introduce" @tap="handleGoDetail">
-					<template v-slot:left>
-						景区介绍
-					</template>
-					<template v-slot:right>
-						正常开放
-					</template>
-				</scenic-spot>
-				<scenic-spot iconType="time">
-					<template v-slot:left>
-						开放时间
-					</template>
-					<template v-slot:right>
-						{{poiData.businessTime}}
-					</template>
-				</scenic-spot>
-				<scenic-spot iconType="location">
-					<template v-slot:left>
-						{{poiData.address}}
-					</template>
-				</scenic-spot>
-			</view>
-			<view class="scenic-card">
-				<scenic-spot iconType="ticket">
-					<template v-slot:left>
-						景区门票
-					</template>
-					<template v-slot:right>
-						全部5种票型
-					</template>
-				</scenic-spot>
-				<scenic-spot>
-					<template v-slot:left>
-						<view style="color: #B3B3B3;font-size: 24rpx;">
-							等<span style="color: #F13B03;padding:0 5rpx">128</span>位粑粑麻麻购买过</view>
-					</template>
-				</scenic-spot>
-				</viwe>
-			</view>
-
-			<view class="scenic-card">
-				<view class="play-way" @tap="handleGoMorePlay">
-					<view class="play-header">
-						<view class="title">热门玩法</view>
-						<view class="more">
-							<text>更多玩法</text>
-							<view class="arrow"></view>
-						</view>
-					</view>
-					<view class="play-content">
-
-						<scroll-view scroll-x="true">
-							<view class="play-way-scroll">
-								<play-way class="play-item"></play-way>
-								<play-way class="play-item"></play-way>
-								<play-way class="play-item"></play-way>
-								<play-way class="play-item"></play-way>
-								<play-way class="play-item"></play-way>
+			<view class="m-header">
+				<view class="m-title">
+					<view class="u-name">{{poiData.name}}</view>
+					<view class="m-btn" @tap="handleCollect(poiData.id)" :class="poiData.collected?'active':''">收藏</view>
+				</view>
+				<view class="m-rate">
+					<view class="m-info">
+						<view class="u-rate">9.4</view>
+						<view class="m-comment-rate">
+							<view class="u-text">遛娃点评评分</view>
+							<view class="rate">
+								<u-rate count="count" current="3.5" active-icon="star-fill" :disabled="true" inactive-icon="star-fill"
+								 inactive-color="#E6E6E6" active-color="#F7AF43"></u-rate>
 							</view>
-						</scroll-view>
+						</view>
+					</view>
+					<view class="u-comment">已有<span>180</span>人点评</view>
+				</view>
+				<view class="u-introduce">{{poiData.introduction}}</view>
+			</view>
+			<view class="m-scenic-spot">
+				<view class="scenic-card">
+
+					<scenic-spot iconType="introduce" @tap="handleGoDetail">
+						<template v-slot:left>
+							景区介绍
+						</template>
+						<template v-slot:right>
+							正常开放
+						</template>
+					</scenic-spot>
+					<scenic-spot iconType="time">
+						<template v-slot:left>
+							开放时间
+						</template>
+						<template v-slot:right>
+							{{poiData.businessTime}}
+						</template>
+					</scenic-spot>
+					<scenic-spot iconType="location">
+						<template v-slot:left>
+							{{address}}
+						</template>
+					</scenic-spot>
+				</view>
+				<view class="scenic-card">
+					<scenic-spot iconType="ticket">
+						<template v-slot:left>
+							景区门票
+						</template>
+						<template v-slot:right>
+							全部5种票型
+						</template>
+					</scenic-spot>
+					<scenic-spot>
+						<template v-slot:left>
+							<view style="color: #B3B3B3;font-size: 24rpx;">
+								等<span style="color: #F13B03;padding:0 5rpx">128</span>位粑粑麻麻购买过</view>
+						</template>
+					</scenic-spot>
+					</viwe>
+				</view>
+
+				<view class="scenic-card">
+					<view class="play-way" @tap="handleGoMorePlay">
+						<view class="play-header">
+							<view class="title">热门玩法</view>
+							<view class="more">
+								<text>更多玩法</text>
+								<view class="arrow"></view>
+							</view>
+						</view>
+						<view class="play-content">
+
+							<scroll-view scroll-x="true">
+								<view class="play-way-scroll">
+									<play-way class="play-item"></play-way>
+									<play-way class="play-item"></play-way>
+									<play-way class="play-item"></play-way>
+									<play-way class="play-item"></play-way>
+									<play-way class="play-item"></play-way>
+								</view>
+							</scroll-view>
+						</view>
 					</view>
 				</view>
 			</view>
-		</view>
-		<view class="m-comment">
-			<view class="comment-header">
-				<view class="title">点评({{commentsData.length}})</view>
-				<view class="right">
-					<switch-item></switch-item>
-				</view>
-			</view>
-			<view class="comment-content" v-if="commentsData&&commentsData.length>0">
-				<comment-card v-for="item in commentsData" :key="item" :cardData="item"></comment-card>
-				<u-divider color="#D9D9D9" height="160">已经到底啦</u-divider>
-			</view>
-			<view class="comment-content" v-else>
-				<u-empty text="快来发布第一条点评吧~" mode="message"></u-empty>
-			</view>
-		</view>
-		<u-popup v-model="show" mode="bottom" border-radius="40" :safe-area-inset-bottom="true">
-			<view class="popup-content">
-				<view class="title">选择您要进行的操作</view>
-				<view class="m-operation">
-					<view class="operation-item" @tap="handleNavigateTo(`/pages/poi/poi-play-way-push?poiId=${id}`)">
-						<view class="icon play-way"></view>
-						<text>发玩法</text>
-					</view>
-					<view class="operation-item" @tap="handleNavigateTo(`/pages/poi/poi-comment-push?poiId=${id}&poiName=${poiData.name}`)">
-						<view class="icon comment"></view>
-						<text>写点评</text>
+			<view class="m-comment">
+				<view class="comment-header">
+					<view class="title">点评({{commentsData.length}})</view>
+					<view class="right">
+						<switch-item></switch-item>
 					</view>
 				</view>
-				<view class="close-btn" @tap="show=false"></view>
+				<view class="comment-content" id="commentContent" v-if="commentsData&&commentsData.length>0">
+					<comment-card v-for="item in commentsData" :key="item" :cardData="item"></comment-card>
+					<u-divider v-if="loadComplete" color="#D9D9D9" height="160">已经到底啦</u-divider>
+				</view>
+				<view class="comment-content" v-else>
+					<u-empty text="快来发布第一条点评吧~" mode="message"></u-empty>
+				</view>
 			</view>
-		</u-popup>
-		<view class="fixed-btn" @tap="show=true"></view>
+			<u-popup v-model="show" mode="bottom" border-radius="40" :safe-area-inset-bottom="true">
+				<view class="popup-content">
+					<view class="title">选择您要进行的操作</view>
+					<view class="m-operation">
+						<view class="operation-item" @tap="handleNavigateTo(`/pages/poi/poi-play-way-push?poiId=${id}`)">
+							<view class="icon play-way"></view>
+							<text>发玩法</text>
+						</view>
+						<view class="operation-item" @tap="handleNavigateTo(`/pages/poi/poi-comment-push?poiId=${id}&poiName=${poiData.name}`)">
+							<view class="icon comment"></view>
+							<text>写点评</text>
+						</view>
+					</view>
+					<view class="close-btn" @tap="show=false"></view>
+				</view>
+			</u-popup>
+			<view class="fixed-btn" @tap="show=true"></view>
+		</block>
 	</view>
 </template>
 
@@ -165,20 +172,63 @@
 				id: '',
 				poiData: {},
 				imageData: [],
-				commentsData: []
+				commentsData: [],
+				address: '',
+
+				page: 1,
+				pageSize: 5,
+				loadComplete: false,
+				screenHeight: 0, //屏幕高度
+				isLoading: false, //防止频繁触发
+				bottomDistinct: 0 //距离底部多少像素时触发
 			}
 		},
 		onLoad: function(option) { //option为object类型，会序列化上个页面传递的参数
 			this.id = option.id
+
 			this.loadDetail()
 
 			this.loadComments()
+
+			//页面加载时取得屏幕高度
+			this.screenHeight = uni.getSystemInfoSync().screenHeight;
+		},
+
+		onPageScroll(e) {
+
+
+			const {
+				scrollTop //滚动条距离页面顶部的像素
+			} = e;
+
+			//防止重复触发
+			if (this.isLoading) {
+				return;
+			}
+
+			const query = uni.createSelectorQuery().in(this);
+			query.select('#commentContent').boundingClientRect(data => {
+				let {
+					height //listArea节点的高度
+				} = data;
+				//如果设置的事件触发距离 大于等于 (节点的高度-屏幕高度-滚动条到顶部的距离)
+				if (this.bottomDistinct >= height - this.screenHeight - scrollTop) {
+					//阻止时间重复触发
+					this.isLoading = true;
+					//异步加载数据
+					this.page = this.page + 1
+					this.loadComments()
+
+				}
+			}).exec();
 		},
 		mounted() {
 			const self = this
 			uni.$on('commentPushSucess', function(data) {
 				// console.log('监听到事件来自 update ，携带参数 msg 为：' + data.msg);
 				self.show = false
+				this.commentsData = []
+				this.page = 1
 				self.loadComments()
 			})
 		},
@@ -190,16 +240,40 @@
 
 					const pictures = JSON.parse(JSON.stringify(this.poiData.pictures))
 					this.imageData = pictures.splice(0, 4)
+
+					// console.log(this.poiData.latitude)
+					// console.log(this.poiData.longitude)
+					this.parserLocation(this.poiData.latitude, this.poiData.longitude)
 					// console.log(this.imageData)
 					// console.log(this.poiData.pictures)
 				})
 			},
 			loadComments() {
 				this.$api.poiComments({
+					page: this.page,
+					size: this.pageSize,
 					poiId: this.id
 				}).then(res => {
 					// console.log(res)
-					this.commentsData = res.data
+					if (res.data.length == 0) {
+						this.loadComplete = true
+						this.isLoading = true;
+					} else {
+
+						this.commentsData = this.commentsData.concat(res.data)
+						this.isLoading = false;
+					}
+				})
+			},
+			parserLocation(latitude, longitude) {
+				this.$api.locationParser({
+					latitude: latitude,
+					longitude: longitude
+				}).then(res => {
+					console.log(res)
+					if (res) {
+						this.address = res.address
+					}
 				})
 			},
 			handleCollect(id) {
@@ -561,5 +635,12 @@
 		position: fixed;
 		right: 32rpx;
 		top: 70%;
+	}
+
+	.loading-box {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 100vh;
 	}
 </style>

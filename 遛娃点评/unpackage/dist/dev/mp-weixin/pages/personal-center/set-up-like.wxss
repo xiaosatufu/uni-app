@@ -24,7 +24,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.u-btn.data-v-d445a6b0 {
+.u-btn.data-v-62485020 {
   width: 630rpx;
   height: 100rpx;
   background: -webkit-linear-gradient(312deg, #fd763e 0%, #f13b03 100%);
@@ -39,21 +39,21 @@
   margin-left: -315rpx;
   bottom: 120rpx;
 }
-.slot-wrap .back-icon.data-v-d445a6b0 {
+.slot-wrap .back-icon.data-v-62485020 {
   width: 48rpx;
   height: 48rpx;
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAABGElEQVRYR+2XMQrCMBhGXycX7+NBXJz0FCLorIuCq6tOTp7KI+igixJoIEq1afKFBLTQqS19+d6f5E9FYVdVGA9/oDYjP5GQGeQAONd3Wygvz9UJ9YEFMAFOwAy4diFSAhmYKTCuAbbADrjnADIDWwEjoAfsgSVw6QJj3lUk5Gq6AUdgDjy6wiiA3jUdgHVIMhY+JiGZJjfJUCCpplgguaYYoCSaQoGSaQoBSqopBGgIbGIXPZ91yXeWFQdUnDKTdlFF7a7skk30Uz351pD7fVJ9IUBJ9YUC2U5Bri8GyCbldolZ2w9bV9LZF5uQfPapgJr0ZW3ym/RlPwa5+oo5KPps6F/fUdZQNIziGCSBCGnQ5D9Wbq5J4Z4goVIlwTCbpgAAAABJRU5ErkJggg==);
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAABGUlEQVRYR+2XMQrCMBhGXycX7+NBnFzES4igsy4Kro7i4uapPIIOuiiBBqJUmyZfSEALndrSl+/9Sf5UFHZVhfHwB2oz8hMJmUEOgHN9t4Xy8lydUB+YAxPgBMyAaxciJZCBmQLjGmAL7IB7DiAzsCUwAnrAHlgBly4w5l1FQq6mG3AEFsCjK4wC6F3TAViHJGPhYxKSaXKTDAWSaooFkmuKAUqiKRQomaYQoKSaQoCGwCZ20fNZl3xnWXFAxSkzaRdV1O7KLtlEP9WTbw253yfVFwKUVF8okO0U5PpigGxSbpeYtf2wdSWdfbEJyWefCqhJX9Ymv0lf9mOQq6+Yg6LPhv71HWUNRcMojkESiJAGTf5j5eaaFO4JIDFSJeocOQ4AAAAASUVORK5CYII=);
   background-size: 48rpx;
   margin-left: 32rpx;
 }
-.main-tt.data-v-d445a6b0 {
+.main-tt.data-v-62485020 {
   font-size: 52rpx;
   color: #222;
   margin: 100rpx 0;
   font-weight: 700;
   text-align: center;
 }
-.like-wrap.data-v-d445a6b0 {
+.like-wrap.data-v-62485020 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -64,7 +64,7 @@
           justify-content: space-between;
   margin: 0 65rpx;
 }
-.like-wrap .like-item.data-v-d445a6b0 {
+.like-wrap .like-item.data-v-62485020 {
   width: 180rpx;
   height: 180rpx;
   background: #fbfbfb;
@@ -75,7 +75,7 @@
   font-size: 36rpx;
   color: #999;
 }
-.like-wrap .like-item.active.data-v-d445a6b0 {
+.like-wrap .like-item.active.data-v-62485020 {
   background: #FFF5F2;
   color: #F13B03;
 }

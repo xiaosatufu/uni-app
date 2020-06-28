@@ -24,11 +24,11 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.filter-wrap.data-v-2589be64 {
+.filter-wrap.data-v-009c7fac {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
-  padding: 0 32rpx 0;
+  padding: 0 32rpx 10rpx;
   height: 100rpx;
   background: -webkit-linear-gradient(top, white 0%, #f8f8f8 100%);
   background: linear-gradient(180deg, white 0%, #f8f8f8 100%);
@@ -36,7 +36,7 @@
   -webkit-align-items: center;
           align-items: center;
 }
-.filter-wrap .filter-item.data-v-2589be64 {
+.filter-wrap .filter-item.data-v-009c7fac {
   height: 52rpx;
   background: #f2f2f2;
   border-radius: 6rpx;
@@ -46,7 +46,7 @@
   color: #555;
   margin-right: 16rpx;
 }
-.filter-wrap .filter-item.active.data-v-2589be64 {
+.filter-wrap .filter-item.active.data-v-009c7fac {
   background: #fdede5;
   color: #F13B03;
 }

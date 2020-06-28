@@ -346,9 +346,9 @@ function upx2px(number, newDeviceWidth) {
   result = Math.floor(result + EPS);
   if (result === 0) {
     if (deviceDPR === 1 || !isIOS) {
-      result = 1;
+      return 1;
     } else {
-      result = 0.5;
+      return 0.5;
     }
   }
   return number < 0 ? -result : result;
@@ -421,10 +421,7 @@ var protocols = {
 
 
 var todos = [
-'vibrate',
-'preloadPage',
-'unPreloadPage',
-'loadSubPackage'];
+'vibrate'];
 
 var canIUses = [];
 
@@ -760,7 +757,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -1697,9 +1694,9 @@ function normalizeComponent (
 /***/ }),
 
 /***/ 11:
-/*!***********************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/store/index.js ***!
-  \***********************************************************/
+/*!********************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/store/index.js ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2698,9 +2695,9 @@ var index_esm = {
 /***/ }),
 
 /***/ 13:
-/*!**************************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/uview-ui/index.js ***!
-  \**************************************************************/
+/*!***********************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/uview-ui/index.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2824,9 +2821,9 @@ var install = function install(Vue) {
 /***/ }),
 
 /***/ 14:
-/*!*************************************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/uview-ui/libs/mixin/mixin.js ***!
-  \*************************************************************************/
+/*!**********************************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/uview-ui/libs/mixin/mixin.js ***!
+  \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2864,9 +2861,9 @@ var install = function install(Vue) {
 /***/ }),
 
 /***/ 15:
-/*!***************************************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/uview-ui/libs/mixin/mpShare.js ***!
-  \***************************************************************************/
+/*!************************************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/uview-ui/libs/mixin/mpShare.js ***!
+  \************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2886,9 +2883,9 @@ module.exports = {
 /***/ }),
 
 /***/ 16:
-/*!***************************************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/uview-ui/libs/request/index.js ***!
-  \***************************************************************************/
+/*!************************************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/uview-ui/libs/request/index.js ***!
+  \************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3063,9 +3060,9 @@ new Request();exports.default = _default;
 /***/ }),
 
 /***/ 17:
-/*!********************************************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/uview-ui/libs/function/deepMerge.js ***!
-  \********************************************************************************/
+/*!*****************************************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/uview-ui/libs/function/deepMerge.js ***!
+  \*****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3104,9 +3101,9 @@ deepMerge;exports.default = _default;
 /***/ }),
 
 /***/ 18:
-/*!********************************************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/uview-ui/libs/function/deepClone.js ***!
-  \********************************************************************************/
+/*!*****************************************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/uview-ui/libs/function/deepClone.js ***!
+  \*****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3144,9 +3141,9 @@ deepClone;exports.default = _default;
 /***/ }),
 
 /***/ 19:
-/*!***************************************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/uview-ui/libs/function/test.js ***!
-  \***************************************************************************/
+/*!************************************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/uview-ui/libs/function/test.js ***!
+  \************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3962,10 +3959,12 @@ if (true) {
   };
 
   formatComponentName = function (vm, includeFile) {
-    if (vm.$root === vm) {
-      if (vm.$options && vm.$options.__file) { // fixed by xxxxxx
-        return ('') + vm.$options.__file
+    {
+      if(vm.$scope && vm.$scope.is){
+        return vm.$scope.is
       }
+    }
+    if (vm.$root === vm) {
       return '<Root>'
     }
     var options = typeof vm === 'function' && vm.cid != null
@@ -4000,7 +3999,7 @@ if (true) {
     if (vm._isVue && vm.$parent) {
       var tree = [];
       var currentRecursiveSequence = 0;
-      while (vm && vm.$options.name !== 'PageBody') {
+      while (vm) {
         if (tree.length > 0) {
           var last = tree[tree.length - 1];
           if (last.constructor === vm.constructor) {
@@ -4012,7 +4011,7 @@ if (true) {
             currentRecursiveSequence = 0;
           }
         }
-        !vm.$options.isReserved && tree.push(vm);
+        tree.push(vm);
         vm = vm.$parent;
       }
       return '\n\nfound in\n\n' + tree
@@ -8858,7 +8857,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -8879,14 +8878,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -8962,7 +8961,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -9132,10 +9131,9 @@ function getTarget(obj, path) {
   return getTarget(obj[key], parts.slice(1).join('.'))
 }
 
-function internalMixin(Vue ) {
+function internalMixin(Vue) {
 
-  Vue.config.errorHandler = function(err, vm, info) {
-    Vue.util.warn(("Error in " + info + ": \"" + (err.toString()) + "\""), vm);
+  Vue.config.errorHandler = function(err) {
     console.error(err);
     /* eslint-disable no-undef */
     var app = getApp();
@@ -9358,9 +9356,9 @@ internalMixin(Vue);
 /***/ }),
 
 /***/ 20:
-/*!**********************************************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/uview-ui/libs/function/queryParams.js ***!
-  \**********************************************************************************/
+/*!*******************************************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/uview-ui/libs/function/queryParams.js ***!
+  \*******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9427,9 +9425,9 @@ queryParams;exports.default = _default;
 /***/ }),
 
 /***/ 21:
-/*!****************************************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/uview-ui/libs/function/route.js ***!
-  \****************************************************************************/
+/*!*************************************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/uview-ui/libs/function/route.js ***!
+  \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9524,9 +9522,9 @@ route;exports.default = _default;
 /***/ }),
 
 /***/ 22:
-/*!*********************************************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/uview-ui/libs/function/timeFormat.js ***!
-  \*********************************************************************************/
+/*!******************************************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/uview-ui/libs/function/timeFormat.js ***!
+  \******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9564,9 +9562,9 @@ timeFormat;exports.default = _default;
 /***/ }),
 
 /***/ 23:
-/*!*******************************************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/uview-ui/libs/function/timeFrom.js ***!
-  \*******************************************************************************/
+/*!****************************************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/uview-ui/libs/function/timeFrom.js ***!
+  \****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9621,9 +9619,9 @@ timeFrom;exports.default = _default;
 /***/ }),
 
 /***/ 24:
-/*!************************************************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/uview-ui/libs/function/colorGradient.js ***!
-  \************************************************************************************/
+/*!*********************************************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/uview-ui/libs/function/colorGradient.js ***!
+  \*********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9731,9 +9729,9 @@ function rgbToHex(rgb) {
 /***/ }),
 
 /***/ 25:
-/*!***************************************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/uview-ui/libs/function/guid.js ***!
-  \***************************************************************************/
+/*!************************************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/uview-ui/libs/function/guid.js ***!
+  \************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9783,9 +9781,9 @@ guid;exports.default = _default;
 /***/ }),
 
 /***/ 26:
-/*!****************************************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/uview-ui/libs/function/color.js ***!
-  \****************************************************************************/
+/*!*************************************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/uview-ui/libs/function/color.js ***!
+  \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9829,9 +9827,9 @@ color;exports.default = _default;
 /***/ }),
 
 /***/ 27:
-/*!********************************************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/uview-ui/libs/function/type2icon.js ***!
-  \********************************************************************************/
+/*!*****************************************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/uview-ui/libs/function/type2icon.js ***!
+  \*****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10666,9 +10664,9 @@ if (hadRuntime) {
 /***/ }),
 
 /***/ 28:
-/*!**********************************************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/uview-ui/libs/function/randomArray.js ***!
-  \**********************************************************************************/
+/*!*******************************************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/uview-ui/libs/function/randomArray.js ***!
+  \*******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10684,9 +10682,9 @@ randomArray;exports.default = _default;
 /***/ }),
 
 /***/ 29:
-/*!*****************************************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/uview-ui/libs/function/random.js ***!
-  \*****************************************************************************/
+/*!**************************************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/uview-ui/libs/function/random.js ***!
+  \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10736,9 +10734,9 @@ module.exports = g;
 /***/ }),
 
 /***/ 30:
-/*!***************************************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/uview-ui/libs/function/trim.js ***!
-  \***************************************************************************/
+/*!************************************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/uview-ui/libs/function/trim.js ***!
+  \************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10762,9 +10760,9 @@ trim;exports.default = _default;
 /***/ }),
 
 /***/ 31:
-/*!****************************************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/uview-ui/libs/function/toast.js ***!
-  \****************************************************************************/
+/*!*************************************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/uview-ui/libs/function/toast.js ***!
+  \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10783,9 +10781,9 @@ toast;exports.default = _default;
 /***/ }),
 
 /***/ 32:
-/*!***************************************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/uview-ui/libs/config/config.js ***!
-  \***************************************************************************/
+/*!************************************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/uview-ui/libs/config/config.js ***!
+  \************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10800,9 +10798,9 @@ var version = '1.3.4';var _default =
 /***/ }),
 
 /***/ 33:
-/*!***************************************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/uview-ui/libs/config/zIndex.js ***!
-  \***************************************************************************/
+/*!************************************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/uview-ui/libs/config/zIndex.js ***!
+  \************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10828,10 +10826,10 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 
-/***/ 379:
-/*!********************************************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/uview-ui/components/u-empty/icon.js ***!
-  \********************************************************************************/
+/***/ 372:
+/*!*****************************************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/uview-ui/components/u-empty/icon.js ***!
+  \*****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10896,9 +10894,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ }),
 
 /***/ 4:
-/*!*******************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/pages.json ***!
-  \*******************************************************/
+/*!****************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/pages.json ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -10906,10 +10904,10 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 
-/***/ 443:
-/*!**************************************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/uview-ui/libs/util/emitter.js ***!
-  \**************************************************************************/
+/***/ 436:
+/*!***********************************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/uview-ui/libs/util/emitter.js ***!
+  \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10967,9 +10965,9 @@ function _broadcast(componentName, eventName, params) {
 /***/ }),
 
 /***/ 46:
-/*!****************************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/mixins/nav-mixin.js ***!
-  \****************************************************************/
+/*!*************************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/mixins/nav-mixin.js ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11002,9 +11000,9 @@ function _broadcast(componentName, eventName, params) {
 /***/ }),
 
 /***/ 56:
-/*!**************************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/common/request.js ***!
-  \**************************************************************/
+/*!***********************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/common/request.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11100,9 +11098,9 @@ request;exports.default = _default;
 /***/ }),
 
 /***/ 57:
-/*!*************************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/common/config.js ***!
-  \*************************************************************/
+/*!**********************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/common/config.js ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11122,9 +11120,9 @@ url_config;exports.default = _default;
 /***/ }),
 
 /***/ 58:
-/*!*********************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/api/index.js ***!
-  \*********************************************************/
+/*!******************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/api/index.js ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11181,11 +11179,15 @@ api.poiCommentDetail = function (params) {return _request.default.globalRequest(
 //点赞
 api.poiCommentLike = function (params) {return _request.default.globalRequest("app/comments/".concat(params.commentId, "/like"), 'PUT', params, 1);};
 //取消点赞
-api.poiCommentLikeCancel = function (params) {return _request.default.globalRequest("app/comments/".concat(params.commentId, "/likeCancel"), 'PUT', {}, 1);};var _default =
+api.poiCommentLikeCancel = function (params) {return _request.default.globalRequest("app/comments/".concat(params.commentId, "/likeCancel"), 'PUT', {}, 1);};
 
 
 
+//地理位置解析
 
+// /location/parser
+
+api.locationParser = function (params) {return _request.default.globalRequest("location/parser".concat((0, _util.formatGetUri)(params)), 'GET', {}, 1);};var _default =
 
 
 
@@ -11194,9 +11196,9 @@ api;exports.default = _default;
 /***/ }),
 
 /***/ 59:
-/*!***********************************************************!*\
-  !*** /Users/guoqiwen/Desktop/uni-app/遛娃点评/common/util.js ***!
-  \***********************************************************/
+/*!********************************************************!*\
+  !*** E:/desktop/workspace/uni-app/遛娃点评/common/util.js ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

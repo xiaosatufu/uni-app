@@ -51,7 +51,13 @@
 							<view style="width: 100%;height: 24rpx;"></view>
 						</view>
 						<view class="list2" v-if="item==1">
-							<recommend :recommendData="recommendData"></recommend>
+							<recommend-follow></recommend-follow>
+							<view style="width: 100%;height: 24rpx;"></view>
+							<follow></follow>
+							<view style="width: 100%;height: 24rpx;"></view>
+							<follow></follow>
+							<view style="width: 100%;height: 24rpx;"></view>
+							<!-- <recommend :recommendData="recommendData"></recommend> -->
 
 							<!-- 	<recommend></recommend>
 							<view style="width: 100%;height: 24rpx;"></view>
@@ -84,9 +90,9 @@
 					</scroll-view>
 				</swiper-item>
 			</swiper>
-			<u-divider>已经到底了</u-divider>
+			<u-divider bg-color="#f8f8f8" >已经到底了</u-divider>
 		</view>
-		<view style="width:100%;height: 150rpx;"></view>
+		<view style="width:100%;height: 200rpx;background: #F8F8F8;"></view>
 	</view>
 </template>
 
@@ -379,7 +385,7 @@
 			.u-search-icon {
 				width: 40rpx;
 				height: 40rpx;
-				background: url(../../static/images/icon_home_search_grey@3x.png);
+				background: url(../../static/images/icon_search_orange@3x.png);
 				background-size: 100%;
 				opacity: .4;
 				margin-right: 5rpx;

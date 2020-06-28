@@ -24,19 +24,19 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.slot-wrap .back-icon.data-v-dcecd602 {
+.slot-wrap .back-icon.data-v-6aef7f72 {
   width: 48rpx;
   height: 48rpx;
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAABGElEQVRYR+2XMQrCMBhGXycX7+NBXJz0FCLorIuCq6tOTp7KI+igixJoIEq1afKFBLTQqS19+d6f5E9FYVdVGA9/oDYjP5GQGeQAONd3Wygvz9UJ9YEFMAFOwAy4diFSAhmYKTCuAbbADrjnADIDWwEjoAfsgSVw6QJj3lUk5Gq6AUdgDjy6wiiA3jUdgHVIMhY+JiGZJjfJUCCpplgguaYYoCSaQoGSaQoBSqopBGgIbGIXPZ91yXeWFQdUnDKTdlFF7a7skk30Uz351pD7fVJ9IUBJ9YUC2U5Bri8GyCbldolZ2w9bV9LZF5uQfPapgJr0ZW3ym/RlPwa5+oo5KPps6F/fUdZQNIziGCSBCGnQ5D9Wbq5J4Z4goVIlwTCbpgAAAABJRU5ErkJggg==);
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAABGUlEQVRYR+2XMQrCMBhGXycX7+NBnFzES4igsy4Kro7i4uapPIIOuiiBBqJUmyZfSEALndrSl+/9Sf5UFHZVhfHwB2oz8hMJmUEOgHN9t4Xy8lydUB+YAxPgBMyAaxciJZCBmQLjGmAL7IB7DiAzsCUwAnrAHlgBly4w5l1FQq6mG3AEFsCjK4wC6F3TAViHJGPhYxKSaXKTDAWSaooFkmuKAUqiKRQomaYQoKSaQoCGwCZ20fNZl3xnWXFAxSkzaRdV1O7KLtlEP9WTbw253yfVFwKUVF8okO0U5PpigGxSbpeYtf2wdSWdfbEJyWefCqhJX9Ymv0lf9mOQq6+Yg6LPhv71HWUNRcMojkESiJAGTf5j5eaaFO4JIDFSJeocOQ4AAAAASUVORK5CYII=);
   background-size: 48rpx;
   margin-left: 32rpx;
 }
-.follow-wrap.data-v-dcecd602 {
+.follow-wrap.data-v-6aef7f72 {
   padding: 0 32rpx;
   background: white;
   box-sizing: border-box;
 }
-.m-introduce.data-v-dcecd602 {
+.m-introduce.data-v-6aef7f72 {
   position: relative;
   display: -webkit-box;
   -webkit-line-clamp: 3;

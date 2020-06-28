@@ -2,7 +2,7 @@
 	<view class="card-wrap" @tap="handleGoDetail(cardData.id)">
 		<view class="card-info">
 			<view class="image-box">
-				<image class="image" :src="thumbnailUrl" mode="aspectFit"></image>
+				<image class="image" :src="thumbnailUrl" mode="aspectFill"></image>
 			</view>
 			<view class="m-info">
 				<view class="u-title">{{cardData.name}}</view>
@@ -124,7 +124,9 @@
 
 					.u-location {}
 
-					.u-distance {}
+					.u-distance {
+						margin-left: 20rpx;
+					}
 				}
 			}
 		}

@@ -24,7 +24,7 @@
 		display: flex;
 		align-items: center;
 		span {
-			padding: 12rpx 7rpx;
+			padding: 7rpx 12rpx;
 			box-sizing: border-box;
 			box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.02);
 			border-radius: 6px;

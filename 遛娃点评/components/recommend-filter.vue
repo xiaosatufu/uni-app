@@ -38,10 +38,11 @@
 <style lang="scss" scoped>
 	.filter-wrap {
 		display: flex;
-		padding: 0 32rpx 0;
+		padding: 0 32rpx 10rpx;
 		height: 100rpx;
 		background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(248, 248, 248, 1) 100%);
 		align-items: center;
+		// margin-bottom: 10rpx;
 		// margin-top: 120rpx;
 
 		.filter-item {

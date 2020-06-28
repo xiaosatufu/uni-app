@@ -24,17 +24,17 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-view.data-v-375af490 {
+view.data-v-6b97ed70 {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
-.main-wrap.data-v-375af490 {
+.main-wrap.data-v-6b97ed70 {
   width: 100%;
   height: 100rpx;
   background: red;
 }
-.tabbar-container.data-v-375af490 {
+.tabbar-container.data-v-6b97ed70 {
   z-index: 9999;
   position: fixed;
   bottom: 0;
@@ -52,7 +52,7 @@ view.data-v-375af490 {
   background: #fff;
   font-size: 20rpx;
 }
-.tabbar-container.data-v-375af490::after {
+.tabbar-container.data-v-6b97ed70::after {
   content: "";
   width: 100%;
   height: env(safe-area-inset-bottom);
@@ -61,7 +61,7 @@ view.data-v-375af490 {
   bottom: 0;
   left: 0;
 }
-.tabbar-container .tabbar-item.data-v-375af490 {
+.tabbar-container .tabbar-item.data-v-6b97ed70 {
   width: 20%;
   height: 100rpx;
   display: -webkit-box;
@@ -79,35 +79,35 @@ view.data-v-375af490 {
           align-items: center;
   text-align: center;
 }
-.tabbar-container .item-active.data-v-375af490 {
+.tabbar-container .item-active.data-v-6b97ed70 {
   color: #F13B03;
 }
-.tabbar-container .center-item.data-v-375af490 {
+.tabbar-container .center-item.data-v-6b97ed70 {
   display: block;
   position: relative;
 }
-.tabbar-container .tabbar-item .item-top.data-v-375af490 {
+.tabbar-container .tabbar-item .item-top.data-v-6b97ed70 {
   width: 56rpx;
   height: 56rpx;
 }
-.tabbar-container .center-item .item-top.data-v-375af490 {
+.tabbar-container .center-item .item-top.data-v-6b97ed70 {
   -webkit-flex-shrink: 0;
           flex-shrink: 0;
   width: 150rpx;
-  height: 148rpx;
+  height: 138rpx;
   position: absolute;
-  top: -60rpx;
+  top: -50rpx;
   border-radius: 50%;
 }
-.tabbar-container .tabbar-item .item-top image.data-v-375af490 {
+.tabbar-container .tabbar-item .item-top image.data-v-6b97ed70 {
   width: 100%;
   height: 100%;
 }
-.tabbar-container .tabbar-item .item-bottom.data-v-375af490 {
+.tabbar-container .tabbar-item .item-bottom.data-v-6b97ed70 {
   font-size: 20rpx;
   width: 100%;
 }
-.tabbar-container .center-item .item-bottom.data-v-375af490 {
+.tabbar-container .center-item .item-bottom.data-v-6b97ed70 {
   position: absolute;
   bottom: 5rpx;
 }

@@ -26,15 +26,14 @@
 				<text class="u-text">大家都在搜索“国庆必去景点”</text>
 			</view>
 			<div class="header-swiper">
-
 				<u-swiper :list="swiperList" :effect3d="true" border-radius="16" height="266"></u-swiper>
 			</div>
 		</view>
 
-		<view class="m-content">
-
+		<view class="m-content" id="recommentContent">
 			<recommend :recommendData="recommendData"></recommend>
 		</view>
+		<u-divider v-if="loadComplete" bg-color="#f8f8f8" margin-top="20" margin-bottom="40">已经到底了</u-divider>
 
 
 		<view style="width:100%;height: 150rpx;"></view>
@@ -95,11 +94,21 @@
 						image: '/static/5.png',
 						title: '蒹葭苍苍，白露为霜。所谓伊人，在水一方'
 					}
-				]
+				],
+				page: 1,
+				pageSize: 20,
+				loadComplete: false,
+				screenHeight: 0, //屏幕高度
+				isLoading: false, //防止频繁触发
+				bottomDistinct: 200 //距离底部多少像素时触发
 			}
 		},
 
-		onLoad() {},
+		onLoad() {
+
+			//页面加载时取得屏幕高度
+			this.screenHeight = uni.getSystemInfoSync().screenHeight;
+		},
 		onPageScroll(res) {
 			// console.log(res.scrollTop)
 			if (res.scrollTop >= 40) {
@@ -123,6 +132,49 @@
 				})
 				this.transShow = false
 			}
+
+
+			const {
+				scrollTop //滚动条距离页面顶部的像素
+			} = res;
+
+			//防止重复触发
+			if (this.isLoading) {
+				return;
+			}
+
+			const query = uni.createSelectorQuery().in(this);
+			query.select('#recommentContent').boundingClientRect(data => {
+				let {
+					height //listArea节点的高度
+				} = data;
+				//如果设置的事件触发距离 大于等于 (节点的高度-屏幕高度-滚动条到顶部的距离)
+				if (this.bottomDistinct >= height - this.screenHeight - scrollTop) {
+					//阻止时间重复触发
+					this.isLoading = true;
+					//模拟异步加载数据
+					// uni.showToast({
+					// 	title: "获取新数据"
+					// })
+					this.page = this.page + 1
+					this.loadRecommendList()
+
+					// setTimeout(() => {
+					// 	//测试数据
+					// 	let arr = new Array(5).fill(0);
+					// 	arr = arr.map((v, i) => this.info.length + i + 1);
+
+					// 	//数据填充
+					// 	this.info = this.info.concat(arr);
+					// 	//恢复事件触发
+					// 	this.isLoading = false;
+					// }, 1500);
+				}
+			}).exec();
+
+
+
+
 		},
 		created() {
 			const header = uni.getMenuButtonBoundingClientRect()
@@ -130,21 +182,30 @@
 			this.header.height = header.height
 		},
 		mounted() {
-			let query = {
-				page: '1',
-				size: '50',
-				tagId: '1271353204155625474'
-			}
-
-			this.$api.poiApp(query).then(response => {
-				this.recommendData = response.data
-			}).catch((err) => {
-				console.log(err)
-			})
+			this.loadRecommendList()
 
 		},
 		methods: {
+			loadRecommendList() {
+				let query = {
+					page: this.page,
+					size: this.pageSize,
+					tagId: '1271353204155625474'
+				}
 
+				this.$api.poiApp(query).then(response => {
+					if (response.data.length == 0) {
+						this.isLoading = true
+						this.loadComplete = true
+					} else {
+
+						this.recommendData = this.recommendData.concat(response.data)
+						this.isLoading = false;
+					}
+				}).catch((err) => {
+					console.log(err)
+				})
+			}
 
 		}
 	}
@@ -218,7 +279,7 @@
 			.u-search-icon {
 				width: 40rpx;
 				height: 40rpx;
-				background: url(../../static/images/icon_home_search_grey@3x.png);
+				background: url(../../static/images/icon_search_orange@3x.png);
 				background-size: 100%;
 				opacity: .4;
 				margin-right: 5rpx;
